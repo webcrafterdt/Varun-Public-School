@@ -1,0 +1,102 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Confirm Payment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-subtitle>Payment Summary</ion-card-subtitle>
+      </ion-card-header>
+  
+      <ion-card-content>
+        <ion-list>
+          <ion-item>
+            <!--<ion-label>Product Name</ion-label>-->
+            <ion-label slot="start">Total Amount : </ion-label>
+            <ion-label slot="end">{{this.amount}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label slot="start">Concession : </ion-label>
+            <ion-label slot="end">{{this.concession_amount}}</ion-label>
+          </ion-item>
+
+          <ion-item>
+            <ion-label slot="start">Fine : </ion-label>
+            <ion-label slot="end">{{this.fine_amount}}</ion-label>
+          </ion-item>
+          <ion-item>
+            <ion-label slot="start">Adjustable Amount : </ion-label>
+            <ion-label slot="end">{{this.pending_concession}}   ({{this.adjustable_amount}})</ion-label>
+          </ion-item>
+          
+
+          <ion-item>
+            <ion-label slot="start">Total Payble Amount : </ion-label>
+            <ion-label slot="end">{{this.totpayble_amount}}</ion-label>
+          </ion-item>
+
+          
+
+        </ion-list>
+        
+        <!--<ion-button expand="block" color="primary" (click)="confirmPayment()">Confirm Payment</ion-button>-->
+        <ion-button  color="linear-gradient(#007ab3, #055073)" [disabled]="this.totpayble_amount == 0"
+      expand="block" size="large" 
+      style="border-radius: 5px;height:32px;margin-top:15px;background: linear-gradient(#007ab3, #055073)!important;
+      font-size:15px;font-weight:bold;background-color: #055073;width:33%;margin-left:60%" type="submit" expand="block" (click)="pay_now(this.post_url,this.clientCode,this.data)">Pay Now</ion-button>
+      </ion-card-content>
+    </ion-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!--<div style="width: 100%;margin-bottom: 16%;">
+    <div style="width: 100%;float: left;">
+        <h2 style="font-family: Calibri, Helvetica, sans-serif!important;    margin-top: 4px;">Payment Information
+            </h2>
+    </div>
+
+</div>
+<hr>
+
+<ion-card>
+ <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" (click)="healthdetail()">
+   <ion-col align-self-center size-md="12"  size="12" >
+      <div style="width: 100%;float: right;">
+        <h5 style="font-size: 14px;color: #055073;height: 7px;"><b>10000</b></h5>
+      </div>
+    </ion-col>
+  </ion-row>
+</ion-card>-->
+
+
+<!--<ion-button  color="linear-gradient(#007ab3, #055073)" 
+expand="block" size="large" 
+style="border-radius: 5px;height:32px;margin-top:15px;background: linear-gradient(#007ab3, #055073)!important;
+font-size:15px;font-weight:bold;background-color: #055073;width:33%;margin-left:60%" type="submit" expand="block" (click)="pay_now(this.post_url,this.clientCode,this.data)">Pay Now</ion-button>
+-->
+
+
+</ion-content>
+

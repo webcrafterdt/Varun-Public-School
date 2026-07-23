@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: #eceff8;">
+  <div style=" height: 60px;
+  /*background: linear-gradient(#007ab3, #055073);*/
+  background-color: #e4f3f7;
+  border-bottom-left-radius: 193px 21px;
+  border-bottom-right-radius: 250px 140px;
+  margin-bottom: 20px;    box-shadow: -1px 4px  5px #bfbfbf;">
+    <p style="margin: 0px!important;padding-left: 20px;
+font-size: 18px!important;color: white;padding-top: 5px;color:#575757">Change Password</p>
+    <div style="margin: 0px!important; width: 100%;padding-top: 7px;">
+
+
+    </div>
+  </div>
+
+
+
+
+  <form class="form" [formGroup]="validations_form">
+    <ion-grid>
+      <ion-row style=" margin-top: 25px;padding: 10px;    background-color: rgb(236, 239, 248);
+    margin-left: 10px;  margin-right: 10px;  border-radius: 14px;" color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h4>&nbsp;</h4>
+          </div>
+          <div padding>
+            <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+              <ion-icon name="key-outline" item-left style="font-size: 23px;margin-right: 8px;"></ion-icon>
+              
+              <ion-input class="ion-no-padding" name="old_password" type="password" placeholder="Old Password"
+               formControlName="old_password" required #old_password></ion-input>
+            </ion-item>
+            <ion-text color="danger" style="font-size:12px" *ngIf="validations_form.controls.password.hasError('whitespace') && validations_form.controls.password.touched">
+              Old password Cannot be Blank
+            </ion-text>
+
+            
+            <div style="margin-top: 10px;">
+            <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+              <ion-icon name="key-outline" item-left style="font-size: 23px;margin-right: 8px;"></ion-icon>
+              <ion-input class="ion-no-padding" name="password" type="password" placeholder="New Password"
+                formControlName="password" maxlength="50" required #password></ion-input>
+            </ion-item>
+            <!-- <ion-text color="danger" style="font-size:12px" *ngIf="validations_form.controls.password.hasError('whitespace') && validations_form.controls.password.touched">
+              Min. 6 character allowed
+                </ion-text> -->
+                <ion-text color="danger" style="font-size:12px"
+                *ngIf="(validations_form.controls.password.hasError('whitespace') || validations_form.controls.password.hasError('minlength')) && validations_form.controls.password.touched">
+                Min. 6 character allowed
+              </ion-text>
+          </div>
+            <div style="margin-top: 10px;">
+              <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+                <ion-icon name="key-outline" item-left style="font-size: 23px;margin-right: 8px;"></ion-icon>
+
+                <ion-input class="ion-no-padding" name="confirm_password" type="password" placeholder="Confirm Password"
+                formControlName="confirm_password" maxlength="50" required #confirm_password></ion-input>
+              </ion-item>
+              <!-- <ion-text color="danger" style="font-size:12px" *ngIf="validations_form.controls.confirm_password.hasError('whitespace') && validations_form.controls.confirm_password.touched">
+                Min. 6 character allowed
+              </ion-text> -->
+              <ion-text color="danger" style="font-size:12px"
+              *ngIf="(validations_form.controls.confirm_password.hasError('whitespace') || validations_form.controls.confirm_password.hasError('minlength')) && validations_form.controls.confirm_password.touched">
+              Min. 6 character allowed
+            </ion-text>
+            </div>
+
+
+
+
+          </div>
+
+
+          <div padding>
+
+            <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="border-radius: 5px;height:38px;margin-top:15px;background: linear-gradient(#d8a1c9, #4e79a3)!important;;
+          font-size:17px;font-weight:bold;background-color: #055073" type="submit" [disabled]='!validations_form.valid'
+              expand="block" (click)="change_password()">Submit</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

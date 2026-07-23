@@ -1,0 +1,86 @@
+<!--
+  Generated template for the FeescustPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Notification List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: #eceff8;">
+
+
+
+
+  <ion-list>
+
+
+
+
+
+    <ng-container>
+      <ng-container *ngFor="let notifications of this.notifications;let q=index">
+        <ion-item style="margin-top: 10px;" lines="none">
+          <div style="width: 100%;height: 100%;">
+
+
+
+
+
+            <!-- <div
+              style="border-top-left-radius: 12px;
+border-bottom-left-radius: 12px;width: 6%;float: left;background-color: #BBEDBE;height:100%;display: flex;justify-content: center;align-items: center;">
+            </div> -->
+
+            <div style="width: 100%;float: left;background-color: white;    padding-top: 11px;
+            border-radius: 9px;/* height: 7px; */padding-left: 7px;padding-bottom: 3px;">
+              <!-- <p style="font-size:14px;white-space: pre-line;color: #055073;"><b>{{fee[0].BillGroupName}} </b></p> -->
+              <p style="margin-top: 5px;font-size:11px !important;">{{ notifications.contents.en }}</p>
+              
+              <!-- <p style="margin-top: 5px;font-size:11px !important;">Total Paid : {{fee[0].TotalAmountPaid}}</p>
+              <p style="margin-top: 5px;font-size:11px !important;">Total Due : {{fee[0].TotalAmount_Un_Paid}}</p>
+              <p style="margin-top: 5px;font-size:11px !important;">Session : {{fee[0].SessionCaption}}</p> -->
+
+
+
+            </div>
+
+
+
+
+
+
+
+          </div>
+        </ion-item>
+      </ng-container>
+    </ng-container>
+
+
+
+
+
+
+  </ion-list>
+
+
+
+  <ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="this.notificationslength == 0">
+    <ion-card>
+    <ion-item>
+         <div style="width:100%;">
+        <h6 style="font-size: 12px;color: gray;">No Notifications Found..!!</h6>
+          
+          
+      </div>
+    </ion-item>
+  
+  </ion-card>
+  </ion-list>
+</ion-content>

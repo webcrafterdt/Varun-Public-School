@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Shanti Niketan</string>
+    <string name="title_activity_main">Shanti Niketan</string>
+    <string name="package_name">com.shantiniketanss.DT</string>
+    <string name="custom_url_scheme">com.shantiniketanss.DT</string>
+</resources>

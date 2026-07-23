@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Manage Marks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+
+  <ion-row class="custom-rowheader" *ngIf="this.Class_Data">
+    <ion-col size="9" class="text-column">
+      <p class="text">Classes</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column">
+      <p class="amount">&nbsp;</p>
+    </ion-col>
+  </ion-row>
+
+  <ng-container *ngFor="let classdata of this.Class_Data">
+  <!-- <ion-row class="custom-row" (click)="secwiseDue(DueAmount)"> -->
+    <ion-row class="custom-row" (click)="ClassWiseAttendance(classdata.transid,classdata.classname)">
+    
+    <ion-col  size="8" class="text-column">
+      <p class="text">{{classdata.classname}}</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column" style="justify-content: right!important;">
+      <p class="amount">&nbsp;</p>
+    </ion-col>
+    <ion-col size="1" class="amount-column">
+      <ion-icon name="chevron-forward-outline" style="color: gray;"></ion-icon>
+    </ion-col>
+  </ion-row>
+  </ng-container>
+
+
+  <ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="!this.Class_Data">
+    <ion-card >
+    <ion-item>
+         <div style="width:100%;">
+          <h6 style="font-size: 12px;color: gray;">User Is Not ClassTeacher/Marks Manager ..!!</h6>
+          
+          
+      </div>
+    </ion-item>
+  
+  </ion-card>
+  </ion-list>
+  
+</ion-content>

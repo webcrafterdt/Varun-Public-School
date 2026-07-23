@@ -1,0 +1,182 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Student Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style="position: relative;text-align: center;">
+    
+    <!--<img src="{{this.imgpath}}" style="width:87px;height:87px;border-radius: 100%;margin-top: 5px;" />-->
+    <img *ngIf="!this.studentdetail.photo" src="/assets/female_profile.png" style="width:87px;height:87px;border-radius: 100%;margin-top: 5px;" />
+    <img *ngIf="this.studentdetail.photo" src="{{this.studentdetail.photo}}" style="width:87px;height:87px;border-radius: 100%;margin-top: 5px;" />
+    
+    <!-- <img src="/assets/chatting.gif" style="width: 37px;height: 37px;border-radius: 100%;margin-top: 8px;float: right;margin-right: 13px;" /> -->
+    <p>
+      <b style="font-size:15px;">{{this.studentdetail.Stu_Name}}</b>
+    </p>
+ 
+    <p>
+      <b style="font-size:15px;">{{this.studentdetail.classname}}</b>
+    </p>
+  </div>
+
+
+
+
+<!-- <ion-card class="date-range-card">
+  <form [formGroup]="ionicForm"  novalidate>
+    <ion-card-header>
+      <ion-card-title>Date Range</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item id="open-modal" style="width: 100%;">
+        <ion-icon name="calendar-outline"></ion-icon>
+       &nbsp;&nbsp; <ion-label style="font-size: 12px!important;color:#555555">From Date</ion-label>
+        <ion-text slot="end"  required style="font-size: 12px!important;color:#555555">{{ this.dateParts }}</ion-text>
+      </ion-item>
+      
+    
+      <ion-modal   
+      [initialBreakpoint]="0.7" trigger="open-modal" >
+        <ng-template>
+          <ion-content>
+            <ion-datetime #fromdatetime   presentation="date" name="fromdate" [(ngModel)]="fromdate"  formControlName="fromdate" showDefaultButtons="true" (ionChange)="from_date(fromdatetime.value)" 
+            min="{{this.SessStart}}" max="{{this.SessEnd}}"></ion-datetime>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+
+
+       <ion-item id="open-modal1" style="width: 100%" >
+        <ion-icon name="calendar-outline"></ion-icon>
+        &nbsp;&nbsp;<ion-label style="font-size: 12px!important;color:#555555">To Date</ion-label>
+        <ion-text slot="end" name="todate" required style="font-size: 12px!important;color:#555555">{{ this.dateParts_to }}</ion-text>
+      </ion-item>
+      
+      <ion-modal   
+      [initialBreakpoint]="0.7" trigger="open-modal1" >
+        <ng-template style="margin-top: 5px;">
+          <ion-content>
+            <ion-datetime #todatetime  presentation="date" name="todate" [(ngModel)]="todate"  formControlName="todate"  showDefaultButtons="true" (ionChange)="to_date(todatetime.value)" 
+            min="{{this.SessStart}}" max="{{this.SessEnd}}"></ion-datetime>
+          </ion-content>
+        </ng-template>
+      </ion-modal>
+      <ion-button  color="linear-gradient(#007ab3, #055073)" 
+        expand="block" size="large" 
+        style="border-radius: 5px;height:34px;
+        font-size:12px;font-weight:bold;background: linear-gradient(#7e78bb, #473f97)!important;margin-left: 70%;" type="submit" expand="block" (click)="genreport()" [disabled]="!this.ionicForm.valid">Go ></ion-button>
+    </ion-card-content>
+  </form>
+  </ion-card> -->
+  
+  <!-- <p class="amount" style="width: 95%;margin-left: 2.5%;">Presence</p> -->
+  
+  <ion-row class="custom-row">
+    <!-- <ion-col size="2" class="icon-column">
+      <ion-icon class="icon" name="person-circle-outline"></ion-icon>
+    </ion-col> -->
+    <ion-col size="7" class="text-column">
+      <p class="text">Enrollment Number</p>
+    </ion-col>
+    <ion-col size="5" class="amount-column" style="justify-content: right!important;">
+      <p class="amount" >{{this.studentdetail.enrollno}}</p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="custom-row">
+    <ion-col size="7" class="text-column">
+      <p class="text">Admission Date</p>
+    </ion-col>
+    <ion-col size="5" class="amount-column" style="justify-content: right!important;">
+      <p class="amount">{{this.studentdetail.doa}}</p>
+    </ion-col>
+  </ion-row>
+  <ion-row class="custom-row">
+    <ion-col size="7" class="text-column">
+      <p class="text">Status</p>
+    </ion-col>
+    <ion-col size="5" class="amount-column" style="justify-content: right!important;">
+      <p class="amount">Active</p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="custom-row-custom" >
+    
+    </ion-row>
+    <ion-row class="custom-row">
+      <ion-col size="7" class="text-column">
+        <p class="text">Date Of Birth</p>
+      </ion-col>
+      <ion-col size="5" class="amount-column" style="justify-content: right!important;">
+        <p class="amount">{{this.studentdetail.dob}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="custom-row">
+      <ion-col size="7" class="text-column">
+        <p class="text">Nationality</p>
+      </ion-col>
+      <ion-col size="5" class="amount-column" style="justify-content: right!important;">
+        <p class="amount">{{this.studentdetail.nationality}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="custom-row">
+      <ion-col size="7" class="text-column">
+        <p class="text">Religion</p>
+      </ion-col>
+      <ion-col size="5" class="amount-column" style="justify-content: right!important;">
+        <p class="amount">{{this.studentdetail.religionname}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="custom-row-custom" >
+    
+    </ion-row>
+
+<ion-row class="custom-row">
+      <ion-col size="7" class="text-column">
+        <p class="text">Mobile No.</p>
+      </ion-col>
+      <ion-col size="5" class="amount-column" style="justify-content: right!important;">
+        <p class="amount">{{this.studentdetail.mobile}}</p>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="custom-row">
+      <ion-col size="7" class="text-column">
+        <p class="text">Gender</p>
+      </ion-col>
+      <ion-col size="5" class="amount-column" style="justify-content: right!important;">
+        <p class="amount">{{this.studentdetail.gender}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="custom-row">
+      <ion-col size="7" class="text-column">
+        <p class="text">Address</p>
+      </ion-col>
+      <ion-col size="5" class="amount-column" style="justify-content: right!important;text-align: justify;text-justify: inter-word;">
+        <p class="amount">{{this.studentdetail.add1}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="custom-row">
+      <ion-col size="7" class="text-column">
+        <p class="text">City</p>
+      </ion-col>
+      <ion-col size="5" class="amount-column" style="justify-content: right!important;">
+        <p class="amount">{{this.studentdetail.CityName}}</p>
+      </ion-col>
+    </ion-row>
+
+
+
+    
+
+  
+</ion-content>
+
+

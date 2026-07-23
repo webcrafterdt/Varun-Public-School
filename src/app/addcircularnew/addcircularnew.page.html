@@ -1,0 +1,107 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Circular</ion-title>
+  </ion-toolbar>
+
+  <!-- <ion-segment [(ngModel)]="category" style="background-color:#e4f3f7!important">
+    <ion-segment-button value="applicationlist" style="border:none;color:black;font-size:12px"
+      (click)="applied_leaves()">
+      MY LEAVES
+    </ion-segment-button>
+    <ion-segment-button value="writeapplication" style="border:none;color:black;font-size:12px">
+      APPLY LEAVE
+    </ion-segment-button>
+  </ion-segment> -->
+</ion-header>
+
+<ion-content>
+  
+    <div [ngSwitch]="category">
+      <ion-card  style="background-color: #F0F5F8;">
+          <ion-list style="margin-top: 20px;margin-left: 1.5%;margin-right: 1.5%;width: 96%;background-color: #F0F5F8;">
+
+            <ion-item id="open-modal"
+              style="background-color: #F0F5F8;border-top-left-radius: 16px;border-top-right-radius: 16px;">
+              <ion-icon name="calendar-outline"></ion-icon>
+              <ion-label style="font-size: 12px;padding-left:5px">From Date</ion-label>
+              <ion-text slot="end" required style="font-size: 12px;">{{ this.dateParts }}</ion-text>
+            </ion-item>
+
+            <ion-item id="open-modal1">
+              <ion-icon name="calendar-outline"></ion-icon>
+              <ion-label style="font-size: 12px;padding-left:5px">To Date</ion-label>
+              <ion-text slot="end" name="todate" required style="font-size: 12px;">{{ this.dateParts_to }}</ion-text>
+            </ion-item>
+
+
+            <ion-modal [initialBreakpoint]="0.7" trigger="open-modal">
+              <ng-template>
+                <ion-content>
+                  <ion-datetime #fromdatetime presentation="date" name="fromdate" [(ngModel)]="fromdate"
+                     showDefaultButtons="true"
+                    (ionChange)="from_date(fromdatetime.value)"></ion-datetime>
+                </ion-content>
+              </ng-template>
+            </ion-modal>
+
+
+            <ion-modal [initialBreakpoint]="0.7" trigger="open-modal1">
+              <ng-template style="margin-top: 5px;">
+                <ion-content>
+                  <ion-datetime #todatetime presentation="date" name="todate" [(ngModel)]="todate"
+                     showDefaultButtons="true"
+                    (ionChange)="to_date(todatetime.value)"></ion-datetime>
+                </ion-content>
+              </ng-template>
+            </ion-modal>
+
+
+            <ion-item style="margin-top: 5px;">
+              <!-- <textarea placeholder="Title" name="title" type="text" [(ngModel)]="title" 
+                style="width:100%;border:1px solid #8e9099 !important;height: 40px;color:#8e9099;font-size: 12px;"
+                required></textarea> -->
+                <ion-input class="ion-no-padding" name="title" type="text" placeholder="Title" style="font-size: 12px;margin-left: 5px;"
+                [(ngModel)]="title" required></ion-input>
+            </ion-item>
+
+            <ion-item style="margin-top: 5px;">
+              
+              <quill-editor style="margin-top: 20px;margin-bottom: 20px;" [modules]="quillModules"   [(ngModel)]="quillData"     (onContentChanged)="onContentChanged($event)" ></quill-editor>
+            </ion-item>
+
+            <ion-item style="margin-top: 5px;">
+              <img src="assets/upload-file.png" style="height: 37px;width: 37px;" (click)="triggerPdfInput()" />
+              
+             <p style="font-size: 12px;" (click)="triggerPdfInput()">{{this.selectedFileName ? selectedFileName : 'Attach File'}} </p>
+             <p style="font-size: 12px;" (click)="triggerPdfInput()">
+              
+            </p>
+            
+              <input type="file" id="pdfInput" (change)="onFileSelect($event)"   style="display: none;"/>
+            </ion-item>
+
+
+            
+            <ion-grid>
+              <ion-row>
+              <ion-col size="4">
+            <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large"
+             style="border-radius: 5px;height:38px;margin-top:15px;background: linear-gradient(#007ab3, #055073)!important;
+        font-size:14px;font-weight:bold;background:linear-gradient(#d8a1c9, #4e79a3)!important;" type="submit"
+               expand="block" (click)="submitcircular()">Submit</ion-button>
+              </ion-col>
+              </ion-row>
+              </ion-grid>
+          </ion-list>
+        
+      </ion-card>
+
+    </div>
+
+  
+
+
+  </ion-content>

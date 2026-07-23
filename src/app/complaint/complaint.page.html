@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar style="background-color: #377796!important;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Complaint</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <div class="complaint-container">
+    <div class="header">
+      <ion-icon name="alert-circle-outline" class="icon"></ion-icon>
+      <h1 class="title">Submit a Complaint</h1>
+    </div>
+
+    <ion-row>
+      <ion-col class="ion-text-center">
+        <ion-item>
+          <ion-select placeholder="Select Complaint Type">
+            <ion-select-option value="option1">Infrastructure</ion-select-option>
+            <ion-select-option value="option2">Cleanness</ion-select-option>
+            <ion-select-option value="option3">Teacher</ion-select-option>
+            <ion-select-option value="option4">Subject</ion-select-option>
+            <ion-select-option value="option5">Transport</ion-select-option>
+            <ion-select-option value="option6">Fees</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col>
+        <ion-button expand="block" class="upload-button" style="--background: #377796!important; color: #fff;">
+          <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+          Upload Picture
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-item>
+      <ion-textarea rows="5" placeholder="Enter Complaint"></ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" class="submit-button" style="--background: #a7a5a5!important">
+      Submit
+    </ion-button>
+  </div>
+</ion-content>

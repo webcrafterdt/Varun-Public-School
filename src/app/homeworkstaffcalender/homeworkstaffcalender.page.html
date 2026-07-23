@@ -1,0 +1,151 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Analytics</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="date-range-card">
+    <form [formGroup]="ionicForm" novalidate>
+      <!-- <ion-card-header>
+      <ion-card-title>Date Range</ion-card-title>
+    </ion-card-header> -->
+
+
+
+      <!--     
+    <ion-datetime   presentation="date" name="todate" [(ngModel)]="todate"  formControlName="todate" 
+       showDefaultButtons="true" (ionChange)="to_date(todatetime.value)" 
+      min="{{this.SessStart}}" max="{{this.SessEnd}}"></ion-datetime> -->
+
+      <!-- <ion-card style="
+      border-radius: 8px;
+      padding: 0;
+
+      box-shadow: none;
+      border: 3px solid rgba(0, 0, 0, .1);
+      transition: .5s;
+      margin: 0;
+      position: relative;
+      background: white;
+      text-align: center;
+    ">
+      <ion-datetime presentation="date" name="todate" formControlName="todate"
+                    [(ngModel)]="currentDate" readonly
+                    displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY"
+                    [value]="currentDate">
+      </ion-datetime>
+    </ion-card> -->
+      <!-- <ion-card>
+    <ion-datetime presentation="date" name="todate" formControlName="todate"
+                  [(ngModel)]="currentDate" readonly
+                  displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY"
+                  [value]="currentDate">
+    </ion-datetime>
+  </ion-card> -->
+
+<ion-card style=" border-radius: 8px;
+padding: 0;
+height: auto;
+box-shadow: none;
+border: 3px solid rgba(0, 0, 0, .1);
+transition: .5s;
+margin: 0;
+position: relative;
+background: white;
+text-align: center;">
+          <ion-datetime #todatetime presentation="date" name="todate" [(ngModel)]="todate" formControlName="todate"
+        (ionChange)="to_date(todatetime.value)" min="{{this.SessStart}}" max="{{this.SessEnd}}"></ion-datetime>
+</ion-card>
+
+
+
+    </form>
+  </ion-card>
+
+  <p class="amount" style="width: 95%;margin-left: 2.5%;padding: 10px;color:gray">Assigned HomeWork</p>
+
+
+
+  
+<!-- <ion-row class="custom-row" *ngIf="this.CheckIn">
+  <ion-col size="2" class="icon-column">
+    <ion-icon class="icon" name="log-in-outline"></ion-icon>
+  </ion-col>
+  <ion-col size="4" class="text-column">
+    <p class="text">Check In</p>
+  </ion-col>
+  <ion-col size="6" class="amount-column" style="justify-content: right!important; padding-right:22px;">
+    <p class="amount">{{this.CheckIn}}</p>
+  </ion-col>
+</ion-row>
+
+<ion-row class="custom-row" *ngIf="this.CheckOut">
+  <ion-col size="2" class="icon-column">
+    <ion-icon class="icon" name="log-out-outline"></ion-icon>
+  </ion-col>
+  <ion-col size="4" class="text-column">
+    <p class="text">Check Out</p>
+  </ion-col>
+  <ion-col size="6" class="amount-column" style="justify-content: right!important; padding-right:22px;">
+    <p class="amount">{{this.CheckOut}}</p>
+  </ion-col>
+</ion-row> -->
+
+
+  <ion-list>
+      <ng-container>
+          <ng-container>
+            <ion-row class="custom-row" *ngFor="let homework of HomeWorkdata; let i = index">
+              <ion-col size="12">
+                <div style="width: 100%;height: 100%;" >  
+
+                  <div style="border-top-left-radius: 12px;
+       border-bottom-left-radius: 12px;width: 6%;float: left;background-color: #F1B9AC;height:100%;display: flex;justify-content: center;align-items: center;">
+                  </div>
+
+                <div style="width: 92%;float: left;background-color: white;padding: 5px;">
+                    <p style="font-size:13px;white-space: pre-line;color: black">
+                      <b [innerHTML]="decodeHtml(homework.Title)"></b></p>
+                    <p style="margin-top: 5px;font-size:11px !important;color:gray;">Apply Date :
+                      {{homework.applydate}}</p>
+                    <p style="margin-top: 5px;font-size:11px !important;color:gray;">Completion Date :
+                      {{homework.completiondate}}</p>
+                    <p style="margin-top: 5px;font-size:11px !important;color:gray;">Classes :
+                      {{homework.Classes}}</p>
+
+                      <p style="margin-top: 5px;font-size:11px !important;color:gray;">
+                        Content :
+                        <b [innerHTML]="decodeHtml(homework.details)"></b></p>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+        </ng-container>
+      </ion-list>
+
+ 
+
+
+
+
+<ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="!this.HomeWorkdata">
+  <ion-card >
+  <ion-item>
+     <div style="width:100%;">
+      <h6 style="font-size: 12px;color: gray;">No Record Found</h6>
+        
+        
+    </div>
+  </ion-item>
+
+</ion-card>
+</ion-list>
+
+
+</ion-content>

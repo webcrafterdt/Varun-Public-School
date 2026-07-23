@@ -1,0 +1,128 @@
+<ion-header >
+  <ion-toolbar >
+  
+   <div style="width:100% ;">
+  <div style="width: 7%;float: left;">
+    <img src="assets/vpslogo.jpeg" style="margin-left:5px;/*width:43px;*/height:29px;/*border-radius: 100%;*/" />
+  </div>
+  <div style="width: 93%;float: right;padding-top:6px ;">
+    <!--<ion-title>  {{this.name}}</ion-title>-->
+    <ion-title style="font-size: 16px;width:115%">Varun Public Sr. Sec. School</ion-title>
+  </div>
+  </div>
+    
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: #F0F5F8;">
+
+
+
+
+ 
+
+    <div class="header1" style="height:14%;margin-top:5%;    box-shadow: 0 0 5px 1px #bfbfbf;">
+       
+    </div>
+
+
+
+     <div style="position: relative;text-align: center;">
+      <!--<img src="{{this.imgpath}}" style="width:87px;height:87px;border-radius: 100%;margin-top: 5px;" />-->
+      <div style="width: 100%;">
+      <div style="width:20%;float: left;">
+      <img *ngIf="!this.image" src="/assets/commonimage.jpg" style="width: 60px;height: 60px;border-radius: 50%;margin-top: 30%;margin-left: 5%;" />
+      <img *ngIf="this.image" src="{{this.image}}" style="width: 60px;height: 60px;border-radius: 50%;margin-top: 30%;margin-left: 5%;" />
+      </div>
+      <div style="width:50%;float: left;margin-top: 7%;">
+      <!-- <p>
+        <b style="font-size:15px;color: white;color: #575757;text-transform: uppercase;">{{this.fname}} {{this.DesignationName}} </b>
+      </p> -->
+      <div style="width: 100%;">
+        <b style="font-size:15px;color: white;color: #575757;text-transform: uppercase;">{{this.fname}}  </b>
+      </div>
+
+      <div style="width: 100%;">
+        <b style="font-size:11px;color: white;color: #575757;text-transform: uppercase;">{{this.DesignationName}} </b>
+      </div>
+
+    </div>
+
+     <!-- <div style="width: 100%;display: flex;  align-items: center; justify-content: space-between;">
+      <div style="width: 100%; text-align: left;font-size: 12px;color:black">{{ StuData.Stu_Name }}</div>
+      <div style="width: 70%; text-align: right;font-size: 11px;color:gray"></div>
+      <ion-icon name="chevron-forward-outline" style="color: gray;margin-top: 2px;"></ion-icon>
+    </div>
+    <div style="width: 100%;  align-items: center; justify-content: space-between;">
+      <div style="width: 100%; text-align: left;font-size: 11px;color:gray">Father - {{ StuData.Father_Name }}</div>
+    </div> -->
+
+
+  </div>
+      <!--<p *ngIf="this.user_hostel == 'Y'">
+        <b ><img style="height: 21px;" src="/assets/correct_1.png"/></b>
+        <b style="font-size:15px;color: #2acd72;" >&nbsp; Hostel &nbsp;&nbsp;</b>
+        
+        <b ><img style="height: 21px;" src="/assets/correct_1.png"/></b>
+        <b style="font-size:15px;color: #2acd72;" >&nbsp;&nbsp;Academy</b>
+        
+      </p>-->
+
+
+
+      <!--<p *ngIf="this.user_hostel != 'Y'">
+        <b ><img style="height: 21px;" src="/assets/cross.png"/></b>
+        <b style="font-size:15px;color: #da4453;" >&nbsp; Hostel &nbsp;&nbsp;</b>
+
+        
+        <b ><img style="height: 21px;" src="/assets/correct_1.png"/></b>
+        <b style="font-size:15px;color: #2acd72;" >&nbsp;&nbsp;Academy</b>
+      </p>-->
+      
+    </div>
+   
+
+
+
+
+    
+    <ion-grid style="margin-top: 35%;">
+      
+      <ion-row class="ion-text-center">
+       
+         <ion-col size="4"   *ngFor="let p of appPages; let i = index">
+         
+           
+           
+                <div *ngIf="p.title == 'Leave Application' || p.title == 'Attendance' || p.title == 'Exam Management' || p.title == 'Connect Us' || p.title == 'HomeWork'" class="container"  routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" style="border-radius: 50%;" >
+                  <img src="{{p.img}}"  style="border-radius: 10%!important;box-shadow: rgb(132 156 171) 0px 0px 4px;padding: 10px!important;">
+                  <p style="color:#292d2f;width:78px;margin-left: -9px;    "><b>{{p.title}}</b></p>
+                </div>
+
+                <div *ngIf="p.title != 'Leave Application' && p.title != 'Attendance' && p.title != 'Exam Management' && p.title != 'Connect Us' && p.title != 'HomeWork'" class="container" routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected" style="border-radius: 50%;" >
+                 <img src="{{p.img}}"  style="border-radius: 10%!important;box-shadow: rgb(132 156 171) 0px 0px 4px;padding: 10px!important;">
+                 <p style="color:#292d2f;    "><b>{{p.title}}</b></p>
+               </div>
+               
+              
+           
+         
+      
+       </ion-col>
+     </ion-row>
+   </ion-grid>
+
+  </ion-content>
+  <ion-footer style="background-color:#eceff8" lines="none">
+
+    <button ion-button block color="color1" (click)="logout('SignInPage')"
+     style="box-shadow: rgb(132 156 171) 0px 0px 4px;width: 35%;margin-left: 62%;
+     color: white;font-size:13px;font-weight:bold;border-radius: 5px;padding:13px;
+    padding: 13px;border: solid #D8A1C9 1px;color: #4e79a3;margin-bottom: 10px;">
+    <img src="assets/log_out.png"  style="    height: 20px;
+    width: 23px;margin-right: 12px;margin-bottom: -5px;
+    margin-left: -5px;border-radius: 10%!important;">
+    Logout</button>
+
+    
+    </ion-footer>

@@ -1,0 +1,113 @@
+<ion-content >
+  <!-- <section> -->
+    
+    <div style="text-align:center;margin-top: 60px;">
+      <img src="assets/schoollogo.jpg" style="height:140px;width:140px"/>
+  </div>
+  <!-- <div class="logo" style="margin-top:0px!important;text-align:center">
+  
+
+  <br/>
+  </div> -->
+    <!-- <div class="curve"></div> -->
+  <!-- </section> -->
+
+
+
+
+  
+  <form #form="ngForm" >
+    <ion-grid>  
+      <ion-row style=" margin-top: 85px;padding: 10px;
+      margin-left: 10px;  margin-right: 10px;  border-radius: 14px;" color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12" style="-webkit-box-shadow: 0 0 10px gray;">
+          <div text-center>
+            <h4>REGISTER</h4>
+          </div>
+        <!--  <div padding>
+            <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+              <ion-icon name="mail-outline" item-left style="font-size: 23px;margin-right: 8px;"></ion-icon>
+              <ion-input class="ion-no-padding"  name="email" type="email" placeholder="Username" [(ngModel)]="email" required></ion-input>
+            </ion-item>
+            <div  style="margin-top: 10px;">
+            <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+              <ion-icon name="key-outline" item-left style="font-size: 23px;margin-right: 8px;"></ion-icon>
+              
+              <ion-input class="ion-no-padding" name="password" type="password" placeholder="Password" [(ngModel)]="password" required></ion-input>
+            </ion-item>
+          </div>
+          <div  style="margin-top: 10px;">
+            <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+          <ion-select placeholder="Select Session" [(ngModel)]="session" name="session" required>
+          <ion-select-option value="2019_20">2019-20</ion-select-option>
+            <ion-select-option value="2020_21">2020-21</ion-select-option>
+            <ion-select-option value="2021_22">2021-22</ion-select-option>
+            <ion-select-option value="2022_23">2022-23</ion-select-option>
+          </ion-select>
+          </ion-item>
+          </div>
+
+          <div  style="margin-top: 10px;">
+            <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+          <ion-select placeholder="Select College" name="college" [(ngModel)]="college" required>
+            <ion-select-option value="gdcol1">LIPS</ion-select-option>
+            <ion-select-option value="gdcol2">LWTTC</ion-select-option>
+          </ion-select>
+          </ion-item>
+          </div>
+
+          </div>-->
+
+          <div padding>
+            <ion-item style="height:43px;box-shadow: rgb(122 131 137) 0px 0px 4px; --background: #ffffff!important;">
+              <!-- <ion-icon name="mail-outline" item-left style="font-size: 23px;margin-right: 8px;"></ion-icon> -->
+              <ion-input class="ion-no-padding"   name="name" type="text" placeholder="Name" style="color: black!important" [(ngModel)]="name" required></ion-input>
+            </ion-item>
+          </div>
+
+          <div padding>
+            <ion-item style="height:43px;box-shadow: rgb(122 131 137) 0px 0px 4px; --background: #ffffff!important;margin-top: 10px;">
+              <!-- <ion-icon name="mail-outline" item-left style="font-size: 23px;margin-right: 8px;"></ion-icon> -->
+              <ion-input class="ion-no-padding"   name="username" type="text" placeholder="Username" style="color: black!important" [(ngModel)]="username" required></ion-input>
+            </ion-item>
+          </div>
+
+
+          <div padding>
+            <ion-item style="height:43px;box-shadow: rgb(122 131 137) 0px 0px 4px; --background: #ffffff!important;margin-top: 10px;">
+              <!-- <ion-icon name="mail-outline" item-left style="font-size: 23px;margin-right: 8px;"></ion-icon> -->
+              <ion-input class="ion-no-padding"   name="contact" type="text" placeholder="Contact" style="color: black!important" [(ngModel)]="contact" required></ion-input>
+            </ion-item>
+          </div>
+
+
+          <div padding>
+            <ion-item style="height:43px;box-shadow: rgb(122 131 137) 0px 0px 4px; --background: #ffffff!important;margin-top: 10px;">
+              <!-- <ion-icon name="mail-outline" item-left style="font-size: 23px;margin-right: 8px;"></ion-icon> -->
+              <ion-input class="ion-no-padding"   name="password" type="password" placeholder="Password" style="color: black!important" [(ngModel)]="password" required></ion-input>
+            </ion-item>
+          </div>
+
+          <div padding>
+              <ion-item style="height:43px;box-shadow: rgb(122 131 137) 0px 0px 4px; --background: #ffffff!important;margin-top: 10px;">
+                      
+                <ion-select placeholder="Select User" [(ngModel)]="type" name="type" required>
+                        <ion-select-option value="2">Normal User</ion-select-option>
+                          <ion-select-option value="3">Mahatma</ion-select-option>
+                          
+                        </ion-select>
+              </ion-item>
+          </div>
+
+    
+            <ion-button  color="linear-gradient(#007ab3, #055073)" 
+            expand="block" size="large" 
+            style="border-radius: 15px;height:32px;margin-top:15px;
+            font-size:11px;font-weight:bold;background-color: #10a3f7;width:30%;margin-left:70%" type="submit" expand="block" (click)="registeruser()">Register</ion-button>
+              
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+    
+</ion-content>

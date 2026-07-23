@@ -1,0 +1,302 @@
+<ion-header>
+  <ion-toolbar style="background-color: #483f98!important;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>lecture</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: #eceff8;" scrollable>
+  
+  <!--<ion-grid>
+    <ion-row color="primary" justify-content-center>
+      <div class="container">
+          <div class="header">
+            <h2 style="color: red;padding-top: 113px;padding-left: 20px;
+            font-weight: bold;color: white;">LECTURE</h2>    
+            </div>  
+          </div>  
+    </ion-row>
+  </ion-grid>-->
+  <div style=" height: 110px;
+  background-color: #483f98!important;
+  border-bottom-left-radius: 193px 21px;
+  border-bottom-right-radius: 250px 140px;
+  margin-bottom: 20px;    box-shadow: -1px 7px #bbbec9;">
+
+<div style="margin: 0px!important; width: 100%;padding-top: 7px;">
+  <h2 style="padding-left: 20px;
+  font-weight: bold;color: white;">LECTURE</h2>
+
+</div>
+
+
+  </div>
+<div style="margin-top:150px;"></div>
+
+<!--<ion-card style="flex-wrap: nowrap;
+overflow-x: scroll!important;">-->
+<ion-grid  style="flex-wrap: nowrap;
+overflow-x: scroll!important;
+overflow-y: hidden;" class="grid2">
+
+    <!--<div class="scroll" scrollX="true">-->
+  <!--<ion-scroll scrollX="true" scrollY="true">-->
+  <ion-row color="primary" justify-content-center style="background-color: #d4f4ff;flex-wrap: nowrap;
+  ">
+    
+    <ion-col align-self-center size-md="6"  size="5" style="background-color: #d4f4ff;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;border-right: solid gray 1px;">
+      Subject
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="3" style="background-color: #d4f4ff;font-size: 15px;text-align: center;font-weight: bold;color: black;height: 40px;padding-top: 11px;border-right: solid gray 1px;">
+      By
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="3" style="background-color: #d4f4ff;font-size: 15px;text-align: center;font-weight: bold;color: black;height: 40px;padding-top: 11px;border-right: solid gray 1px;">
+      Time
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="4" style="background-color: #d4f4ff;font-size: 15px;text-align: center;font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+      Detail
+    </ion-col>
+
+  </ion-row>
+
+
+  <!--<ion-segment scrollable>-->
+  <ion-row color="primary" justify-content-center  style="flex-wrap: nowrap;
+  background-color: #fed4d5;margin-top: 2%;" *ngFor="let dummyjso_val of dummyjso;let i =index">
+     <ion-col align-self-center size-md="6"  size="5" style="background-color: #fed4d5;font-size: 10px;color: #483f98;min-height: 40px;padding-top: 11px;border-right: solid gray 1px;">
+      {{dummyjso_val.subject}}
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="3" style="background-color: #fed4d5;font-size: 10px;color: #483f98;min-height: 40px;padding-top: 11px;border-right: solid gray 1px;">
+      {{dummyjso_val.facultyName}}
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="3" style="background-color: #fed4d5;font-size: 10px;color: #483f98;min-height: 40px;padding-top: 11px;border-right: solid gray 1px;">
+      {{dummyjso_val.duration}}
+    </ion-col>
+    <ion-col align-self-center size-md="6" (click)="details(dummyjso_val.action)" size="4" style="text-align:center;background-color: #fed4d5;font-size: 10px;color: #483f98;min-height: 40px;padding-top: 11px;">
+      <img src="assets/info.png" style="width:25px;height:25px;" />
+    </ion-col>
+  </ion-row>
+
+  <!--<ion-row color="primary" justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center class="first">
+        <div class="actiobutton" id="open-modal" expand="block">
+          
+          Detail
+        </div>
+        
+      </div>
+      </ion-col>
+  </ion-row>-->
+
+<!--</ion-scroll>-->
+<!--</div>-->
+<!--</ion-segment>-->
+
+</ion-grid>
+<!--</ion-card>-->
+
+
+
+<!--
+<ion-grid class="grid2" *ngFor="let dummyjso_val of dummyjso;let i =index">
+  <ion-row color="primary" justify-content-center *ngFor="let dummyjso_suv_val of dummyjso_val;let k =index">
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12" *ngIf="dummyjso_suv_val[0] != 'Action'" >
+      <div text-center class="first">
+        <div class="middle">
+          {{dummyjso_suv_val[0]}}
+        </div>
+        <div class="rightdiv">
+          {{dummyjso_suv_val[1]}}
+        </div>
+      </div>
+      </ion-col>
+
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12" *ngIf="dummyjso_suv_val[0] == 'Action'">
+        <div text-center class="first">
+          <div class="actiobutton" id="open-modal"  expand="block"  (click)="details(dummyjso_suv_val[1])" >
+            
+            Action
+          </div>
+          
+        </div>
+        </ion-col>
+    </ion-row>
+
+  <ion-row color="primary" justify-content-center>
+   
+  </ion-row>
+
+</ion-grid>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--
+  <ion-row color="primary" justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center class="first">
+        <div class="middle">
+          Semester
+        </div>
+        <div class="rightdiv">
+          2021-22 - BSC (CBZ) - III YEAR
+PAPER III-PLANT BIOTECHNOLOGY AND MOLECULAR BIOLOGY
+
+        </div>
+      </div>
+      </ion-col>
+  </ion-row>
+
+
+  <ion-row color="primary" justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center class="first">
+        <div class="middle">
+          Subject
+        </div>
+        <div class="rightdiv">
+          
+        </div>
+      </div>
+      </ion-col>
+  </ion-row>
+
+
+ <ion-row color="primary" justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center class="first">
+        <div class="middle">
+          Faculty Name
+        </div>
+        <div class="rightdiv">
+          Dr. Mohnish Vyas
+        </div>
+      </div>
+      </ion-col>
+  </ion-row>
+
+
+  <ion-row color="primary" justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center class="first">
+        <div class="middle">
+          Total Lecture
+        </div>
+        <div class="rightdiv">
+          63
+        </div>
+      </div>
+      </ion-col>
+  </ion-row>
+
+  <ion-row color="primary" justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center class="first">
+        <div class="actiobutton" id="open-modal" expand="block">
+          
+          Action
+        </div>
+        
+      </div>
+      </ion-col>
+  </ion-row>
+
+</ion-grid>
+
+
+
+
+
+<ion-grid class="grid2">
+  <ion-row color="primary" justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center class="first">
+        <div class="middle">
+          Course Name
+        </div>
+        <div class="rightdiv">
+          2021-22 - BSC (CBZ) - III YEAR
+        </div>
+      </div>
+      </ion-col>
+  </ion-row>
+
+
+  <ion-row color="primary" justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center class="first">
+        <div class="middle">
+          Semester
+        </div>
+        <div class="rightdiv">
+          2021-22 - BSC (CBZ) - III YEAR
+PAPER III-PLANT BIOTECHNOLOGY AND MOLECULAR BIOLOGY
+
+        </div>
+      </div>
+      </ion-col>
+  </ion-row>
+
+
+  <ion-row color="primary" justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center class="first">
+        <div class="middle">
+          Subject
+        </div>
+        <div class="rightdiv">
+          
+        </div>
+      </div>
+      </ion-col>
+  </ion-row>
+
+
+ <ion-row color="primary" justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center class="first">
+        <div class="middle">
+          Faculty Name
+        </div>
+        <div class="rightdiv">
+          Dr. Mohnish Vyas
+        </div>
+      </div>
+      </ion-col>
+  </ion-row>
+
+
+  <ion-row color="primary" justify-content-center>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <div text-center class="first">
+        <div class="middle">
+          Total Lecture
+        </div>
+        <div class="rightdiv">
+          63
+        </div>
+      </div>
+      </ion-col>
+  </ion-row>-->
+
+
+
+</ion-content>

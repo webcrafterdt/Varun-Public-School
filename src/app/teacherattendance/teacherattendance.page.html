@@ -1,0 +1,242 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"> </ion-back-button>
+    </ion-buttons>
+    <ion-title>Mark Attendance</ion-title>
+  </ion-toolbar>
+
+
+
+
+  <ion-grid>
+    <!-- <ion-card> -->
+
+
+
+    <!-- <ion-grid>
+      <ion-row>
+      
+        <ion-col col-12> <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large"
+            style="border-radius: 5px;height:34px;
+                        font-size:12px;font-weight:bold;background: linear-gradient(#d8a1c9, #4e79a3)!important;margin-left: 50%;" type="submit" expand="block" (click)="MarkAsHoliday()">MARK AS HOLIDAY</ion-button>
+
+        </ion-col>
+
+      </ion-row>
+    </ion-grid> -->
+
+
+
+    <ion-row>
+      <!-- <ion-col col-4> <ion-button color="float:left; linear-gradient(#007ab3, #055073)" expand="block" size="large"
+        style="border-radius: 5px;height:34px;
+                    font-size:12px;font-weight:bold;background: linear-gradient(#d8a1c9, #4e79a3)!important;text-transform: capitalize;
+                    margin-left: 5%; " type="submit" expand="block" (click)="MarkAsBulkHoliday()">Mark As Bulk Holiday</ion-button>
+
+    </ion-col> -->
+
+
+    <ion-col col-4> &nbsp;
+
+    </ion-col>
+
+      <ion-col col-4> <ion-button color="float:left; linear-gradient(#007ab3, #055073)" expand="block" size="large"
+          style="border-radius: 5px;height:34px;
+                      font-size:12px;font-weight:bold;background: linear-gradient(#d8a1c9, #4e79a3)!important;text-transform: capitalize;
+                      /*margin-left: 35%;*/ " type="submit" expand="block" (click)="MarkAsHoliday()">Mark As Holiday</ion-button>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+
+      <ion-col size="3" *ngFor="let legends of this.attendanceLegend" (click)="isSelectedLegendId(legends[0])">
+        <!-- <div style="width: 100%;" (click)="getSelectedLegend(legends[0],legends[5],legends[2])"> -->
+        <div style="width: 100%;">
+          <div style="float: left;width: 30%;font-weight: bold;color:#47515b;text-align: center;font-size:13px">
+            {{legends[2]}}</div>
+          <div style="float: left;font-size:12px;height: 14px;width: 14px;border-radius: 50%;"
+            [style.border]="isSelectedLegendId(legends[0]) ? '4px solid white' : 'none'"
+            [style.backgroundColor]="legends[5]">&nbsp;
+          </div>
+        </div>
+      </ion-col>
+
+      <!-- <ion-col size="3" (click)="isSelectedLegendId('')">
+        <div style="width: 100%;" (click)="getSelectedLegend('0','','P')">
+          <div style="float: left;width: 30%;font-weight: bold;color:#47515b;text-align: center;font-size:13px">
+            Pr &nbsp;</div>
+          <div style="float: left;font-size:12px;height: 20px;width: 20px;border-radius: 50%;background-color: #9bfd9b;"
+            [style.border]="isSelectedLegendId('0') ? '4px solid white' : 'none'">&nbsp;
+          </div>
+        </div>
+      </ion-col> -->
+
+    </ion-row>
+
+  </ion-grid>
+</ion-header>
+
+
+
+<ion-content>
+
+
+  <ion-grid>
+
+
+
+
+    <ion-row>
+      <ion-col size="4" *ngFor="let student of studentList;let i= index">
+        <ion-card class="student-card" [style.backgroundImage]="'url(' + student.Image + ')'"
+          [ngStyle]="{'background-color': student.background_color || '#9bfd9b'}" (click)="toggleCardColor(student,i)">
+          <p class="top-right"> {{ student.LegendValue || 'P' }}</p>
+
+
+
+
+        </ion-card>
+        <ion-card-content style="padding-top: 0px;padding-left: 10px;">
+          <ion-card-title style="font-size: 11px;color: gray;">{{student.FirstName}}</ion-card-title>
+          <ion-card-title style="font-size: 11px;color: gray;">({{student.EnrollNo}})</ion-card-title>
+        </ion-card-content>
+      </ion-col>
+
+      <!-- <ion-col size="4" *ngFor="let student of studentList; let i = index">
+        <ion-card class="student-card" [style.backgroundImage]="'url(' + student.Image + ')'"
+                  [ngStyle]="{'background-color': student.background_color || '#9bfd9b'}"
+                  (click)="toggleCardColor(student)">
+          <p class="top-right">{{ student.LegendValue || 'P' }}</p>
+        </ion-card>
+        <ion-card-content style="padding-top: 0px; padding-left: 10px;">
+          <ion-card-title style="font-size: 11px; color: gray;">{{ student.FirstName }}</ion-card-title>
+          <ion-card-title style="font-size: 11px; color: gray;">({{ student.EnrollNo }})</ion-card-title>
+        </ion-card-content>
+      </ion-col> -->
+    </ion-row>
+
+
+
+  </ion-grid>
+
+
+
+
+
+
+  <ion-grid class="grid2" *ngIf="this.dateParts && this.transid">
+
+
+    <ion-card>
+      <ion-card-header style="text-align:center;color:black;font-weight:bold;background-color: #f7f7f7;">Student
+        Listing</ion-card-header>
+    </ion-card>
+    <ion-row *ngFor="let student of studentList" class="ion-row-border">
+      <ion-col col-8 style="background-color: white!important;color: gray;height: 33px;">{{student.StuName}}</ion-col>
+      <ion-col col-4 style="    
+          background: white;
+          padding-right: 0px!important;
+          padding-bottom: 0px!important;">
+
+
+        <ion-select
+          style="padding:2px 5px 2px 7px !important;border-radius:4px !important;background: linear-gradient(#53c787, #b5e398);height: 148%!important;margin-top: -11px !important;"
+          (ionChange)="saveAttendance($event,student.stuid)" [(ngModel)]="student.LegendId">
+          <ion-select-option class="ion-text-wrap" *ngFor="let legends of attendanceLegend" value="{{legends.id}}">
+            {{legends.legendname}}
+          </ion-select-option>
+        </ion-select>
+
+
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-grid *ngIf="this.dateParts && this.transid"> -->
+  <!-- <ion-grid>
+    <ion-row>
+
+      <ion-col col-12> <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large"
+          style="border-radius: 5px;height:34px;
+                    font-size:12px;font-weight:bold;background: linear-gradient(#d8a1c9, #4e79a3)!important;margin-left: 70%;" type="submit" expand="block" (click)="setAttendance()">Submit</ion-button>
+
+      </ion-col>
+
+    </ion-row>
+  </ion-grid> -->
+
+</ion-content>
+
+<ion-footer>
+  <ion-grid>
+    <ion-row>
+      <!-- <ion-col col-4> <ion-button color="float:left; linear-gradient(#007ab3, #055073)" expand="block" size="large"
+        style="border-radius: 5px;height:34px;
+                    font-size:12px;font-weight:bold;background: linear-gradient(#d8a1c9, #4e79a3)!important;
+                    margin-right: 5%; " type="submit" expand="block" (click)="MarkAsHoliday()">MARK AS HOLIDAY</ion-button>
+
+    </ion-col> -->
+
+      <ion-col col-8> <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large"
+          style="border-radius: 5px;height:34px;
+                    font-size:12px;font-weight:bold;background: linear-gradient(#d8a1c9, #4e79a3)!important;text-transform: capitalize;
+                    margin-left: 50%;" type="submit" expand="block" (click)="setAttendance()">Submit</ion-button>
+                    
+
+
+
+      </ion-col>
+
+    </ion-row>
+
+    <ion-row>
+
+      <!-- <ion-col col-4> <ion-button color="float:left; linear-gradient(#007ab3, #055073)" expand="block" size="large"
+          style="border-radius: 5px;height:34px;
+                      font-size:12px;font-weight:bold;background: linear-gradient(#d8a1c9, #4e79a3)!important;
+                      margin-right: 50%;" type="submit" expand="block" (click)="MarkAsHoliday()">MARK AS HOLIDAY</ion-button>
+
+      </ion-col> -->
+
+    </ion-row>
+  </ion-grid>
+</ion-footer>
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-footer>
+  <ion-grid>
+    <ion-row style="background-color: #e4f3f7;border-radius: 7px;margin-top: 15px;padding-top: 7px;box-shadow: 0px 1px 8px 3px gray;
+  margin-bottom: 10px;">
+      <ion-col size="6">
+        <div style="width: 100%;">
+          <div style="float: left;width: 60%;font-weight: bold;color:#47515b;text-align: center;font-size:13px">
+            Total Present &nbsp;</div>
+          <div style="float: left;font-size:12px;height: 20px;width: 20px;color: green;">&nbsp;
+            10
+          </div>
+        </div>
+      </ion-col>
+
+      <ion-col size="6">
+        <div style="width: 100%;">
+          <div style="float: left;width: 60%;font-weight: bold;color:#47515b;text-align: center;font-size:13px">
+            Total Absent &nbsp;</div>
+          <div style="float: left;font-size:12px;height: 20px;width: 20px;color:red">&nbsp;
+            20
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-footer> -->

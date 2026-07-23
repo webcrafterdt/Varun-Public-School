@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>&nbsp;</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style=" height: 60px;
+  /*background: linear-gradient(#007ab3, #055073);*/
+  background-color: #e4f3f7;
+  border-bottom-left-radius: 193px 21px;
+  border-bottom-right-radius: 250px 140px;
+  margin-bottom: 20px;    box-shadow: -1px 4px  5px #bfbfbf;">
+<p style="margin: 0px!important;padding-left: 20px;
+font-size: 18px!important;color: white;padding-top: 5px;color:#575757">Event List</p>
+<div style="margin: 0px!important; width: 100%;padding-top: 7px;">
+
+
+</div> 
+</div>
+
+
+<ion-list lines="none">
+  <ng-container *ngIf="this.status == true">
+     <ng-container *ngFor="let events of this.event_list" >
+  <ion-item >
+    <div style="width: 100%;height: 100%;" >
+          <!--Submitted-->
+       <!--<div  style="width: 15%;float: left;height:100%;padding-top:3%;border-right:solid green 2;font-color:#696969;background-color: #f0f5f8;"><span><b style="font-size: 9px;">xcxc</b></span> <span style="font-size:11px;">asdsd <br /> dfg</span> </div>
+       -->
+        <div  style="margin-left:10px;width: 5%;float: left;height:100%;">
+        <div style="width:23px;border-radius: 50%;border:solid 	#fdad5c 2px;">&nbsp;</div>
+        <div style="width:50%;border-right:solid 	#696969 2px;height:100%;margin-top:5px;margin-left:4px">&nbsp;</div>
+  
+  
+        </div>
+  
+  
+  <div style="width: 84%;float: left;background-color: white;padding: 7px;height:100%;margin-left:15px">
+  <p style="margin-top: 5px;font-size:13px !important;white-space:pre-line;color: #055073;font-weight: bold;">	
+     {{events.event}}
+    </p>
+    <p style="margin-top: 5px;font-size:13px !important;white-space:pre-line">	
+      <b>From :</b> {{events.fromdate}}
+      </p>
+      <p style="margin-top: 5px;font-size:13px !important;white-space:pre-line">	
+        <b>To :</b> {{events.todate}}
+        </p>
+        <p style="margin-top: 5px;font-size:13px !important;white-space:pre-line">	
+          {{events.reason}}
+          </p>
+  <div style="float:left; margin-right:5%;color:#696969;font-size:small;font-family: verdana;" > 
+  
+  
+  </div>
+  </div>
+  
+    </div>
+  
+      </ion-item>
+    </ng-container> 
+  </ng-container>
+
+
+
+
+
+<!-- 
+          <ion-list style="background-color: #F0F5F8;" *ngIf="this.status == false" >
+            <ion-card >
+            <ion-item>
+               <div style="width:100%;">
+                 <h5 style="font-size: 11px;"><b>{{this.message}}</b></h5>
+               </div>
+            </ion-item>
+          </ion-card>
+          </ion-list> -->
+
+
+          <ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="this.event_list.length == 0">
+            <ion-card >
+            <ion-item>
+                 <div style="width:100%;">
+                <h6 style="font-size: 12px;color: black;">Event Not Found..!!</h6>
+                  
+                  
+              </div>
+            </ion-item>
+          
+          </ion-card>
+          </ion-list>
+
+</ion-list>
+</ion-content>
+
+

@@ -1,0 +1,126 @@
+<ion-header>
+  <ion-toolbar style="background-color: #377796!important;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Result</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="segment-container">
+    <div class="scroll-container">
+      <ion-segment [(ngModel)]="selectedYear" color="secondary" (ionChange)="segmentChanged($event)">
+        <ion-segment-button *ngFor="let item of dummyjso.response" [value]="item.Year">
+          {{ item.Year }}
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+  </div>
+
+  <div *ngIf="selectedYear">
+    <ng-container>
+      <tr>
+        <td>&nbsp;</td>
+      </tr>
+    </ng-container>
+
+    <!-- <ion-card-title style="font-size: 12px; text-align: center; font-weight: bold;">xx</ion-card-title>
+        <ion-card-subtitle style="font-size: 10px; text-align: center;">Roll No: </ion-card-subtitle>
+        <ion-card-subtitle style="font-size: 10px; text-align: center;">Exam Type: </ion-card-subtitle> -->
+        <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+    <ng-container *ngFor="let segment of result_data">
+      <ng-container *ngFor="let subjectMark of segment.Columns; let i = index">
+        <ng-container
+          *ngIf="subjectMark == 'Passes Subject' || subjectMark == 'Failed Subject' || subjectMark == 'Exam Type' || subjectMark == 'Roll No.' ">
+          <tr [ngClass]="i % 2 === 0 ? 'even-row' : 'odd-row'">
+            <td style="padding: 10px; border: 1px solid #000; font-size: 12px;text-align: center;">{{ subjectMark }}
+            </td>
+            <td style="padding: 10px; border: 1px solid #000; font-size: 12px;text-align: center;">{{
+              segment.Columns_result[i] }}</td>
+          </tr>
+
+
+        </ng-container>
+      </ng-container>
+    </ng-container>
+    </table>
+
+
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+      <tr style="background-color: #d4f4ff;">
+        <th style="padding: 10px; border: 1px solid #000; font-size: 12px;">S.No.</th>
+        <th style="padding: 10px; border: 1px solid #000; font-size: 12px;">Subject</th>
+        <th style="padding: 10px; border: 1px solid #000; font-size: 12px;">Marks</th>
+      </tr>
+
+
+
+
+      <ng-container *ngFor="let segment of result_data">
+        <ng-container *ngFor="let subjectMark of segment.Columns; let i = index">
+          <ng-container
+            *ngIf="i > 3 && subjectMark != 'Mobile No.' && subjectMark != 'Pass/FAIL' && !subjectMark.includes('Grand') && subjectMark != 'Percentage' && subjectMark != 'Result'">
+            <tr [ngClass]="i % 2 === 0 ? 'even-row' : 'odd-row'">
+              <td style="padding: 10px; border: 1px solid #000; font-size: 12px;text-align: center;">{{ i + 1 }}</td>
+              <td style="padding: 10px; border: 1px solid #000; font-size: 12px;text-align: center;">{{ subjectMark }}
+              </td>
+              <td style="padding: 10px; border: 1px solid #000; font-size: 12px;text-align: center;">{{
+                segment.Columns_result[i] }}</td>
+            </tr>
+          </ng-container>
+
+
+          <ng-container *ngIf="subjectMark.includes('Grand') || subjectMark == 'Percentage' || subjectMark == 'Result'">
+            <tr style="background-color: white;">
+              <!-- <td style="padding: 10px; border: 1px solid #000; font-size: 12px;text-align: center;">{{ i + 1 }}</td> -->
+              <td style="padding: 10px; border: 1px solid #000; font-size: 12px;text-align: center;font-weight:bold"
+                colspan="2">{{ subjectMark }}</td>
+              <td style="padding: 10px; border: 1px solid #000; font-size: 12px;text-align: center;">{{
+                segment.Columns_result[i] }}</td>
+            </tr>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+
+
+
+
+
+    </table>
+  </div>
+
+
+  <style>
+    .even-row {
+      background-color: #fafafa;
+    }
+    
+    .odd-row {
+      background-color: #ecf0f1;
+    }
+    
+    .active {
+      font-weight: bold;
+    }
+    
+    .segment-container {
+      height: 200px; /* Adjust the height as needed */
+      overflow-y: auto;
+    }
+    
+    .scroll-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    /* Optional: Adjust the padding of the segment container */
+    .segment-container {
+      padding: 10px; /* Adjust the padding as needed */
+    }
+    </style>
+
+
+</ion-content>

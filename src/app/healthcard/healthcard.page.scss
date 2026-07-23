@@ -1,0 +1,21 @@
+ion-toolbar{
+    // --background: #055073;
+    --background:#055073;
+     --color: white; 
+   }
+
+   ion-modal
+  {
+  top: 18%;
+  }
+
+  .grid_modal
+  {
+    background-color: #eceff8;
+    height: 79%;
+    width: 95%;
+    border-radius: 5px;
+    box-shadow: 1px 4px 9px 8px gray;
+    margin-top:15px;
+  }
+  

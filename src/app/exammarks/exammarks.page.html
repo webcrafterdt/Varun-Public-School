@@ -1,0 +1,112 @@
+<!--
+  Generated template for the FeescustPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Marks</ion-title>
+  </ion-toolbar>
+
+
+    <ion-segment [(ngModel)]="category" style="background-color:#e4f3f7!important">
+    <ion-segment-button value="feedetail" style="border:none;color:black;font-size:12px" (click)="applied_leaves()">
+      MARKS DETAIL
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+<ng-container [ngSwitch]="category">
+<ion-content  style="background-color: #eceff8;" >
+
+
+<ion-list *ngIf="marksdetail?.length > 0">
+  <ng-container *ngFor="let exam of marksdetail">
+    <ng-container *ngFor="let termKey of objectKeys(exam)">
+
+      <!-- Term Name Outside the Box -->
+      <h3 style="margin: 10px 10px 0 10px; font-size: 14px; color: #055073;"><b>{{ exam[termKey].MainExamName }}</b></h3>
+
+      <ng-container *ngFor="let subExamKey of objectKeys(exam[termKey])">
+        <ng-container *ngIf="subExamKey !== 'MainExamName'">
+
+          <!-- Box Starts -->
+          <div style="margin: 10px; background: #f2f4fc; padding: 10px;">
+            <div style="display: flex; background: white; border-radius: 12px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15); overflow: hidden;">
+
+              <!-- Left Color Strip -->
+              <div style="width: 8px; background: #BBEDBE; border-top-left-radius: 12px; border-bottom-left-radius: 12px;"></div>
+
+              <!-- Content Area -->
+              <div style="padding: 12px; width: 100%;">
+                <p style="margin: 0 0 6px; font-size: 13px;"><b>{{ exam[termKey][subExamKey].SubExamName }}</b></p>
+
+                <ng-container *ngFor="let subjectKey of objectKeys(exam[termKey][subExamKey])">
+                  <ng-container *ngIf="subjectKey !== 'SubExamName'">
+
+                    <!-- Subject Block -->
+                    <div style="margin-bottom: 12px;"> <!-- Subject Gap -->
+
+                      <p style="margin: 4px 0; font-size: 11px;"><b>{{ exam[termKey][subExamKey][subjectKey].Subname }}</b></p>
+
+                      <ng-container *ngFor="let markKey of objectKeys(exam[termKey][subExamKey][subjectKey])">
+                        <ng-container *ngIf="markKey !== 'Subname'">
+                          <!-- <p style="margin: 2px 0; font-size: 11px;">Obtained Marks: {{ exam[termKey][subExamKey][subjectKey][markKey].ObtainedMarks }}</p>
+                          <p style="margin: 2px 0; font-size: 11px;">Max Marks: {{ exam[termKey][subExamKey][subjectKey][markKey].MaxMarks }}</p>
+                          <p style="margin: 2px 0; font-size: 11px;">Min Marks: {{ exam[termKey][subExamKey][subjectKey][markKey].MinMarks }}</p> -->
+                             <ng-container *ngIf="exam[termKey][subExamKey][subjectKey][markKey].isgraded === 'Y'; else marksBlock">
+                                <p style="margin: 2px 0; font-size: 11px;">Grade: {{ exam[termKey][subExamKey][subjectKey][markKey].grade }}</p>
+                              </ng-container>
+                              <ng-template #marksBlock>
+                                <p style="margin: 2px 0; font-size: 11px;">Obtained Marks: {{ exam[termKey][subExamKey][subjectKey][markKey].ObtainedMarks }}</p>
+                                <p style="margin: 2px 0; font-size: 11px;">Max Marks: {{ exam[termKey][subExamKey][subjectKey][markKey].MaxMarks }}</p>
+                                <p style="margin: 2px 0; font-size: 11px;">Min Marks: {{ exam[termKey][subExamKey][subjectKey][markKey].MinMarks }}</p>
+                              </ng-template>
+                        </ng-container>
+                      </ng-container>
+
+                    </div>
+                    <!-- End Subject Block -->
+
+                  </ng-container>
+                </ng-container>
+
+              </div>
+            </div>
+          </div>
+          <!-- Box Ends -->
+
+        </ng-container>
+      </ng-container>
+
+    </ng-container>
+  </ng-container>
+</ion-list>
+
+
+
+
+
+
+
+
+  <!-- <ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="this.NoBillScheme == 'Y'">
+    <ion-card>
+    <ion-item>
+       <div style="width:100%;">
+        <h6 style="font-size: 12px;color: gray;">No Transactions/BillScheme To Show !!</h6>
+          
+          
+      </div>
+    </ion-item>
+  
+  </ion-card>
+  </ion-list> -->
+  
+
+</ion-content>
+</ng-container>

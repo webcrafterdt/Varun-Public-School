@@ -1,0 +1,709 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Manage Marks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <!-- <ion-title style="font-size: 12px;color: gray;margin-top: 10px;margin-left: 4px;">{{this.SelectedClassName}}    >>    {{this.ExamName}}</ion-title> -->
+  <ion-card style="background-color:#e4f3f7;">
+    <!-- <ion-title style="font-size: 11px;color: #000000;margin-top: 10px;font-weight: bold;"> -->
+    <p style="font-size: 11px;color: #000000;margin-top: 10px;font-weight: bold;margin-left: 10px;">
+      {{this.SelectedClassName}} >> {{this.MainExamName}} >> {{this.ExamName}}
+    </p>
+    <!-- </ion-title> -->
+
+
+  </ion-card>
+
+
+  <ion-row class="custom-rowheader">
+    <ion-col size="9" class="text-column">
+      <p class="text">Subjects</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column">
+      <p class="amount">&nbsp;</p>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ng-container *ngFor="let Subjects of this.SubjectArray">
+     <ion-row class="custom-row" (click)="MarksEntry(Subjects.subid,Subjects.subname,this.SelectedClassName,this.ExamName,this.MainExamName)">
+    
+    <ion-col  size="8" class="text-column">
+       <p class="text">{{Subjects.subname}}</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column" style="justify-content: right!important;">
+      <p class="amount">&nbsp;</p>
+    </ion-col>
+    <ion-col size="1" class="amount-column">
+      <ion-icon name="chevron-forward-outline" style="color: gray;"></ion-icon>
+    </ion-col>
+  </ion-row> 
+  </ng-container> -->
+
+  <ng-container *ngFor="let Subjects of this.SubjectArray;let p = index">
+    <ion-accordion-group>
+      <ion-accordion >
+        <ion-item slot="header" class="custom-row" (click)="getsubjectid(Subjects.subid)">
+          <!-- <ion-label>
+            {{Subjects.subname}}
+          </ion-label> -->
+          <ion-row>
+            <ion-col size="12" class="text-column">
+              <p class="text">{{Subjects.subname}}</p>
+            </ion-col>
+            <!-- <ion-col size="3" class="amount-column" style="justify-content: right!important;">
+              <p class="amount">&nbsp;</p>
+            </ion-col> -->
+
+          </ion-row>
+
+        </ion-item>
+        <div slot="content">
+          <ng-container *ngIf="Subjects.levelname && Subjects.levelname.length > 0;">
+
+          <ion-row class="custom-row" *ngFor="let levels of Subjects.levelname">
+            <ion-row >
+              <ng-container>
+              <ion-grid style="padding: 0px;">
+              <ion-row>
+                <ion-col size="12">
+                  <p class="text">[ {{levels.levelname}} ]</p>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+            </ng-container>
+          </ion-row>
+    
+
+
+            <!-- <ng-template *ngIf="this.Ismarks_Entered[Subjects.subid]; else noMarks"> -->
+              <ng-container *ngIf="this.Ismarks_Entered[Subjects.subid][levels.levelid] == 'Y'">
+                
+             
+              <!-- </ng-container>
+            <ng-container *ngIf="this.Ismarks_Entered[Subjects.subid]">levelname -->
+              <ion-row >
+              <ion-col size="4" class="text-column" (click)="getsubjectid(Subjects.subid,levels.levelid)">
+                <ion-button [id]="'view-marks-' + Subjects.subid + levels.levelid" color="linear-gradient(#007ab3, #055073)"
+                  expand="block" size="large" style="min-width: 100%;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;margin-left: -3px;" type="submit" expand="block">View </ion-button>
+              </ion-col>
+
+              <ion-col size="4" class="text-column" (click)="MarksDelete(Subjects.subid,levels.levelid)">
+                <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="min-width: 100%;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;margin-left: -1px;" type="submit" expand="block">Delete -</ion-button>
+              </ion-col>
+              
+              <ion-col size="4" class="text-column">
+                <ion-button (click)="EditMarks(Subjects.subid,Subjects.subname,this.SelectedClassName,this.ExamName,this.MainExamName,levels.levelid,levels.levelname)" color="linear-gradient(#007ab3, #055073)"
+                  expand="block" size="large" style="min-width: 100%;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;" type="submit" expand="block">Edit </ion-button>
+              </ion-col>
+
+<!-- This Condition will check include grand total -->
+              <!-- <ion-row *ngIf="Subjects.isgraded == 'N'">
+                <ng-container>
+                  <ion-grid style="padding: 0px;">
+                  <ion-row>
+                    <ion-col size="11">
+                      <p style="font-size: 13px;">Include In Grand Total</p>
+                    </ion-col>
+                    <ion-col size="1">
+                      
+                      <ion-toggle [(ngModel)]="Subjects.Include_In_GT"  (click)="ChangeValue($event,Subjects.subid,levels.levelid)" color="tertiary"></ion-toggle>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                </ng-container>
+              </ion-row> -->
+                          <ion-row *ngIf="levels.isgraded == 'N'">
+                <ng-container>
+                  <ion-grid style="padding: 0px;">
+                  <ion-row>
+                    <ion-col size="11">
+                      <p style="font-size: 13px;">Include In Grand Total </p>
+                    </ion-col>
+                    <ion-col size="1">
+                      
+                      <!-- <ion-toggle [(ngModel)]="Subjects.Include_In_GT"  (click)="ChangeValue($event,Subjects.subid,levels.levelid)" color="tertiary"></ion-toggle> -->
+                      <!-- <ion-toggle [(ngModel)]="Subjects.Include_In_GT[levels.levelid]" (ionChange)="ChangeValue($event, Subjects.subid, levels.levelid)" color="tertiary"></ion-toggle> -->
+                       <ion-toggle [(ngModel)]="levels.Include_In_GT_Level" (ionChange)="ChangeValue($event, Subjects.subid, levels.levelid)" color="tertiary"></ion-toggle>
+
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                </ng-container>
+              </ion-row>
+            </ion-row>
+
+
+
+              
+              <!-- View Marks Modal Starts-->
+              <ion-modal [trigger]="'view-marks-' + Subjects.subid + levels.levelid" [id]="'ViewMarksmodal-' + Subjects.subid + levels.levelid"
+                class="half-screen-modal ion-padding">
+
+                <ng-template>
+                  <ion-header>
+                    <ion-toolbar>
+                      <ion-buttons slot="start">
+                        <ion-button (click)="ViewMarksCancel('ViewMarksmodal-' + Subjects.subid + levels.levelid)">Cancel</ion-button>
+                      </ion-buttons>
+                      <ion-title>View Marks</ion-title>
+
+                    </ion-toolbar>
+                  </ion-header>
+                  <ion-content class="ion-padding">
+
+                    <ion-grid style="padding: 0px;">
+                      <ion-row class="header1">
+
+                      </ion-row>
+
+                      <ion-row>
+
+
+    
+
+
+
+                      </ion-row>
+                      <ion-grid class="grid2">
+
+                        <!-- <ion-card style="padding-bottom: 10%;background: white;"> -->
+                          <div style="background: white;border-radius: 8px;box-shadow: 1px -4px 11px 5px #888888;margin-bottom:11px;padding-bottom:11px;">
+                          
+                          <div>
+                          <ion-row>
+                            <ion-col size="8"
+                              style="padding-top: 8%;font-size: 11px;font-weight:bold;margin-top: -10px;background-color: white!important;color: black;height: 33px;">
+                              Name (Enroll No.)
+
+                            </ion-col>
+                          
+                            <ion-col size="4"
+                              style="padding-top: 8%;font-size: 11px;font-weight:bold;margin-top: -10px;background-color: white!important;color: black;height: 33px;">
+                              Marks/Grade
+                            </ion-col>
+                          </ion-row>
+                          </div>
+                          <div *ngFor="let student of this.StudentArray;let q= index">
+
+                            <ion-row class="ion-row-border" style="border-top: solid #e1e1e1 1px;">
+                             
+
+                              <ion-col size="9" style="background-color: white!important;color: gray;height: 33px;">
+                                <!-- <img [src]="student.photo" style="height: 40px;width: 40px;border-radius: 50%;"> -->
+                                <ion-grid>
+                                  
+
+                                  <ion-row>
+                                    <!-- <ion-col size="4"><img [src]="student.photo" *ngIf="student.photo"
+                                        style="margin-top: -10px;height: 40px;width: 40px;border-radius: 50%;">
+                                      <img src="./assets/010.png" *ngIf="!student.photo"
+                                        style="margin-top: -11px;height: 40px;width: 40px;border-radius: 50%;">
+                                    </ion-col> -->
+                                    <ion-col size="11"
+                                      style="font-size: 11px;font-weight:bold;margin-top: -10px;background-color: white!important;color: black;height: 33px;">{{student.stuname}}
+                                      <br />
+                                      <p style="color:gray;margin-top: 4px;">
+                                        {{student.enrollno}}
+                                      </p>
+
+                                    </ion-col>
+                                  </ion-row>
+
+                                </ion-grid>
+
+                              </ion-col>
+                              <ion-col size="3" style="background-color: white!important;color: gray;height: 33px;">
+                                <!-- <ion-input
+                                  style="font-size:11px!important;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px;text-align: center;"
+                                  required [(ngModel)]="student.marks" readonly></ion-input> -->
+
+                             
+                                      <p style="color:gray;margin-top: 4px;">
+                                        {{student.marks}}
+                                      </p>
+                                <!-- <p style="font-size:11px!important;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px;">{{student.marks}}</p> -->
+                                 
+                              </ion-col>
+                              <!-- <ion-col size="3"
+                                              style="background: white;padding-right: 0px!important;padding-bottom: 0px!important;">
+                                              <ion-select placeholder="Select Legend"
+                                                  style="padding:2px 5px 2px 7px !important;color: black;font-size: 10px;
+                                          border-radius:4px !important;background: linear-gradient(#53c787, #b5e398);height: 120%!important;margin-top: -3px !important;"
+                                                  (ionChange)="submitmarks($event.target.value,student.stuid,'islegend',this.examsubdivtransid,this.subid)"
+                                                  [(ngModel)]="student.marks">
+                                                  <ion-select-option value="absent">Absent</ion-select-option>
+                                                  <ion-select-option value="lleave">Leave</ion-select-option>
+                                                  <ion-select-option value="na">N/A</ion-select-option>
+                                                  <ion-select-option value="mleave">Medical Leave</ion-select-option>
+                                              </ion-select>
+                                          </ion-col> -->
+                            </ion-row>
+
+                          </div>
+                        <!-- </ion-card> -->
+                      </div>
+
+                      </ion-grid>
+
+
+
+
+
+
+
+
+                    </ion-grid>
+
+
+
+
+
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
+              <!-- View Marks Modal Starts-->
+            </ng-container>
+
+
+            <!-- <ng-container *ngIf="!this.Ismarks_Entered[Subjects.subid]"> -->
+            <ng-container *ngIf="this.Ismarks_Entered[Subjects.subid][levels.levelid] == 'N'">
+              <!-- <ng-container *ngIf="Ismarks_Entered && Ismarks_Entered.hasOwnProperty(subject.subid) && !Ismarks_Entered[subject.subid]"> -->
+              <ion-col size="12" class="text-column">
+                <ion-button [id]="'open-modal-' + Subjects.subid + levels.levelid" color="linear-gradient(#007ab3, #055073)"
+                  expand="block" size="large" style="margin-left: -3px;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;" type="submit" expand="block">Add Marks
+                  Detail +</ion-button>
+
+
+
+
+
+
+
+                <!-- Enter Marks Modal Starts-->
+                <ion-modal [trigger]="'open-modal-' + Subjects.subid + levels.levelid" [id]="'modal-' + Subjects.subid + levels.levelid"
+                  class="half-screen-modal ion-padding">
+                  <ng-template>
+                    <ion-header>
+                      <ion-toolbar>
+                        <ion-buttons slot="start">
+                          <ion-button (click)="cancel('modal-' + Subjects.subid + levels.levelid)">Cancel</ion-button>
+                        </ion-buttons>
+                        <ion-title>Mark Detail</ion-title>
+                      </ion-toolbar>
+                    </ion-header>
+                    <ion-content class="ion-padding">
+                      <ion-title style="color: red;font-size: 11px;margin-left: 55%;">* - All Mandatory</ion-title>
+
+
+                      <ion-radio-group [(ngModel)]="markty">
+                        <ion-label>Marking Type</ion-label>
+                        <ion-item>
+                          <ion-label>Numbered</ion-label>
+                          <ion-radio slot="end" value="N"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>Graded</ion-label>
+                          <ion-radio slot="end" value="Y"></ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+
+
+                      <ion-item *ngIf="this.markty != 'Y' ">
+                        <ion-label position="stacked">Max Marks</ion-label>
+                        <ion-input type="number" placeholder="Max Marks" [(ngModel)]="maxmarks"></ion-input>
+                      </ion-item>
+                      <ion-item *ngIf="this.markty != 'Y' ">
+                        <ion-label position="stacked">Min Marks</ion-label>
+                        <ion-input type="number" placeholder="Min Marks" [(ngModel)]="minmarks"></ion-input>
+
+                      </ion-item>
+
+                      <div *ngIf="validateMarks()">
+                        <ion-text color="danger">Min Marks cannot be greater than Max Marks!</ion-text>
+                      </div>
+
+
+
+             
+
+                      <ion-radio-group [(ngModel)]="include_in_gt" *ngIf="this.markty != 'Y' ">
+                        <ion-label>Include in Grand Total</ion-label>
+                        <ion-item>
+                          <ion-label>Yes</ion-label>
+                          <ion-radio slot="end" value="Y"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>No</ion-label>
+                          <ion-radio slot="end" value="N"></ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+
+                  
+
+                      <ion-item>
+                        <ion-label position="stacked">Details</ion-label>
+                        <ion-input type="text" placeholder="Details" name="details" [(ngModel)]="details"></ion-input>
+                      </ion-item>
+
+                      <ion-row>
+                        <ion-col cols="12">
+
+                          <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="border-radius: 5px;height:34px;color: #055073;box-shadow: 2px 2px #055073;
+                    font-size:12px;font-weight:bold;border:solid #055073 2px!important;margin-top:20px;" type="submit"
+                            expand="block" (click)="proceed(Subjects.subid,Subjects.subname,levels.levelid)">Proceed
+                          </ion-button>
+                        </ion-col>
+                      </ion-row>
+                    </ion-content>
+                  </ng-template>
+                </ion-modal>
+
+
+              </ion-col>
+            </ng-container>
+
+
+
+          <!-- <ion-row>
+
+              <ng-container>
+                <ion-grid style="padding: 0px;">
+                <ion-row>
+                  <ion-col size="11">
+                    <p style="font-size: 13px;">Include In Grand Total</p>
+                  </ion-col>
+                  <ion-col size="1">
+                    
+                    <ion-toggle [(ngModel)]="Subjects.Include_In_GT"  (click)="ChangeValue($event,Subjects.subid)" color="tertiary"></ion-toggle>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+              </ng-container>
+            </ion-row> -->
+          </ion-row>
+          </ng-container>
+         <!-- <ion-radio-group [(ngModel)]="'isinclude_' + Subjects.subid" style="display: flex; align-items: center;">
+                      <ion-item lines="none" style="margin: 0; padding: 0; --padding-start: 0;">
+                        <ion-label style="margin-right: 4px;font-size: 13px;">Yes</ion-label>
+                        <ion-radio slot="start" value="yes" style="margin: 0px;"></ion-radio>
+                      </ion-item>
+                      <ion-item lines="none" style="margin: 0; padding: 0; --padding-start: 0;">
+                        <ion-label style="margin-right: 4px; margin-left: 11px;font-size: 13px;">No</ion-label>
+                        <ion-radio slot="start" value="no" style="margin: 0px;"></ion-radio>
+                      </ion-item>
+                    </ion-radio-group> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ng-container *ngIf="!Subjects.levelname || Subjects.levelname.length === 0">
+                              <ion-row class="custom-row">
+
+
+
+
+            <!-- <ng-template *ngIf="this.Ismarks_Entered[Subjects.subid]; else noMarks"> -->
+              <ng-container *ngIf="this.Ismarks_Entered[Subjects.subid] == 'Y'">
+                
+             
+              <!-- </ng-container>
+            <ng-container *ngIf="this.Ismarks_Entered[Subjects.subid]"> -->
+              <ion-col size="4" class="text-column" (click)="getsubjectid(Subjects.subid)">
+                <ion-button [id]="'view-marks-' + Subjects.subid" color="linear-gradient(#007ab3, #055073)"
+                  expand="block" size="large" style="min-width: 100%;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;margin-left: -3px;" type="submit" expand="block">View </ion-button>
+              </ion-col>
+
+              <ion-col size="4" class="text-column" (click)="MarksDelete(Subjects.subid)">
+                <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="min-width: 100%;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;margin-left: -1px;" type="submit" expand="block">Delete -</ion-button>
+              </ion-col>
+              
+              <ion-col size="4" class="text-column">
+                <ion-button (click)="EditMarks(Subjects.subid,Subjects.subname,this.SelectedClassName,this.ExamName,this.MainExamName)" color="linear-gradient(#007ab3, #055073)"
+                  expand="block" size="large" style="min-width: 100%;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;" type="submit" expand="block">Edit </ion-button>
+              </ion-col>
+
+<!-- This Condition will check include grand total -->
+              <ion-row *ngIf="Subjects.isgraded == 'N'">
+
+                <ng-container>
+                  <ion-grid style="padding: 0px;">
+                  <ion-row>
+                    <ion-col size="11">
+                      <p style="font-size: 13px;">Include In Grand Total</p>
+                    </ion-col>
+                    <ion-col size="1">
+                      
+                      <ion-toggle [(ngModel)]="Subjects.Include_In_GT"  (click)="ChangeValue($event,Subjects.subid)" color="tertiary"></ion-toggle>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+                </ng-container>
+              </ion-row>
+
+
+
+              
+              <!-- View Marks Modal Starts-->
+              <ion-modal [trigger]="'view-marks-' + Subjects.subid" [id]="'ViewMarksmodal-' + Subjects.subid"
+                class="half-screen-modal ion-padding">
+
+                <ng-template>
+                  <ion-header>
+                    <ion-toolbar>
+                      <ion-buttons slot="start">
+                        <ion-button (click)="ViewMarksCancel('ViewMarksmodal-' + Subjects.subid)">Cancel</ion-button>
+                      </ion-buttons>
+                      <ion-title>View Marks</ion-title>
+
+                    </ion-toolbar>
+                  </ion-header>
+                  <ion-content class="ion-padding">
+
+                    <ion-grid style="padding: 0px;">
+                      <ion-row class="header1">
+
+                      </ion-row>
+
+                      <ion-row>
+
+
+    
+
+
+
+                      </ion-row>
+                      <ion-grid class="grid2">
+
+                          <div style="background: white;border-radius: 8px;box-shadow: 1px -4px 11px 5px #888888;margin-bottom:11px;padding-bottom:11px;">
+                          
+                          <div>
+                          <ion-row>
+                            <ion-col size="8"
+                              style="padding-top: 8%;font-size: 11px;font-weight:bold;margin-top: -10px;background-color: white!important;color: black;height: 33px;">
+                              Name (Enroll No.)
+
+                            </ion-col>
+                          
+                            <ion-col size="4"
+                              style="padding-top: 8%;font-size: 11px;font-weight:bold;margin-top: -10px;background-color: white!important;color: black;height: 33px;">
+                              Marks/Grade
+                            </ion-col>
+                          </ion-row>
+                          </div>
+                          <div *ngFor="let student of this.StudentArray;let q= index">
+
+                            <ion-row class="ion-row-border" style="border-top: solid #e1e1e1 1px;">
+                             
+
+                              <ion-col size="9" style="background-color: white!important;color: gray;height: 33px;">
+                                <!-- <img [src]="student.photo" style="height: 40px;width: 40px;border-radius: 50%;"> -->
+                                <ion-grid>
+                                  
+
+                                  <ion-row>
+                                   
+                                    <ion-col size="11"
+                                      style="font-size: 11px;font-weight:bold;margin-top: -10px;background-color: white!important;color: black;height: 33px;">{{student.stuname}}
+                                      <br />
+                                      <p style="color:gray;margin-top: 4px;">
+                                        {{student.enrollno}}
+                                      </p>
+
+                                    </ion-col>
+                                  </ion-row>
+
+                                </ion-grid>
+
+                              </ion-col>
+                              <ion-col size="3" style="background-color: white!important;color: gray;height: 33px;">
+  
+                             
+                                      <p style="color:gray;margin-top: 4px;">
+                                        {{student.marks}}
+                                      </p>
+                                 
+                              </ion-col>
+                             
+                            </ion-row>
+
+                          </div>
+                        <!-- </ion-card> -->
+                      </div>
+
+                      </ion-grid>
+
+
+
+
+
+
+
+
+                    </ion-grid>
+
+
+
+
+
+                  </ion-content>
+                </ng-template>
+              </ion-modal>
+              <!-- View Marks Modal Starts-->
+            </ng-container>
+
+
+            
+            <ng-container *ngIf="this.Ismarks_Entered[Subjects.subid] == 'N'">
+              <ion-col size="12" class="text-column">
+                <ion-button [id]="'open-modal-' + Subjects.subid" color="linear-gradient(#007ab3, #055073)"
+                  expand="block" size="large" style="margin-left: -3px;background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;height:34px;color: white;box-shadow: 2px 2px white;
+font-size:12px;font-weight:bold;border:solid white 2px!important;margin-top:20px;" type="submit" expand="block">Add Marks
+                  Detail +</ion-button>
+
+
+
+
+
+
+
+                <!-- Enter Marks Modal Starts-->
+                <ion-modal [trigger]="'open-modal-' + Subjects.subid" [id]="'modal-' + Subjects.subid"
+                  class="half-screen-modal ion-padding">
+                  <ng-template>
+                    <ion-header>
+                      <ion-toolbar>
+                        <ion-buttons slot="start">
+                          <ion-button (click)="cancel('modal-' + Subjects.subid)">Cancel</ion-button>
+                        </ion-buttons>
+                        <ion-title>Mark Detail</ion-title>
+                      </ion-toolbar>
+                    </ion-header>
+                    <ion-content class="ion-padding">
+                      <ion-title style="color: red;font-size: 11px;margin-left: 55%;">* - All Mandatory</ion-title>
+
+
+                      <ion-radio-group [(ngModel)]="markty">
+                        <ion-label>Marking Type</ion-label>
+                        <ion-item>
+                          <ion-label>Numbered</ion-label>
+                          <ion-radio slot="end" value="N"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>Graded</ion-label>
+                          <ion-radio slot="end" value="Y"></ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+
+
+                      <ion-item *ngIf="this.markty != 'Y' ">
+                        <ion-label position="stacked">Max Marks</ion-label>
+                        <ion-input type="number" placeholder="Max Marks" [(ngModel)]="maxmarks"></ion-input>
+                      </ion-item>
+                      <ion-item *ngIf="this.markty != 'Y' ">
+                        <ion-label position="stacked">Min Marks</ion-label>
+                        <ion-input type="number" placeholder="Min Marks" [(ngModel)]="minmarks"></ion-input>
+
+                      </ion-item>
+
+                      <div *ngIf="validateMarks()">
+                        <ion-text color="danger">Min Marks cannot be greater than Max Marks!</ion-text>
+                      </div>
+
+
+
+             
+
+
+                      <ion-radio-group [(ngModel)]="include_in_gt" *ngIf="this.markty != 'Y' ">
+                        <ion-label>Include in Grand Total</ion-label>
+                        <ion-item>
+                          <ion-label>Yes</ion-label>
+                          <ion-radio slot="end" value="Y"></ion-radio>
+                        </ion-item>
+                        <ion-item>
+                          <ion-label>No</ion-label>
+                          <ion-radio slot="end" value="N"></ion-radio>
+                        </ion-item>
+                      </ion-radio-group>
+
+                  
+
+                      <ion-item>
+                        <ion-label position="stacked">Details</ion-label>
+                        <ion-input type="text" placeholder="Details" name="details" [(ngModel)]="details"></ion-input>
+                      </ion-item>
+
+                      <ion-row>
+                        <ion-col cols="12">
+
+                          <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="border-radius: 5px;height:34px;color: #055073;box-shadow: 2px 2px #055073;
+                    font-size:12px;font-weight:bold;border:solid #055073 2px!important;margin-top:20px;" type="submit"
+                            expand="block" (click)="proceed(Subjects.subid,Subjects.subname)">Proceed
+                          </ion-button>
+                        </ion-col>
+                      </ion-row>
+                    </ion-content>
+                  </ng-template>
+                </ion-modal>
+
+
+              </ion-col>
+            </ng-container>
+
+
+
+
+          </ion-row>
+</ng-container>
+
+
+
+
+        </div>
+      </ion-accordion>
+    </ion-accordion-group>
+  </ng-container>
+
+
+
+
+
+  <ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="this.SubjectArray.length == 0">
+    <ion-card>
+      <ion-item>
+        <div style="width:100%;">
+          <h6 style="font-size: 12px;color: gray;">Subjects/Students Not Assigned In Group..!!</h6>
+
+
+        </div>
+      </ion-item>
+
+    </ion-card>
+  </ion-list>
+
+</ion-content>

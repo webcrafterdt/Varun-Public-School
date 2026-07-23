@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mark Attendance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row>
+
+    <ion-col size="3" *ngFor="let legends of this.legendarray" >
+      <!-- <div style="width: 100%;" (click)="getSelectedLegend(legends[0],legends[5],legends[2])"> -->
+      <div style="width: 100%;">
+        <div style="float: left;width: 30%;font-weight: bold;color:#47515b;text-align: center;font-size:13px">
+          {{legends[2]}}</div>
+        <div style="float: left;font-size:12px;height: 14px;width: 14px;border-radius: 50%;"
+          [style.backgroundColor]="legends[5]">&nbsp;
+        </div>
+      </div>
+    </ion-col>
+    </ion-row>
+
+
+
+
+
+
+  <ion-card class="date-range-card">
+
+
+
+    <ion-card style=" border-radius: 8px;
+padding: 0;
+
+box-shadow: none;
+border: 3px solid rgba(0, 0, 0, .1);
+transition: .5s;
+margin: 0;
+position: relative;
+background: white;
+text-align: center;">
+      <!-- <ion-datetime #todatetime presentation="date" name="todate" [(ngModel)]="todate" formControlName="todate"
+(ionChange)="to_date(todatetime.value)" min="{{this.SessStart}}" max="{{this.SessEnd}}"
+[pickerOptions]="{ disabledDays: [0], disabledDatesFilter: disableSundays }">
+</ion-datetime> -->
+
+      <!-- <ion-datetime
+presentation="date"
+[isDateEnabled]="isWeekday"
+[highlightedDates]="highlightedDates"
+  ></ion-datetime> -->
+
+      <!-- <ion-datetime presentation="date" value="2023-01-01" [highlightedDates]="highlightedDates"></ion-datetime> -->
+      
+      <ion-datetime #todatetime [(ngModel)]="todate" (click)="getdate($event)" presentation="date"
+        preferWheel="false" [isDateEnabled]="isWeekday" min="{{this.SessionStartdate}}"
+        max="{{this.CurrentDate}}" [highlightedDates]="this.MarkedAttendance"></ion-datetime>
+
+      <!-- <calendar
+    [calendarMode]="calendar.mode">
+</calendar> -->
+
+    </ion-card>
+
+
+
+  </ion-card>
+
+
+
+
+
+
+  <ion-row class="custom-row" *ngIf="this.event_list">
+    <ion-col size="0.2" class="icon-column"
+      style="max-width:10px!important;background-color:  #ffc0cb;border-radius: 5px;">
+
+    </ion-col>
+    <ion-col size="10.5" class="text-column">
+      <div style="float: left; width: 80%;">
+        <div style="width: 100%;display: flex;  align-items: center; justify-content: space-between;">
+          <div style="width: 100%; text-align: left;font-size: 12px;color:black">{{this.event_list.event}}</div>
+          <div style="width: 70%; text-align: right;font-size: 11px;color:gray"></div>
+          <!-- <ion-icon name="chevron-forward-outline" style="color: gray;margin-top: 2px;"></ion-icon> -->
+        </div>
+        <div style="width: 100%;  align-items: center; justify-content: space-between;">
+          <div style="width: 100%; text-align: left;font-size: 11px;color:gray">{{this.event_list.reason}}</div>
+        </div>
+
+      </div>
+    </ion-col>
+    <ion-col size="1" class="amount-column">
+      <ion-icon name="calendar-outline" style="color: gray;">
+
+      </ion-icon>
+    </ion-col>
+
+
+  </ion-row>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+<ion-grid>
+  <ion-row>
+    <ion-col col-5 style="margin-right:15px;background-color: white;box-shadow: 2px 5px 10px 2px gray;color: gray;border-radius: 8px;font-size: 14px;">
+      <div style="text-align: center;"><b>Total Present</b></div>
+      <div style="text-align: center;">{{this.TotalPresent}}</div>
+    </ion-col>
+  
+    <ion-col col-5 style="background-color: white;box-shadow: 2px 5px 10px 2px gray;color: gray;border-radius: 8px;font-size: 14px;">
+      <div style="text-align: center;"><b>Total Absent</b></div>
+      <div style="text-align: center;">{{this.TotalAbsent}}</div>
+    </ion-col>
+  </ion-row>
+  
+</ion-grid>
+
+</ion-content>

@@ -1,0 +1,39 @@
+ion-toolbar{
+    // --background: #055073;
+    --background:#055073;
+     --color: white; 
+   }
+
+   .coldiv
+   {
+    width:28%;
+    float:left;
+    background-color: white;
+    padding: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+
+    
+   }
+    h4
+    {
+        text-align: left;
+        color: white;
+        font-size: 14px;
+        margin: 0px;
+    }
+   .coldiv_bottom
+   {
+    width: 65%;
+    float: right;
+   }
+   .swiper-slide img
+   {
+       height: 185px!important;
+       width: 100%!important;
+   }
+
+   .home_offer_slider {
+    padding: 5px;
+    .slides {}
+}

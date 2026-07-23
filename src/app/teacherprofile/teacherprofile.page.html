@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Profile</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid class="grid2">
+    
+      <!--<header>
+        <p style="margin-top:4px;color: white;font-weight: bold;text-transform: uppercase;margin-left: 10%;">&nbsp;</p>
+        <span style="font-size:18px;color: white;font-weight: bold;text-transform: uppercase;margin-left: 10%;">{{this.fname}}</span>
+        <p style="margin-top:4px;color: white;font-weight: bold;text-transform: uppercase;margin-left: 10%;">&nbsp;</p>
+        
+        <img src="https://assets.codepen.io/t-517/divider-triangle.png" class="divider" />
+        <div style="    float: right;padding: 10px;background-color: white;margin-right: 5%;
+        margin-top: 5%;/* width: 62%; */border-radius: 50px;">
+        
+            <img *ngIf="this.image == ''" src="/assets/dummy.png" style="height: inherit; width: inherit;clip-path: inset(6px 7px);height: 80px;"/> 
+          <img *ngIf="this.image != ' '" src="{{this.image}}" style="height: inherit; width: inherit;clip-path: inset(6px 7px);height: 70px;"/> 
+            
+          </div>
+      </header>-->
+    <div style="height:80px;background-color: #e4f3f7;">
+     <br/>
+      <span style="font-size:18px;color: #575757;font-weight: bold;text-transform: uppercase;margin-left: 10%;">{{this.studentname}}</span>
+    <!--  <br/>
+      <span style="font-size:12px;color: #ff9500;font-weight: bold;text-transform: uppercase;margin-left: 10%;">{{this.batch_name}}</span>
+      <br/>
+      <span style="font-size:12px;color: #ff9500;font-weight: bold;text-transform: uppercase;margin-left: 10%;">Asmission Date : {{this.date_of_admission}}</span>
+      <br/>
+      <span style="font-size:12px;color: #ff9500;font-weight: bold;text-transform: uppercase;margin-left: 10%;">Blood Group : {{this.blood_group}}</span>
+    -->
+
+
+
+      
+
+    <div style="float: right;text-align: center;" *ngIf="this.image_big == 0" >
+
+      <img *ngIf="!this.image" (click)="bigumage(1)" src="/assets/commonimage.jpg" style="width:50px;height:50px;border-radius: 100%;margin-right: 5px;" />
+      <img *ngIf="this.image != ''" (click)="bigumage(1)" src="{{this.image}}" style="width:50px;height:50px;border-radius: 100%;margin-right: 5px;"/> 
+    <!--</ng-container>-->
+      </div>
+
+   <div style="float: right;text-align: center;" *ngIf="this.image_big == 1" >
+
+          <img *ngIf="!this.image" (click)="bigumage(0)" src="/assets/commonimage.jpg" style="width:120px;height:120px;border-radius: 100%;margin-right: 5px;" />
+          <img *ngIf="this.image != ''" (click)="bigumage(0)" src="{{this.image}}" style="width:120px;height:120px;border-radius: 100%;margin-right: 5px;"/>
+          <!--</ng-container>-->
+        </div>
+
+    </div>
+      
+
+
+      
+      <ion-list style="width:100%;margin-top: 20px;">
+
+
+
+        <ion-item class="item-background-color">
+          <p style="white-space:normal;color:black;font-size:11px;font-weight: bold;text-transform: uppercase;padding-left: 10px;">Department : </p>
+          <div style="white-space:normal;color:#055073;font-size:11px;font-weight: bold;text-transform: uppercase;padding-left: 10px;">{{this.department}}</div>
+          </ion-item>
+        
+     <ion-item class="item-background-color">
+      <p style="white-space:normal;color:black;font-size:11px;font-weight: bold;text-transform: uppercase;padding-left: 10px;">Designation : </p>
+      <div style="white-space:normal;color:#055073;font-size:11px;font-weight: bold;text-transform: uppercase;padding-left: 10px;">{{this.designation}}</div>
+    </ion-item>
+
+     <ion-item class="item-background-color">
+      <p style="white-space:normal;color:black;font-size:11px;font-weight: bold;text-transform: uppercase;padding-left: 10px;">Address : </p>
+      <div style="white-space:normal;color:#055073;font-size:11px;font-weight: bold;text-transform: uppercase;padding-left: 10px;">{{this.address}}</div>
+    </ion-item>
+
+
+    <ion-item class="item-background-color">
+      <p style="white-space:normal;color:black;font-size:11px;font-weight: bold;text-transform: uppercase;padding-left: 10px;">Date Of Birth : </p>
+      <div style="white-space:normal;color:#055073;font-size:11px;font-weight: bold;text-transform: uppercase;padding-left: 10px;">{{this.dob}}</div>
+    </ion-item>
+
+
+    <ion-item class="item-background-color">
+      <p style="white-space:normal;color:black;font-size:11px;font-weight: bold;text-transform: uppercase;padding-left: 10px;">Mobile : </p>
+      <div style="white-space:normal;color:#055073;font-size:11px;font-weight: bold;text-transform: uppercase;padding-left: 10px;">{{this.mobile}}</div>
+    </ion-item>
+
+    <!--<ion-item class="item-background-color">
+    <ion-icon name="create" item-left style="    background-color:#055073;                               
+    height:25px;
+    width:26px;
+    line-height:25px;
+    border-radius:50%;
+    font-size:2.9rem;
+    padding: 4px;
+    color: white;"></ion-icon>
+    <div style="white-space:normal;color:#055073;font-size:11px;font-weight: bold;text-transform: uppercase;padding-left: 10px;">{{this.admno}}</div>
+    </ion-item>-->
+
+        </ion-list>
+
+
+      </ion-grid>
+
+
+
+
+
+
+      
+</ion-content>

@@ -1,0 +1,554 @@
+<ion-content >
+  <!-- <section> -->
+    
+    <div style="text-align:center;margin-top: 60px;">
+      <img src="assets/schoollogo.jpg" style="height:140px;width:140px"/>
+  </div>
+  <!-- <div class="logo" style="margin-top:0px!important;text-align:center">
+  
+
+  <br/>
+  </div> -->
+    <!-- <div class="curve"></div> -->
+  <!-- </section> -->
+
+
+
+
+  
+<form #form="ngForm" >
+  <ion-grid>
+    <ion-row style=" margin-top: 45px;padding: 10px;
+    margin-left: 10px;  margin-right: 10px;  border-radius: 14px;" color="primary" justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12" style="-webkit-box-shadow: 0 0 10px gray;">
+        <div text-center>
+          <h4>Enter Your Name</h4>
+        </div>
+   <div padding>
+          <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+            <ion-input class="ion-no-padding"  name="name"  type="username" placeholder="name" [(ngModel)]="name" required></ion-input>
+          </ion-item>
+          <div  style="margin-top: 10px;">
+            <div text-center>
+              <h4>Enter Your Father's Name</h4>
+            </div>
+          <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+            <ion-input class="ion-no-padding"  name="fathers_name" type="username" placeholder="Father's Name" [(ngModel)]="fathers_name" required></ion-input>
+          </ion-item>
+        </div>
+        <div  style="margin-top: 10px;">
+          <div text-center>
+            <h4>Enter Your Contact</h4>
+          </div>
+        <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+          <ion-input class="ion-no-padding"  name="contact" type="username" placeholder="Contact" [(ngModel)]="contact" required></ion-input>
+        </ion-item>
+      </div>
+
+      <div  style="margin-top: 10px;">
+        <div text-center>
+          <h4>Enter Your e-mail</h4>
+        </div>
+      <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+        <ion-input class="ion-no-padding"  name="username" type="username" placeholder="Username" [(ngModel)]="username" required></ion-input>
+      </ion-item>
+    </div>
+
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Enter Your Address</h4>
+      </div>
+    <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-input class="ion-no-padding"  name="address" type="username" placeholder="Username" [(ngModel)]="address" required></ion-input>
+    </ion-item>
+  </div>
+
+<ion-row>
+  <ion-col size="6">
+  <div  style="margin-top: 10px;">
+    <div text-center>
+      <h4>Enter Your Caste</h4>
+    </div>
+  <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+    
+    <ion-select placeholder="Enter Your Caste" name="caste_id" [(ngModel)]="caste_id" >
+       <ion-select-option *ngFor="let castesval of this.castes" value="{{castesval.id}}">{{castesval.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+</div>
+</ion-col>
+
+
+<ion-col size="6">
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>Select Your Gotra</h4>
+  </div>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  
+  <ion-select placeholder="Select Your Gotra" name="gotra_id" [(ngModel)]="gotra_id">
+    <ion-select-option *ngFor="let gotr of this.gotras" value="{{gotr.id}}">{{gotr.name}}</ion-select-option>
+  </ion-select>
+
+</ion-item>
+</div>
+</ion-col>
+</ion-row>
+
+
+
+
+<ion-row>
+  <ion-col size="6">
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>Select Your State</h4>
+  </div>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  
+  <ion-select placeholder="Select Your State" name="state_id" [(ngModel)]="state_id">
+    <ion-select-option *ngFor="let statessval of this.states" value="{{statessval.id}}">{{statessval.name}}</ion-select-option>
+  </ion-select>
+</ion-item>
+</div>
+</ion-col>
+
+<ion-col size="6">
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>Select Your City</h4>
+  </div>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  
+  <ion-select placeholder="Select Your City"  name="city_id" [(ngModel)]="city_id">
+    <ion-select-option *ngFor="let citiesval of this.cities" value="{{citiesval.id}}">{{citiesval.name}}</ion-select-option>
+  </ion-select>
+</ion-item>
+</div>
+</ion-col>
+</ion-row>
+
+
+
+<ion-row>
+  <ion-col size="6">
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>Select Occupation Sector</h4>
+  </div>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  
+  <ion-select placeholder="Select Occupation Sector" name="occupation_sector" [(ngModel)]="occupation_sector">
+    <ion-select-option value="1">Public</ion-select-option>
+      <ion-select-option value="2">Private</ion-select-option>
+  </ion-select>
+</ion-item>
+</div>
+</ion-col>
+
+
+
+<ion-col size="6">
+  <div style="margin-top: 10px;">
+    <div text-center>
+      <h4>Select Occupation Department</h4>
+    </div>
+    <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-input class="ion-no-padding" name="occupation_department" type="username" placeholder="Username" [(ngModel)]="occupation_department" required></ion-input>
+    </ion-item>
+  </div>
+</ion-col> <!-- Add the closing </ion-col> tag here -->
+
+</ion-row>
+
+
+<ion-row>
+<ion-col size="6">
+  <div  style="margin-top: 10px;">
+    <div text-center>
+      <h4>Enter Date Of Birth</h4>
+    </div>
+  <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+    <ion-input class="ion-no-padding" name="dob" type="username" placeholder="Enter Date Of Birth" [(ngModel)]="dob" required></ion-input>
+  </ion-item>
+    </div>
+</ion-col>
+
+<ion-col size="6">
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>Enter Occupation Name</h4>
+  </div>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="occupation_name" type="username" placeholder="Username" [(ngModel)]="occupation_name" required></ion-input>
+</ion-item>
+</div>
+</ion-col>
+</ion-row>
+
+
+
+<ion-row>
+  <ion-col size="6">
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Enter Occupation Detail</h4>
+      </div>
+    <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-input class="ion-no-padding" name="occupation_detail" type="username" placeholder="Enter Occupation Detail" [(ngModel)]="occupation_detail" required></ion-input>
+    </ion-item>
+      </div>
+  </ion-col>
+  </ion-row>
+
+<!-- Commented because we don't have field-->
+  
+<!-- <div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>Enter Occupation Detail</h4>
+  </div>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="username" type="username" placeholder="Username" [(ngModel)]="username" required></ion-input>
+</ion-item>
+</div> -->
+
+
+
+
+<ion-button expand="full" (click)="addRelative()">Add</ion-button>
+
+<div id="relatives_ID">
+  <div *ngFor="let relative of relatives; let i = index">
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+  
+  <div text-center>
+  <h4 style="font-weight: bold;">Relative {{i+1}}</h4>
+</div>
+
+
+
+  
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>Enter Relative Name</h4>
+  </div>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="relative_names[]" type="username" placeholder="Enter Relative Name" [(ngModel)]="relative_names[i]" required></ion-input>
+</ion-item>
+</div>
+
+
+<ion-row>
+  <ion-col size="6">
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Enter Relative Image</h4>
+      </div>
+    <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <!-- <ion-input class="ion-no-padding"  name="relative_ages[]" type="username" placeholder="Enter Relative Age" [(ngModel)]="relative_ages[i]" required></ion-input> -->
+      <ion-button expand="block" class="upload-button" style="--background: #377796!important; color: #fff;text-align: right;" (click)="captureImage(i)">
+        <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+        Upload Picture
+      </ion-button>
+    </ion-item>
+      </div>
+  </ion-col>
+
+  
+ <ion-col size="6">
+  <div  style="margin-top: 10px;">
+  <ion-item style="height:43px;">
+    <div class="image-container" *ngIf="this.remative_image[i]">
+      <img [src]="this.remative_image[i]" alt="Uploaded image">
+    </div>
+  </ion-item>
+  </div>
+  </ion-col>
+</ion-row>
+
+
+
+
+<ion-row>
+  <ion-col size="6">
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Enter Relative Age</h4>
+      </div>
+    <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-input class="ion-no-padding"  name="relative_ages[]" type="username" placeholder="Enter Relative Age" [(ngModel)]="relative_ages[i]" required></ion-input>
+    </ion-item>
+      </div>
+  </ion-col>
+  <ion-col size="6">
+  <div  style="margin-top: 10px;">
+    <div text-center>
+      <h4>Enter Relative Status</h4>
+    </div>
+  <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+    <ion-select placeholder="Select Relative Status" name="relative_statuses[]" [(ngModel)]="relative_statuses[i]">
+      <ion-select-option value="1">Single</ion-select-option>
+        <ion-select-option value="2">Merried</ion-select-option>
+    </ion-select>
+  </ion-item>
+  </div>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+  <ion-col size="6">
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Enter Relative Date Of Birth</h4>
+      </div>
+    <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-input class="ion-no-padding" name="relative_birth_date[]" type="username" placeholder="Enter Relative Date Of Birth" [(ngModel)]="relative_birth_date[i]" required></ion-input>
+    </ion-item>
+      </div>
+  </ion-col>
+
+<ion-col size="6">
+  <div  style="margin-top: 10px;">
+    <div text-center>
+      <h4>Enter Relative Anniversary Date</h4>
+    </div>
+  <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+    <ion-input class="ion-no-padding"  name="relative_wedding_anniversary_date[]" type="username" placeholder="Enter Relative Contact Number" [(ngModel)]="relative_wedding_anniversary_date[i]" required></ion-input>
+
+  </ion-item>
+  </div>
+  </ion-col>
+</ion-row>
+
+
+
+<ion-row>
+  <ion-col size="6">
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Enter Relative Past Date</h4>
+      </div>
+    <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-input class="ion-no-padding" name="relative_past_dates[]" type="username" placeholder="Enter Relative Past Date" [(ngModel)]="relative_past_dates[i]" required></ion-input>
+    </ion-item>
+      </div>
+  </ion-col>
+
+<ion-col size="6">
+  <div  style="margin-top: 10px;">
+    <div text-center>
+      <h4>Enter Relative Contact Number</h4>
+    </div>
+  <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+    <ion-input class="ion-no-padding" name="relative_contacts[]" type="number" placeholder="Enter Relative Contact Number" [(ngModel)]="relative_contacts[i]" required></ion-input>
+    
+  </ion-item>
+  </div>
+  </ion-col>
+</ion-row>
+
+
+
+<ion-row>
+  <ion-col size="6">
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Enter Relative Aadhaar Number</h4>
+      </div>
+    <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-input class="ion-no-padding" name="relative_aadhaars[]" type="username" placeholder="Enter Relative Aadhaar Number" [(ngModel)]="relative_aadhaars[i]" required></ion-input>
+    </ion-item>
+      </div>
+  </ion-col>
+
+
+  <ion-col size="6">
+  <div  style="margin-top: 10px;">
+    <div text-center>
+      <h4>Select Relation with Relative</h4>
+    </div>
+  <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+    <!-- <ion-select placeholder="Select Relation with Relative" name="relative_relation_ids[]" [(ngModel)]="relative_relation_ids[i]">
+      <ion-select-option value="option1">Infrastructure</ion-select-option>
+        <ion-select-option value="option2">Cleanness</ion-select-option>
+    </ion-select> -->
+
+    <ion-select placeholder="Select Your City"  name="relative_relation_ids[]" [(ngModel)]="relative_relation_ids[i]">
+      <ion-select-option *ngFor="let relation of this.relations" value="{{relation.id}}">{{relation.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+   </div>
+  </ion-col>
+</ion-row>
+
+
+<ion-row>
+  <ion-col size="6">
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>Select Occupation Sector</h4>
+  </div>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  
+  <ion-select placeholder="Select Occupation Sector"  name="relative_occupation_sectors[]" [(ngModel)]="relative_occupation_sectors[i]">
+    <ion-select-option value="1">Public</ion-select-option>
+      <ion-select-option value="2">Private</ion-select-option>
+  </ion-select>
+</ion-item>
+</div>
+
+
+</ion-col>
+
+
+
+  <ion-col size="6">
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>Select Occupation Department</h4>
+  </div>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="relative_occupation_departments[]" type="username" placeholder="Username" [(ngModel)]="relative_occupation_departments[i]" required></ion-input>
+</ion-item>
+</div>
+</ion-col>
+</ion-row>
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>Enter Occupation Name</h4>
+  </div>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="relative_occupation_names[]" type="username" placeholder="Username" [(ngModel)]="relative_occupation_names[i]" required></ion-input>
+</ion-item>
+</div>
+
+
+
+
+
+  
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>Enter Occupation Detail</h4>
+  </div>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="relative_occupation_details[]" type="username" placeholder="Username" [(ngModel)]="relative_occupation_details[i]" required></ion-input>
+</ion-item>
+</div>
+
+
+
+
+</div>
+
+</div>
+
+
+
+<ion-row>
+  <ion-col size="6">
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Enter Your Kuldevta Name</h4>
+      </div>
+    <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-input class="ion-no-padding" name="kuldevata" type="username" placeholder="Enter Your Kuldevta Name" [(ngModel)]="kuldevata" required></ion-input>
+    </ion-item>
+      </div>
+  </ion-col>
+
+
+  <ion-col size="6">
+  <div  style="margin-top: 10px;">
+    <div text-center>
+      <h4>Enter Your Kuldevi Name</h4>
+    </div>
+  <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+    <ion-input class="ion-no-padding" name="kuldevi" type="username" placeholder="Enter Your Kuldevi Name" [(ngModel)]="kuldevi" required></ion-input>
+  </ion-item>
+  </div>
+  </ion-col>
+</ion-row>
+
+
+
+
+
+
+  
+
+
+<div text-center>
+  <h4>Enter Gotras</h4>
+</div>
+
+<ion-row>
+  <ion-col size="6">
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Your Mother's Gotra</h4>
+      </div>
+    <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-select  placeholder="Your Mother's Gotra" name="mothers_gotra" [(ngModel)]="mothers_gotra">
+        <ion-select-option *ngFor="let gotr of this.gotras" value="{{gotr.id}}">{{gotr.name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+      </div>
+  </ion-col>
+
+
+  <ion-col size="6">
+  <div  style="margin-top: 10px;">
+    <div text-center>
+      <h4>Your Parental Grandmother's Gotra</h4>
+    </div>
+  <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+    <ion-select placeholder="Your Parental Grandmother's Gotra" name="paternal_grandmothers_gotra" [(ngModel)]="paternal_grandmothers_gotra">
+      <ion-select-option *ngFor="let gotr of this.gotras" value="{{gotr.id}}">{{gotr.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  </div>
+  </ion-col>
+</ion-row>
+
+<ion-row>
+<ion-col>
+  <div  style="margin-top: 10px;">
+    <div text-center>
+      <h4>Your Matarnel Grandmother's Gotra</h4>
+    </div>
+  <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+    <ion-select placeholder="Your Matarnel Grandmother's Gotra" name="maternal_grandmothers_gotra" [(ngModel)]="maternal_grandmothers_gotra">
+      <ion-select-option *ngFor="let gotr of this.gotras" value="{{gotr.id}}">{{gotr.name}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  </div>
+  </ion-col>
+</ion-row>
+
+     </div>
+
+        
+          <div padding>
+      
+          <!-- <ion-button  color="linear-gradient(#007ab3, #055073)" 
+          expand="block" size="large" 
+          style="border-radius: 5px;height:38px;margin-top:15px;background: linear-gradient(#007ab3, #055073)!important;;
+          font-size:17px;font-weight:bold;background-color: #055073" type="submit" [disabled]="form.invalid" expand="block" (click)="save()">Submit</ion-button> -->
+          <ion-button  color="linear-gradient(#007ab3, #055073)" 
+          expand="block" size="large" 
+          style="border-radius: 5px;height:38px;margin-top:15px;background: linear-gradient(#007ab3, #055073)!important;;
+          font-size:17px;font-weight:bold;background-color: #055073" type="submit" expand="block" (click)="save(this.user_id)">Submit</ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</form>
+    
+</ion-content>

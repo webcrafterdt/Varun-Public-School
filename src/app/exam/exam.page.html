@@ -1,0 +1,269 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="teacherhome"></ion-back-button>
+        </ion-buttons>
+        <ion-title>Manage Marks</ion-title>
+    </ion-toolbar>
+    <ion-card style="background-color:#e4f3f7">
+        <p style="font-size: 11px;color: #000000;margin-top: 10px;font-weight: bold;margin-left: 10px;">
+            {{this.SelectedClassName}} >> {{this.MainExamName}} >> {{this.ExamName}} >> {{this.SubjectName}} {{this.subjectlevelName}}
+        </p>
+    </ion-card>
+</ion-header>
+
+<ion-content>
+
+    <ion-grid style="padding: 0px;">
+        <ion-row class="header1">
+
+        </ion-row>
+
+        <ion-row>
+
+
+            <ion-row style="margin-left: 33%;">
+
+            </ion-row>
+
+
+
+        </ion-row>
+        <ion-grid class="grid2">
+
+            <ion-card style="padding-bottom: 10%;">
+                <div>
+                    <ion-row>
+                      <ion-col size="7"
+                        style="padding-top: 8%;font-size: 11px;font-weight:bold;margin-top: -10px;background-color: white!important;color: black;height: 33px;">
+                        &nbsp;
+
+                      </ion-col>
+                    
+                      <ion-col size="5"
+                        style="padding-top: 8%;font-size: 11px;font-weight:bold;margin-top: -10px;background-color: white!important;color: black;height: 33px;">
+                        {{this.MinmarksView}} &nbsp;&nbsp;&nbsp;&nbsp; {{this.MaxmarksView}}
+                      </ion-col>
+                    </ion-row>
+                    </div>
+                <div *ngFor="let student of this.StudentArray;let q= index">
+
+
+
+                    <!-- If Numbered Subjects-->
+                    <ion-row class="ion-row-border" style="border-top: solid #e1e1e1 1px;"
+                        *ngIf="this.IsGraddedSubject != 'Y';">
+
+                        <ion-col size="7" style="background-color: white!important;color: gray;height: 33px;">
+                            <!-- <img [src]="student.photo" style="height: 40px;width: 40px;border-radius: 50%;"> -->
+                            <ion-grid>
+
+                                <ion-row>
+                                    <!-- <ion-col size="4"><img [src]="student.photo" *ngIf="student.photo"
+                                            style="margin-top: -10px;height: 40px;width: 40px;border-radius: 50%;">
+                                        <img src="./assets/010.png" *ngIf="!student.photo"
+                                            style="margin-top: -11px;height: 40px;width: 40px;border-radius: 50%;">
+                                    </ion-col> -->
+                                           <ion-col size="4">
+                                            <img src="./assets/010.png"
+                                            style="margin-top: -11px;height: 40px;width: 40px;border-radius: 50%;">
+                                    </ion-col>
+                                    <ion-col size="7"
+                                        style="font-size: 11px;font-weight:bold;margin-top: -10px;background-color: white!important;color: black;height: 33px;">{{student.stuname}}
+                                        <br />
+                                        <p style="color:gray;margin-top: 4px;">
+                                            {{student.enrollno}}
+                                        </p>
+
+                                    </ion-col>
+                                </ion-row>
+
+                            </ion-grid>
+
+                        </ion-col>
+                        <ion-col size="2" style="background-color: white!important;color: gray;height: 33px;">
+
+                            <ion-input
+                                style="font-size:11px!important;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px;"
+                                type="number" placeholder="Marks" required [(ngModel)]="student.marks"
+                                (ionBlur)="submitmarks('',$event.target.value,student.stuid,'isstuid',this.examsubdivtransid,this.subid,this.IsGraddedSubject,student.MaxMarks)"></ion-input>
+
+                        </ion-col>
+                        <ion-col size="3"
+                            style="background: white;padding-right: 0px!important;padding-bottom: 0px!important;">
+                            <ion-select placeholder="Select Legend"
+                                style="padding:2px 5px 2px 7px !important;color: black;font-size: 10px;
+                        border-radius:4px !important;background: linear-gradient(#53c787, #b5e398);height: 120%!important;margin-top: -3px !important;"
+                                (ionChange)="submitmarks('',$event.target.value,student.stuid,'islegend',this.examsubdivtransid,this.subid,this.IsGraddedSubject)"
+                                [(ngModel)]="student.marks">
+                                <ion-select-option value="absent">Absent</ion-select-option>
+                                <ion-select-option value="leave">Leave</ion-select-option>
+                                <ion-select-option value="na">N/A</ion-select-option>
+                                <ion-select-option value="ml">Medical Leave</ion-select-option>
+                            </ion-select>
+                        </ion-col>
+                    </ion-row>
+
+
+
+                    <!--If Gradded Subjects-->
+                    <ion-row class="ion-row-border" style="border-top: solid #e1e1e1 1px;"
+                        *ngIf="this.IsGraddedSubject == 'Y';">
+
+                        <ion-col size="7" style="background-color: white!important;color: gray;height: 33px;">
+                            <!-- <img [src]="student.photo" style="height: 40px;width: 40px;border-radius: 50%;"> -->
+                            <ion-grid>
+
+                                <ion-row>
+                                    <ion-col size="4"><img [src]="student.photo" *ngIf="student.photo"
+                                            style="margin-top: -10px;height: 40px;width: 40px;border-radius: 50%;">
+                                        <img src="./assets/010.png" *ngIf="!student.photo"
+                                            style="margin-top: -11px;height: 40px;width: 40px;border-radius: 50%;">
+                                    </ion-col>
+                                    <ion-col size="7"
+                                        style="font-size: 11px;font-weight:bold;margin-top: -10px;background-color: white!important;color: black;height: 33px;">{{student.stuname}}
+                                        <br />
+                                        <p style="color:gray;margin-top: 4px;">
+                                            {{student.enrollno}}
+                                        </p>
+
+                                    </ion-col>
+                                </ion-row>
+
+                            </ion-grid>
+
+                        </ion-col>
+                        <!-- This condition is for other selected To Devide Select Boxes-->
+
+                        <ng-container *ngIf="student.IsOthermarks == 'N';"><!-- If Marks Not Entered-->
+
+                            <!-- <ion-col size="5" *ngIf="this.ShowGrades != 'ShowGrades_'+student.stuid"
+                                style="background: white;padding-right: 0px!important;padding-bottom: 0px!important;"> -->
+                                <ion-col size="5" *ngIf="student.OtherMarks != 'Y'"
+                                style="background: white;padding-right: 0px!important;padding-bottom: 0px!important;">
+                                <ion-select placeholder="Select Grade"
+                                    style="padding:2px 5px 2px 7px !important;color: black;font-size: 10px;
+                        border-radius:4px !important;background: linear-gradient(#53c787, #b5e398);height: 120%!important;margin-top: -3px !important;"
+                                    (ionChange)="submitmarks(q,$event.target.value,student.stuid,'',this.examsubdivtransid,this.subid,this.IsGraddedSubject,q)"
+                                    [(ngModel)]="student.marks">
+                                    <ion-select-option *ngFor="let Grades of this.Grades;"
+                                        value="{{Grades}}">{{Grades}}</ion-select-option>
+
+                                </ion-select>
+                            </ion-col>
+
+
+                            <!-- <ion-col size="2.5" *ngIf="this.ShowGrades == 'ShowGrades_'+student.stuid"
+                                style="background: white;padding-right: 0px!important;padding-bottom: 0px!important;">
+                                <ion-select placeholder="Select Grade"
+                                    style="padding:2px 5px 2px 7px !important;color: black;font-size: 10px;
+                        border-radius:4px !important;background: linear-gradient(#53c787, #b5e398);height: 120%!important;margin-top: -3px !important;"
+                                    (ionChange)="submitmarks(q,$event.target.value,student.stuid,'islegend',this.examsubdivtransid,this.subid,this.IsGraddedSubject)"
+                                    [(ngModel)]="student.marks">
+                                    <ion-select-option *ngFor="let Grades of this.Grades;"
+                                        value="{{Grades}}">{{Grades}}</ion-select-option>
+
+                                </ion-select>
+                            </ion-col>
+
+
+                            <ion-col size="2.5" *ngIf="this.ShowGrades == 'ShowGrades_'+student.stuid"
+                                style="background: white;padding-right: 0px!important;padding-bottom: 0px!important;">
+                                <ion-select placeholder="Select Legend"
+                                    style="padding:2px 5px 2px 7px !important;color: black;font-size: 10px;
+                        border-radius:4px !important;background: linear-gradient(#53c787, #b5e398);height: 120%!important;margin-top: -3px !important;"
+                                    (ionChange)="submitmarks(q,$event.target.value,student.stuid,'islegend',this.examsubdivtransid,this.subid,this.IsGraddedSubject,q)"
+                                    [(ngModel)]="student.marks">
+                                    <ion-select-option value="absent">Absent</ion-select-option>
+                                    <ion-select-option value="leave">Leave</ion-select-option>
+                                    <ion-select-option value="na">N/A</ion-select-option>
+                                    <ion-select-option value="ml">Medical Leave</ion-select-option>
+                                </ion-select>
+                            </ion-col> -->
+
+
+
+                            <ion-col size="2.5" *ngIf="student.OtherMarks[0] == 'Y'"
+                            style="background: white;padding-right: 0px!important;padding-bottom: 0px!important;">
+                            <ion-select [placeholder]="student.OtherMarks[0] === 'Y' ? 'Other' : 'Select Grade'"
+                                style="padding:2px 5px 2px 7px !important;color: black;font-size: 10px;
+                    border-radius:4px !important;background: linear-gradient(#53c787, #b5e398);height: 120%!important;margin-top: -3px !important;"
+                                (ionChange)="submitmarks(q,$event.target.value,student.stuid,'islegend',this.examsubdivtransid,this.subid,this.IsGraddedSubject)"
+                                [(ngModel)]="student.marks">
+                                <ion-select-option *ngFor="let Grades of this.Grades;"
+                                    value="{{Grades}}">{{Grades}}</ion-select-option>
+
+                            </ion-select>
+                        </ion-col>
+
+
+                        <ion-col size="2.5" *ngIf="student.OtherMarks[0] == 'Y'"
+                            style="background: white;padding-right: 0px!important;padding-bottom: 0px!important;">
+                            <ion-select placeholder="Select Legend"
+                                style="padding:2px 5px 2px 7px !important;color: black;font-size: 10px;
+                    border-radius:4px !important;background: linear-gradient(#53c787, #b5e398);height: 120%!important;margin-top: -3px !important;"
+                                (ionChange)="submitmarks(q,$event.target.value,student.stuid,'islegend',this.examsubdivtransid,this.subid,this.IsGraddedSubject,q)"
+                                [(ngModel)]="student.marks">
+                                <ion-select-option value="absent">Absent</ion-select-option>
+                                <ion-select-option value="leave">Leave</ion-select-option>
+                                <ion-select-option value="na">N/A</ion-select-option>
+                                <ion-select-option value="ml">Medical Leave</ion-select-option>
+                            </ion-select>
+                        </ion-col>
+
+
+                        </ng-container>
+
+
+                            <ng-container *ngIf="student.IsOthermarks == 'Y';"><!--If Marks Entered-->
+                            <ion-col size="2.5"
+                                style="background: white;padding-right: 0px!important;padding-bottom: 0px!important;">
+                                <ion-select [placeholder]="student.OtherMarks[0] === 'Y' ? 'Other' : 'Select Grade'"
+                                    style="padding:2px 5px 2px 7px !important;color: black;font-size: 10px;
+                        border-radius:4px !important;background: linear-gradient(#53c787, #b5e398);height: 120%!important;margin-top: -3px !important;"
+                                    (ionChange)="submitmarks(q,$event.target.value,student.stuid,'',this.examsubdivtransid,this.subid,this.IsGraddedSubject,'','Isgradeupdate',q)"
+                                    [(ngModel)]="student.marks">
+                                    <ion-select-option *ngFor="let Grades of this.Grades;"
+                                        value="{{Grades}}">{{Grades}}</ion-select-option>
+
+                                </ion-select>
+                            </ion-col>
+
+                        </ng-container>
+                        <ng-container *ngIf="student.IsOthermarks == 'Y';"><!--If Marks Entered-->
+                            <ion-col size="2.5"
+                                style="background: white;padding-right: 0px!important;padding-bottom: 0px!important;">
+                                <ion-select placeholder="Select Legend"
+                                    style="padding:2px 5px 2px 7px !important;color: black;font-size: 10px;
+                border-radius:4px !important;background: linear-gradient(#53c787, #b5e398);height: 120%!important;margin-top: -3px !important;"
+                                    (ionChange)="submitmarks(q,$event.target.value,student.stuid,'islegend',this.examsubdivtransid,this.subid,this.IsGraddedSubject,'','Islegendupdate',q)"
+                                    [(ngModel)]="student.marks">
+                                    <ion-select-option value="absent">Absent</ion-select-option>
+                                    <ion-select-option value="leave">Leave</ion-select-option>
+                                    <ion-select-option value="na">N/A</ion-select-option>
+                                    <ion-select-option value="ml">Medical Leave</ion-select-option>
+                                </ion-select>
+                            </ion-col>
+                        </ng-container>
+
+
+
+                    </ion-row>
+
+                </div>
+            </ion-card>
+
+        </ion-grid>
+
+
+
+
+
+
+
+
+    </ion-grid>
+
+
+
+</ion-content>

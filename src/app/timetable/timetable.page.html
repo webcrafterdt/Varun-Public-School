@@ -1,0 +1,308 @@
+<ion-header>
+  <ion-toolbar style="background-color: #377796!important;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Attendance</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+<div style="background-color: #F0F5F8;height: 100%;width: 100%;border-top-left-radius: 60px;border-top-right-radius: 60px;">
+
+  <ion-grid  style="flex-wrap: nowrap;
+  overflow-x: scroll!important;
+  overflow-y: hidden;" class="grid2" >
+  
+    
+
+  <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" >
+     
+    <ion-col align-self-center size-md="6"  size="1.6" style="font-weight: bold; background-color: white;font-size: 11px;
+    text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;border-bottom: solid gray 1px;max-width: 10px!important;">
+      Day<br/>Time
+     </ion-col>
+
+     <ion-col *ngFor="dayname of timetable;let i =index" align-self-center size-md="6" [ngStyle]="{'background':  i % 2 == 0 ? '#F0F5F8' : 'white' }"  size="1.8" style="border-bottom:solid gray 1px; max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;">
+      {{timetable[i].Day}}
+      &nbsp;
+    </ion-col>
+
+  </ion-row>
+
+    <!--<ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;">
+      08:30-09:00
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;">
+      09:30-10:00
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;">
+      10:30-11:00
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;">
+      11:00-11:30
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;">
+      11:30-12:00
+    </ion-col>-->
+
+    <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" *ngFor="let slots of finalarray;let q =index" >
+      <ion-col   align-self-center size-md="6"  size="1.6" [ngStyle]="{'background':  q % 2 == 0 ? '#F0F5F8' : 'white' }" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: whitegray;padding-top: 11px;border-right: solid gray 1px;border-bottom: solid gray 1px;">
+        {{finalarray[q][0].period_by_days[q].Time || ''}}
+        &nbsp; 
+      </ion-col> 
+
+       <ion-col *ngFor="let days of slots;let p =index" [ngStyle]="{'background':  p % 2 == 0 ? 'pink' : 'cadetblue' }"   align-self-center size-md="6"  size="1.8" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: white;padding-top: 11px;border-right: solid gray 1px;border-bottom: solid gray 1px;">
+        {{finalarray[q][p].period_by_days[q].Faculty_name || ''}}
+        &nbsp;
+        <br/>
+        <br/>
+        {{finalarray[q][p].period_by_days[q].Subject || ''}}
+        &nbsp;
+        <br/>
+        <br/>
+        {{finalarray[q][p].period_by_days[q].Location || ''}}
+
+      </ion-col>
+       
+    </ion-row>
+
+
+
+
+
+
+
+    
+      <!--<ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: gray;padding-top: 11px;border-right: solid gray 1px;">
+        {{timetable[i].Subject}} 
+        <br/>
+        <br/>
+        {{timetable[i].Faculty_name}}
+      </ion-col>-->
+  
+      <!--<ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: gray;padding-top: 11px;">
+        English 
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: gray;padding-top: 11px;">
+        Computer Science
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: gray;padding-top: 11px;">
+        Maths
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: gray;padding-top: 11px;">
+        Chemistry
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>-->
+ 
+
+
+
+    
+
+
+    
+
+
+<!--
+    <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" >
+      
+      <ion-col align-self-center size-md="6"  size="1.5" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;border-bottom: solid gray 1px;">
+        Tue
+        
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;border-right: solid gray 1px;">
+        Hindi 
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        English 
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Computer Science
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Maths
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Chemistry
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+    </ion-row>
+
+    
+    
+    <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" >
+      
+      <ion-col align-self-center size-md="6"  size="1.5" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;border-bottom: solid gray 1px;">
+        Wed
+        
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;border-right: solid gray 1px;">
+        Hindi 
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        English 
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Computer Science
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Maths
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Chemistry
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+    </ion-row>
+
+
+
+    
+
+
+
+    <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" >
+      
+      <ion-col align-self-center size-md="6"  size="1.5" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;border-bottom: solid gray 1px;">
+        Thu
+        
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;border-right: solid gray 1px;">
+        Hindi 
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        English 
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Computer Science
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Maths
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Chemistry
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+    </ion-row>
+    
+
+
+
+
+    
+    <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" >
+      
+      <ion-col align-self-center size-md="6"  size="1.5" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;border-bottom: solid gray 1px;">
+        Fri
+        
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;border-right: solid gray 1px;">
+        Hindi 
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        English 
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Computer Science
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Maths
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Chemistry
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+    </ion-row>
+
+
+
+    <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" >
+      
+      <ion-col align-self-center size-md="6"  size="1.5" style="max-width:15%;font-weight: bold;background-color: white;font-size: 11px;text-align: center; color: gray;padding-top: 11px;border-right: solid gray 1px;border-bottom: solid gray 1px;">
+        Sat
+        
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;border-right: solid gray 1px;">
+        Hindi 
+        <br/>
+        
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        English 
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Computer Science
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Maths
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="1.8" style="max-width:15%;font-size: 11px;text-align: center;font-weight: bold;color: white;padding-top: 11px;">
+        Chemistry
+        <br/>
+        Dr. Ritu Singh
+      </ion-col>
+    </ion-row>-->
+
+    
+
+
+    
+  </ion-grid>
+  
+  
+  
+  
+  
+</div>
+</ion-content>

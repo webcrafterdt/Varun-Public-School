@@ -1,0 +1,237 @@
+<ion-content>
+  <!-- <section> -->
+  <!-- <br /> -->
+  <div style="text-align:center;margin-top: 13%;">
+    <img src="assets/vpslogo.jpeg" height="120"  style="border-radius: 10px;"/>
+    <!-- <img src="assets/rsmlogo.png" height="65" /> -->
+  </div>
+  <!-- <div class="logo" style="margin-top:0px!important;text-align:center"> -->
+
+
+  <!--<a style="color: #ff9500;font-size:22px">NEOTIA</a>
+  <br/>-->
+  <!--<a style="color:white;font-size:20px">JODHPUR</a>-->
+  <!-- </div> -->
+  <!-- <div class="curve"></div> -->
+  <!-- </section> -->
+  <!--<ion-button (click)="captureImage()">Capture Image</ion-button>-->
+
+
+
+
+
+  <!-- <form #form="ngForm">
+    <ion-grid>
+      <ion-row style=" margin-top: 85px;padding: 10px;    background-color: rgb(236, 239, 248);
+    margin-left: 10px;  margin-right: 10px;  border-radius: 14px;" color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+          <div text-center>
+            <h4>Enter Your Name</h4>
+          </div>
+          <div padding>
+            <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+              <ion-input class="ion-no-padding" name="username" type="username" placeholder="Username"
+                [(ngModel)]="username" required></ion-input>
+            </ion-item>
+          </div>
+
+
+          <div padding>
+
+            <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="border-radius: 5px;height:38px;margin-top:15px;background: linear-gradient(#007ab3, #055073)!important;;
+          font-size:17px;font-weight:bold;background-color: #055073" type="submit" [disabled]="form.invalid"
+              expand="block" (click)="signin()">Submit</ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form> -->
+
+
+
+<div style="background: url('/assets/loginbackground_rounded_1-removebg-preview.png') no-repeat;height:500px;">
+  <form #form="ngForm" >
+    <!-- <form #form="ngForm"> -->
+    <!-- <div style="text-align:center;margin-top: 2%;">
+      <img src="assets/whiteimage.jpg" height="50" />
+    </div> -->
+    <ion-grid >
+        <ion-row>
+        <ion-col>
+          <!-- <div style="text-align:center;margin-top: 2%;">
+            <img src="assets/whiteimage.jpg" height="50" />
+          </div> -->
+
+        </ion-col>
+        </ion-row>
+
+      <ion-row style=" margin-top: 75px;padding: 10px;    background-color: white;
+        margin-left: 10px;  margin-right: 10px;  border-radius: 14px;background-color: white; 
+          box-shadow: 0 0 5px 0px gray;background: url('/assets/svg.png') no-repeat bottom; background-size: 100%;background-color:white;    height: 240px;" color="primary" justify-content-center>
+
+          <div style="text-align:center;margin-top: 0%;top:175px;position: absolute;margin-left: 3%;">
+          <h2 style="color: white;font-size: 18px;">Login</h2>
+        </div>
+        <div style="text-align:center;margin-top: 0%;top:175px;position: absolute;margin-left: 14%;">
+
+          <img src="assets/whiteimage.jpg" height="50" style="width: 0;
+        height: 0;border-style: solid;border-width: 4px 50px 101px 50px;
+        border-color: transparent transparent #ffffff transparent;" />
+        </div>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12" style="min-width: 100%;">
+          <div text-center>
+            <h4>USERNAME/PASSWORD</h4>
+          </div>
+          <div padding >
+            <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+              <ion-icon name="mail-outline" item-left style="font-size: 23px;margin-right: 8px;"></ion-icon>
+              <ion-input class="ion-no-padding" name="username" type="username" placeholder="Username"
+                [(ngModel)]="username" required></ion-input>
+            </ion-item>
+            <div style="margin-top: 1px;">
+              <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+                <ion-icon name="key-outline" item-left style="font-size: 23px;margin-right: 8px;"></ion-icon>
+
+                <ion-input class="ion-no-padding" name="password" type="password" placeholder="Password"
+                  [(ngModel)]="password" required></ion-input>
+              </ion-item>
+            </div>
+            <div style="margin-top: 1px;">
+              <!-- <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px"> -->
+                <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="border-radius: 5px;height:38px;margin-top:15px;
+                background: linear-gradient(#53a9fd, #5df5f2)!important;
+                 font-size:17px;font-weight:bold;background-color: #055073;width: 35%;border-radius: 50px;margin-left: 33%;"
+                   type="submit" expand="block" (click)="signin()">Login</ion-button>
+                   <!-- </ion-item> -->
+                   </div>
+            
+
+            
+
+          </div>
+
+
+          <!-- <div padding style="margin-bottom: 50px;">
+            <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="border-radius: 5px;height:38px;margin-top:15px;background: linear-gradient(#007ab3, #055073)!important;;
+            font-size:17px;font-weight:bold;background-color: #055073" type="submit" [disabled]="form.invalid"
+              expand="block" (click)="signin()">Submit</ion-button>
+          </div> -->
+     
+          
+        </ion-col>
+     
+          <!-- <div style="margin-bottom: -10px;margin-left: -10px;width: 100%;">
+          <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 490" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><defs>
+              <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#F78DA7"></stop>
+                <stop offset="95%" stop-color="#8ED1FC"></stop></linearGradient></defs>
+                <style>
+            .path-1{
+              animation:pathAnim-1 4s;
+              animation-timing-function: linear;
+              animation-iteration-count: infinite;
+            }
+          @keyframes pathAnim-1{
+              0%{
+                d: path("M 0,500 L 0,291 C 183.19999999999993,274.73333333333335 366.39999999999986,258.46666666666664 530,259 C 693.6000000000001,259.53333333333336 837.6000000000001,276.8666666666667 986,285 C 1134.3999999999999,293.1333333333333 1287.1999999999998,292.06666666666666 1440,291 L 1440,500 L 0,500 Z");
+              }
+              25%{
+                d: path("M 0,500 L 0,291 C 133.06666666666666,286.4666666666667 266.1333333333333,281.93333333333334 440,273 C 613.8666666666667,264.06666666666666 828.5333333333333,250.73333333333335 1002,253 C 1175.4666666666667,255.26666666666665 1307.7333333333333,273.1333333333333 1440,291 L 1440,500 L 0,500 Z");
+              }
+              50%{
+                d: path("M 0,500 L 0,291 C 181.33333333333337,321.5333333333333 362.66666666666674,352.06666666666666 505,343 C 647.3333333333333,333.93333333333334 750.6666666666665,285.26666666666665 900,270 C 1049.3333333333335,254.73333333333335 1244.6666666666667,272.8666666666667 1440,291 L 1440,500 L 0,500 Z");
+              }
+              75%{
+                d: path("M 0,500 L 0,291 C 205.86666666666667,279.26666666666665 411.73333333333335,267.53333333333336 569,267 C 726.2666666666667,266.46666666666664 834.9333333333334,277.1333333333333 972,283 C 1109.0666666666666,288.8666666666667 1274.5333333333333,289.93333333333334 1440,291 L 1440,500 L 0,500 Z");
+              }
+              100%{
+                d: path("M 0,500 L 0,291 C 183.19999999999993,274.73333333333335 366.39999999999986,258.46666666666664 530,259 C 693.6000000000001,259.53333333333336 837.6000000000001,276.8666666666667 986,285 C 1134.3999999999999,293.1333333333333 1287.1999999999998,292.06666666666666 1440,291 L 1440,500 L 0,500 Z");
+              }
+            }
+          
+          </style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#F78DA7"></stop><stop offset="95%" stop-color="#8ED1FC"></stop></linearGradient></defs><path d="M 0,500 L 0,291 C 183.19999999999993,274.73333333333335 366.39999999999986,258.46666666666664 530,259 C 693.6000000000001,259.53333333333336 837.6000000000001,276.8666666666667 986,285 C 1134.3999999999999,293.1333333333333 1287.1999999999998,292.06666666666666 1440,291 L 1440,500 L 0,500 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-1"></path></svg>
+          </div> -->
+          <!-- <div style="text-align:center;margin-top: 2%;">
+            <img src="assets/svg.png" height="60" width="100"/>
+          </div> -->
+      </ion-row>
+
+      
+
+
+      
+    </ion-grid>
+  </form> 
+</div> 
+<!-- <ion-grid >
+  <ion-row>
+  <ion-col>
+  <div padding style="    margin-top: -58%;margin-right: 4%;">
+    <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="border-radius: 5px;height:38px;margin-top:15px;
+     background: linear-gradient(#53a9fd, #5df5f2)!important;
+      font-size:17px;font-weight:bold;background-color: #055073;width: 35%;border-radius: 50px;margin-left: 33%;"
+        type="submit" expand="block" (click)="signin()">Login</ion-button>
+  </div>
+  </ion-col>
+  </ion-row>
+  </ion-grid> -->
+  <!-- <div class="wave">
+  </div> -->
+
+
+
+
+
+
+
+
+
+<!-- <div style="position: absolute;bottom: 0px;font-size: 12px;padding-left: 4px;"> -->
+
+  <!-- <div id="fixedContent"> -->
+    <div id="container">
+      <div id="content">
+        <!-- Your main content here -->
+      </div>
+      <div id="fixedContent">
+  <div style="margin-bottom: -10px;margin-left: -10px; width: 125%;">
+    <svg width="100%" height="100%" id="svg" viewBox="0 0 1440 490" xmlns="http://www.w3.org/2000/svg" class="transition duration-300 ease-in-out delay-150"><defs>
+        <linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#F78DA7"></stop>
+          <stop offset="95%" stop-color="#8ED1FC"></stop></linearGradient></defs>
+          <style>
+          .path-1{
+        animation:pathAnim-1 4s;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+    @keyframes pathAnim-1{
+        0%{
+          d: path("M 0,500 L 0,291 C 183.19999999999993,274.73333333333335 366.39999999999986,258.46666666666664 530,259 C 693.6000000000001,259.53333333333336 837.6000000000001,276.8666666666667 986,285 C 1134.3999999999999,293.1333333333333 1287.1999999999998,292.06666666666666 1440,291 L 1440,500 L 0,500 Z");
+        }
+        25%{
+          d: path("M 0,500 L 0,291 C 133.06666666666666,286.4666666666667 266.1333333333333,281.93333333333334 440,273 C 613.8666666666667,264.06666666666666 828.5333333333333,250.73333333333335 1002,253 C 1175.4666666666667,255.26666666666665 1307.7333333333333,273.1333333333333 1440,291 L 1440,500 L 0,500 Z");
+        }
+        50%{
+          d: path("M 0,500 L 0,291 C 181.33333333333337,321.5333333333333 362.66666666666674,352.06666666666666 505,343 C 647.3333333333333,333.93333333333334 750.6666666666665,285.26666666666665 900,270 C 1049.3333333333335,254.73333333333335 1244.6666666666667,272.8666666666667 1440,291 L 1440,500 L 0,500 Z");
+        }
+        75%{
+          d: path("M 0,500 L 0,291 C 205.86666666666667,279.26666666666665 411.73333333333335,267.53333333333336 569,267 C 726.2666666666667,266.46666666666664 834.9333333333334,277.1333333333333 972,283 C 1109.0666666666666,288.8666666666667 1274.5333333333333,289.93333333333334 1440,291 L 1440,500 L 0,500 Z");
+        }
+        100%{
+          d: path("M 0,500 L 0,291 C 183.19999999999993,274.73333333333335 366.39999999999986,258.46666666666664 530,259 C 693.6000000000001,259.53333333333336 837.6000000000001,276.8666666666667 986,285 C 1134.3999999999999,293.1333333333333 1287.1999999999998,292.06666666666666 1440,291 L 1440,500 L 0,500 Z");
+        }
+      }
+    
+    </style><defs><linearGradient id="gradient" x1="0%" y1="50%" x2="100%" y2="50%"><stop offset="5%" stop-color="#F78DA7"></stop><stop offset="95%" stop-color="#8ED1FC"></stop></linearGradient></defs><path d="M 0,500 L 0,291 C 183.19999999999993,274.73333333333335 366.39999999999986,258.46666666666664 530,259 C 693.6000000000001,259.53333333333336 837.6000000000001,276.8666666666667 986,285 C 1134.3999999999999,293.1333333333333 1287.1999999999998,292.06666666666666 1440,291 L 1440,500 L 0,500 Z" stroke="none" stroke-width="0" fill="url(#gradient)" fill-opacity="1" class="transition-all duration-300 ease-in-out delay-150 path-1"></path></svg>
+    </div> 
+
+
+<div style="margin-top:-30px;">
+ <span style="color: white;">Powered by <b>DreamTeam Technologies Pvt. Ltd.</b></span></div>
+</div>
+</div>
+
+
+
+
+
+</ion-content>

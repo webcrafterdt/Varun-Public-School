@@ -1,0 +1,72 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Analytics</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+
+  <!-- <ion-row class="custom-rowheader" >
+    <ion-col size="9" class="text-column">
+      <p class="text">Classes</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column">
+      <p class="amount">&nbsp;</p>
+    </ion-col>
+  </ion-row> -->
+
+  <ng-container *ngFor="let DueAmount of Final_Due_Amount_ArrayObject">
+
+  <ion-row class="custom-row" (click)="stufeedetail(this.Final_Due_Amount_Array[DueAmount].Stu_Id)">
+    <ion-col size="12">
+      <div style="width: 100%;">
+        <div style="float: left; width: 20%;"><img src="./assets/010.png" style=" height: 40px; width: 40px; border-radius: 50%;"></div>
+        <div style="float: left; width: 80%;">
+          <div style="width: 100%;display: flex;  align-items: center; justify-content: space-between;">
+            <div style="width: 80%; text-align: left;font-size: 12px;color:black">{{ this.Final_Due_Amount_Array[DueAmount].Stu_Name }}</div>
+            <div style="width: 70%; text-align: right;font-size: 11px;color:gray">&#8377; {{this.Final_Due_Amount_Array[DueAmount].Due_Amount}}</div>
+            <ion-icon name="chevron-forward-outline" style="color: gray;"></ion-icon>
+          </div>
+          <div style="width: 100%;  align-items: center; justify-content: space-between;">
+            <div style="width: 50%; text-align: left;font-size: 11px;color:gray">Father - {{ this.Final_Due_Amount_Array[DueAmount].Father_Name }}</div>
+          </div>
+          
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+  
+  
+
+  
+  
+  <!-- <ion-row class="custom-row" >
+    <ion-col size="3">
+       <img [src]="student.photo" *ngIf="student.photo" style="margin-top: -10px;height: 40px;width: 40px;border-radius: 50%;"> 
+          <img src="./assets/010.png" style="margin-top: -11px;height: 40px;width: 40px;border-radius: 50%;">
+  </ion-col>
+  
+  <ion-col (click)="secwiseDue(DueAmount)" size="6" class="text-column">
+    <p class="text">{{ this.Final_Due_Amount_Array[DueAmount].Stu_Name }}</p>
+     <p class="text valsss">Valsss</p>
+
+  </ion-col>
+  
+    <ion-col size="2" class="amount-column">
+      <p class="amount">&#8377; {{this.Final_Due_Amount_Array[DueAmount].Due_Amount}}</p>
+    </ion-col>
+    <ion-col size="1" class="amount-column">
+      <ion-icon name="chevron-forward-outline" style="color: gray;"></ion-icon>
+    </ion-col>
+  </ion-row> -->
+  </ng-container>
+  
+
+
+</ion-content>

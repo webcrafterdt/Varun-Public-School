@@ -1,0 +1,182 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="healthcard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row *ngIf="this.status == true">
+    <ion-col size="12">
+      <div style="background-color: gray;height: 270px;background: linear-gradient(#007ab3, #055073);">
+        <ion-row style="    padding-left: 16px;padding-right: 16px;">
+          <!--<ion-col size="3">
+            <img src="/assets/dummy.png" style="width:50px;height:50px;border-radius: 100%;margin-top: 5px;" />
+          </ion-col>-->
+          <ion-col size="9">
+            <h3 style="    margin: 0px;font-size: 17px;font-weight: bold;color: white;">{{this.fname}}</h3>
+            <!--<h3 style="    margin: 0px;color: white;font-size: 13px;">priyasingh@gmail.com</h3>-->
+          </ion-col>
+            </ion-row>
+
+          <ion-row justify-content-center style="border-radius: 23px;min-height: 70px;padding-left: 16px;padding-right: 16px;">
+  
+      <ion-col  align-self-center size-md="5"  size="5" style="    border-radius: 15px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: rgb(236, 239, 248,.5);min-height: 55px;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+            
+      <div style="width: 100%;">
+        <div class="coldiv" ><img src="assets/bloodgroup.png" style="height:23px;" (click)="noticefile()" /></div>
+        <div class="coldiv_bottom" ><h4>Blood</h4>
+          <h4 style="color: #00334a;font-size: 12px;margin: 0px;text-align: left;">{{this.blood}}</h4></div>
+        
+      </div>
+
+
+
+                
+                </ion-col>
+                        <ion-col  align-self-center size-md="3"  size="1" >
+                </ion-col>
+                
+                <ion-col  align-self-center size-md="5"  size="5" style="    border-radius: 15px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: rgb(236, 239, 248,.5);min-height: 55px;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+            
+                  <div style="width: 100%;">
+                    <div class="coldiv" ><img src="assets/height.png" style="height:23px;" (click)="noticefile()" /></div>
+                    <div class="coldiv_bottom" ><h4>Height</h4>
+                      <h4 style="color: #00334a;font-size: 12px;margin: 0px;text-align: left;">{{this.height}}</h4></div>
+                    
+                  </div>
+                  </ion-col>
+         
+            
+          </ion-row> 
+
+
+
+          
+          <ion-row justify-content-center style="border-radius: 23px;min-height: 70px;padding-left: 16px;padding-right: 16px;">
+  
+            <ion-col  align-self-center size-md="5"  size="5" style="    border-radius: 15px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: rgb(236, 239, 248,.5);min-height: 55px;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+                  
+            <div style="width: 100%;">
+              <div class="coldiv" ><img src="assets/weight.png" style="height:23px;" (click)="noticefile()" /></div>
+              <div class="coldiv_bottom" ><h4>Weight</h4>
+                <h4 style="color: #00334a;font-size: 12px;margin: 0px;text-align: left;">{{this.weight}}</h4></div>
+              
+            </div>
+      
+      
+      
+                      
+                      </ion-col>
+                              <ion-col  align-self-center size-md="3"  size="1" >
+                      </ion-col>
+                      
+                      <ion-col  align-self-center size-md="5"  size="5" style="    border-radius: 15px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: rgb(236, 239, 248,.5);min-height: 55px;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+                  
+                        <div style="width: 100%;">
+                          <div class="coldiv" ><img src="assets/profile.png" style="height:23px;" (click)="noticefile()" /></div>
+                          <div class="coldiv_bottom" ><h4>Blood Pres.</h4>
+                            <h4 style="color: #00334a;font-size: 12px;margin: 0px;text-align: left;">{{this.blood_pressure}}</h4></div>
+                          
+                        </div>
+                        </ion-col>
+               
+                  
+                </ion-row> 
+          
+    
+</div>
+  <div style="background-color: white;height: 200px;margin-top: -60px;border-top-left-radius: 43px;border-top-right-radius: 43px;">
+<div style="width:90%;    padding-top: 5%;margin-left: 5%;">
+     <ion-slides [options]="slideOptsOne" #slideWithNav [slidesPerView]="3" [loop]="true"  (ionSlideDidChange)="SlideDidChange(sliderOne,slideWithNav)">
+       <ion-slide *ngFor="let headin of headings" (click)="heading(headin)" style="font-size:10px;border-top-left-radius: 7px;color:white;min-height: 30px;border-right:solid white 12px;max-width: 50%!important;background: linear-gradient(#007ab3, #055073);width: 50%!important;">
+        {{headin}}
+       </ion-slide>
+     <!--  <ion-slide style="font-size:10px;border-top-left-radius: 7px;color:white;min-height: 30px;border-right:solid white 12px;margin-right: 25px!important;max-width: 50%!important;background: linear-gradient(#007ab3, #055073);width: 50%!important;">
+        VISION 
+     </ion-slide>
+     <ion-slide style="font-size:10px;border-top-left-radius: 7px;color:white;min-height: 30px;border-right:solid white 12px;margin-right: 25px!important;max-width: 50%!important;background: linear-gradient(#007ab3, #055073);width: 50%!important;">
+      MENSTRUAL HISTORY 
+   </ion-slide>
+   <ion-slide style="font-size:10px;border-top-left-radius: 7px;color:white;min-height: 30px;border-right:solid white 12px;margin-right: 25px!important;max-width: 50%!important;background: linear-gradient(#007ab3, #055073);width: 50%!important;">
+    CARDIOVASCULAR SYSTEM 
+ </ion-slide>
+ <ion-slide style="font-size:10px;border-top-left-radius: 7px;color:white;min-height: 30px;border-right:solid white 12px;margin-right: 25px!important;max-width: 50%!important;background: linear-gradient(#007ab3, #055073);width: 50%!important;">
+  ALIMENTARY SYSTEM
+</ion-slide>-->
+   </ion-slides>
+  
+   </div>
+
+
+
+<ion-card style="background-color: #F0F5F8;margin-top: 23px;" *ngFor="let bottom of health_service_boject;let k = index">
+   <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" id="open-modal"  expand="block">
+      
+     <ion-col align-self-center size-md="6"  size="3" >
+      <div style="    background-color: #4ED299;    height: 50px;
+      border-radius: 5px;padding-bottom: 19px;padding-left: 14px;padding-right: 11px;padding-top: 7px;margin-top: 5px;width: 60px;;">
+      <img src="assets/health.png"/>
+      </div>
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="9" >
+       <div style="width: 100%;float: right;">
+        <h5 style="font-size: 14px;color: #055073;height: 7px;"><b>{{bottom}}</b></h5>
+          <h6 style="height: 11px;font-size: 11px;color: gray;" *ngFor="let services of services_fields[k];let q = index">
+          <!--<p>{{this.health_service[bottom].services}}</p>-->
+          <p><b style="font-size: 12px;">{{services}} : </b> {{this.services_fields_data[k][q]}}</p>
+          <!--<p>{{this.services_fields_data[k].services}}</p>-->
+          </h6>
+      </div>
+    </ion-col>
+</ion-row>
+
+</ion-card>
+
+
+
+
+
+<!--<ion-card style="background-color: #F0F5F8;margin-top: 23px;">
+  <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" id="c-modal"  expand="block">
+     
+   <ion-col align-self-center size-md="6"  size="3" >
+     <div style="    background-color: #4ED299;    height: 50px;
+     border-radius: 5px;padding-bottom: 19px;padding-left: 14px;padding-right: 11px;padding-top: 7px;margin-top: 5px;width: 60px;;">
+     <img src="assets/health.png"/>
+     </div>
+   </ion-col>
+   <ion-col align-self-center size-md="6"  size="9" >
+     <div style="width: 100%;float: right;">
+       <h5 style="font-size: 14px;color: #055073;height: 7px;"><b>REGULAR/IRREGULAR 	 </b></h5>
+         <h6 style="height: 11px;font-size: 11px;color: gray;">Regular Student</h6>
+     </div>
+   </ion-col>
+</ion-row>
+
+</ion-card>-->
+
+  </div>
+</ion-col>
+</ion-row>
+
+
+<ion-list style="background-color: #F0F5F8;" *ngIf="this.status == false">
+  <ion-card>
+
+    <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" >
+    <ion-col align-self-center size-md="12"  size="12" >
+      <div style="width: 100%;float: right;">
+        <h5 style="font-size: 14px;color: #055073;height: 7px;"><b>{{this.messagge}}</b></h5>
+      </div>
+    </ion-col>
+
+
+
+  </ion-row>
+
+</ion-card>
+</ion-list>
+</ion-content>

@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Manage Marks</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+  <!--<ion-card style="padding-bottom:10px;background-color:#e4f3f7">
+    <ion-title style="font-size: 11px;color: #000000;margin-top: 10px;font-weight: bold;">
+        {{this.SelectedClassName}}</ion-title>
+    </ion-card>
+  
+  <ion-card>
+    <ion-title> {{ SelectedClassName }} </ion-title>
+  </ion-card>-->
+  
+  
+  <ion-card style="padding-bottom:10px;background-color:#e4f3f7;height:33px;">
+  
+       <div style="width:100%;">
+      <h6 style="font-size: 11px;color: #000000;margin-top: 10px;font-weight: bold;color:#000000;padding-left:15px;">{{this.SelectedClassName}}</h6>
+        
+        
+    </div>
+
+</ion-card>
+
+
+<!-- <ion-title style="font-size: 12px;color: gray;margin-top: 10px;margin-left: 4px;">{{this.SelectedClassName}}</ion-title> -->
+  <ion-row class="custom-rowheader" *ngIf="this.ExamCounts == 'Y'">
+    <ion-col size="9" class="text-column">
+      <p class="text">Exams</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column">
+      <p class="amount">&nbsp;</p>
+    </ion-col>
+  </ion-row>
+  
+  <ng-container *ngFor="let examnameKeys of this.ExamArrayObject;">
+  <ng-container *ngFor="let examname of ExamArray[examnameKeys];">
+    <ion-row style="margin-left: 3%;">
+    <ion-col  size="8" class="text-column">
+      <p class="text"> {{examnameKeys}}</p>
+   </ion-col>
+    </ion-row>
+    <ion-row  class="custom-row" (click)="getexamsubjects(this.transid,examname.examnameid,examname.examname,this.SelectedClassName,examnameKeys)">
+    
+    <ion-col  size="8" class="text-column">
+       <p class="text"> {{examname.examname}}</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column" style="justify-content: right!important;">
+      <p class="amount">&nbsp;</p>
+    </ion-col>
+    <ion-col size="1" class="amount-column">
+      <ion-icon name="chevron-forward-outline" style="color: gray;"></ion-icon>
+    </ion-col>
+  </ion-row>
+  </ng-container>
+</ng-container>
+  
+
+
+
+  
+  <ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="this.ExamCounts == 'N'">
+    <ion-card >
+    <ion-item>
+         <div style="width:100%;">
+        <h6 style="font-size: 12px;color: gray;">Exam Scheme Not Assigned..!! </h6>
+          
+          
+      </div>
+    </ion-item>
+  </ion-card>
+  </ion-list>
+</ion-content>

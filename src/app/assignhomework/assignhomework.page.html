@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Assign HomeWork</ion-title>
+  </ion-toolbar>
+
+  <ion-segment [(ngModel)]="category" style="background-color:#e4f3f7!important">
+    <ion-segment-button value="applicationlist" style="border:none;color:black;font-size:12px"
+      (click)="applied_leaves()">
+      HOMEWORKS
+    </ion-segment-button>
+
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+
+    <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" class="addbutton" type="submit"
+      expand="block" (click)="add_new_homework()">Add New &nbsp;&nbsp;<ion-icon
+        name="add-circle-outline"></ion-icon></ion-button>
+    </ion-list>
+
+
+  <div>
+
+    <ng-container >
+      <ion-row class="custom-rowheader">
+        <ion-col size="9" class="text-column">
+          <p class="text">Classes</p>
+        </ion-col>
+        <ion-col size="3" class="amount-column">
+          <p class="amount">&nbsp;</p>
+        </ion-col>
+      </ion-row>
+
+      <ng-container *ngFor="let classdata of this.Class_Data">
+        <ion-row class="custom-row" (click)="ClassWiseAttendance(classdata.transid)">
+          <ion-col size="8" class="text-column">
+            <p class="text">{{classdata.classname}}</p>
+          </ion-col>
+          <ion-col size="3" class="amount-column" style="justify-content: right!important;">
+            <p class="amount">&nbsp;</p>
+          </ion-col>
+          <ion-col size="1" class="amount-column">
+            <ion-icon name="chevron-forward-outline" style="color: gray;"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+    </ng-container>
+
+
+  </div>
+
+
+</ion-content>

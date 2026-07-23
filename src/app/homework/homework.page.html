@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Assignment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: #F0F5F8;">
+   <!--<quill-editor></quill-editor>-->
+
+  
+   <!--
+<ion-item id="open-modal">
+  <ion-icon name="calendar-outline"></ion-icon>
+  <ion-label>From Date</ion-label>
+  <ion-text slot="end">{{ this.fromdate }}</ion-text>
+</ion-item>
+
+<ion-item id="open-modal1">
+  <ion-icon name="calendar-outline"></ion-icon>
+  <ion-label>To Date</ion-label>
+  <ion-text slot="end">{{ this.todate }}</ion-text>
+</ion-item>
+  
+  
+  <ion-modal   
+  [initialBreakpoint]="0.7" trigger="open-modal" >
+    <ng-template>
+      <ion-content>
+        
+        <ion-datetime #fromdatetime  presentation="date" [(ngModel)]="date" showDefaultButtons="true" (ionChange)="from_date(fromdatetime.value)"></ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+  <ion-modal   
+  [initialBreakpoint]="0.7" trigger="open-modal1" >
+    <ng-template>
+      <ion-content>
+        
+        <ion-datetime #todatetime  presentation="date" [(ngModel)]="date" showDefaultButtons="true" (ionChange)="to_date(todatetime.value)"></ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal>
+
+
+  <ion-item>
+  <div style="border-radius: 5px;
+  width: 30%;float: right;background: linear-gradient(#eb5955, #e9868a);
+  display: flex;justify-content: center; font-size: 14px!important;
+  text-align: center;margin-left: 70%;">
+    <p style="    color: white;
+     font-weight: bold;
+    font-size: 14px!important;">Go</p></div>
+  </ion-item>-->
+
+ 
+ 
+ <!--<ion-segment [(ngModel)]="icons" color="secondary" (ionChange)="segmentChanged($event)" >
+    <ion-segment-button value="pending" checked>
+      Pending
+    </ion-segment-button>
+    <ion-segment-button value="submitted" >
+      Submitted
+    </ion-segment-button>
+  </ion-segment>-->
+
+<!-- <p>{{this.homeworks.length}}</p> -->
+
+  <ion-grid  style="flex-wrap: nowrap;
+overflow-x: scroll!important;
+overflow-y: hidden;" class="grid21" >
+
+
+                          <!-- Pending HomeWork Starts -->
+
+  <!--<ion-list *ngIf="this.selectedtab == 'pending'" style="background-color: #F0F5F8;">-->
+    <ion-list style="background-color: #F0F5F8;" >
+    <ion-card *ngFor="let homewo of homeworks;let i =index" style="background-color: white;padding: 5px;"  >
+  
+       <div style="width:100%;" >
+          <h5 style="font-size: 14px;color: #055073;"><b>{{homewo.title}}</b></h5>
+        <h6 style="font-size: 12px;color: gray;" (click)="msgprint(homewo.details)" [innerHtml]="homewo.details"></h6>
+        <h6 style="font-size: 12px;color: gray;" >Subject : {{homewo.subname}}</h6>
+        <h6 style="font-size: 12px;color: gray;" >Apply Date : {{homewo.applydate}}</h6>
+          
+        <h6 style="height: 15px;" *ngIf="homewo.IsHomeWork == 'Y' ">
+<!-- <ion-icon   name="document-outline" style="color: #055073" (click)="opefile(homewo.homework_file_path+'/'+homewo.homework_file_name)"></ion-icon> &nbsp;&nbsp;&nbsp;  -->
+ <ion-icon   name="document-outline" style="color: #055073" (click)="opefile(homewo.homeworkid)"></ion-icon> &nbsp;&nbsp;&nbsp; 
+          </h6>
+
+            <!--<h6 style="height: 15px;">
+              <ion-icon name="cloud-upload-outline" style="color: #055073" (click)="submithomework(homeworks[homewo]['HomeworkMaster'].title,homeworks[homewo]['HomeworkMaster'].id,homeworks[homewo]['HomeworkTran'].id)"></ion-icon>
+          </h6>-->
+      </div>
+   
+  </ion-card>
+
+
+
+  <!--<ion-card *ngIf="this.PendingHomeWorks == '0'">
+    <ion-item>
+       <div style="width:100%;">
+        <h6 style="font-size: 12px;color: gray;">No Pendings</h6>
+      </div>
+    </ion-item>
+  </ion-card>-->
+
+ 
+  </ion-list>
+
+  
+
+</ion-grid>
+
+<ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="this.homeworks.length == 0">
+  <ion-card >
+  <ion-item>
+     <div style="width:100%;">
+      <h6 style="font-size: 12px;color: gray;">No Homwwork/Assignment Found !!</h6>
+        
+        
+    </div>
+  </ion-item>
+
+</ion-card>
+</ion-list>
+</ion-content>

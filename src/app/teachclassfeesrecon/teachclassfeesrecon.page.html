@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Analytics</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+
+  <ion-row class="custom-rowheader" >
+    <ion-col size="9" class="text-column">
+      <p class="text">Classes</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column">
+      <p class="amount">&nbsp;</p>
+    </ion-col>
+  </ion-row>
+
+  <ng-container *ngFor="let DueAmount of Final_Due_Amount_ArrayObject">
+  <ion-row class="custom-row" (click)="secwisePaid(DueAmount,this.ToDate)">
+    
+    <ion-col  size="8" class="text-column">
+      <p class="text">{{DueAmount}}</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column">
+      <p class="amount">&#8377; {{this.Final_Due_Amount_Array[DueAmount]}}</p>
+    </ion-col>
+    <ion-col size="1" class="amount-column">
+      <ion-icon name="chevron-forward-outline" style="color: gray;"></ion-icon>
+    </ion-col>
+  </ion-row>
+  </ng-container>
+  
+</ion-content>

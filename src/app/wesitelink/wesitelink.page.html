@@ -1,0 +1,22 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Connect Us</ion-title>
+  </ion-toolbar>
+  </ion-header>
+
+<ion-content style="--background: #eceff8;">
+  <ion-grid style="margin-top: 10px;">
+      
+    <ion-row class="ion-text-center">
+     
+       <ion-col size="4">
+          <div class="container" (click)="openwebsite()" routerDirection="root" lines="none" detail="false" routerLinkActive="selected" style="border-radius: 50%;" >
+                <img src="assets/website.png"  style="height: 80px;box-shadow: rgb(132 156 171) 0px 0px 4px;padding: 15px!important;">
+          </div>
+      </ion-col>
+   </ion-row>
+   </ion-grid>
+</ion-content>

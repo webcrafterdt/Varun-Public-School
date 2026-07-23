@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Connect With Us</ion-title>
+  </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-grid style="margin-top: 10px;">
+      
+    <ion-row class="ion-text-center">
+     
+       <ion-col size="4">
+          <div class="container" (click)="openwebsite()" routerDirection="root" lines="none" detail="false" routerLinkActive="selected" style="border-radius: 50%;" >
+                <img src="assets/website.png"  style="height: 80px;box-shadow: rgb(132 156 171) 0px 0px 4px;padding: 15px!important;">
+          </div>
+      </ion-col>
+   </ion-row>
+
+
+
+
+   <ion-row class="ion-text-center">
+     
+    <ion-col size="12">
+       <ion-card style="padding: 5px;">
+
+             <h2 style="color: #055073;"><u>Address</u></h2>
+             <h4 style="font-size: 13px;text-align: justify;line-height: 20px;">Varun Public Sr. Sec. School,
+                 12 – Sector, Chopasani Housing Board,
+                 Jodhpur, Rajsthan
+              </h4>
+
+              <br/>
+              <h4 style="font-size: 14px;color: #055073;"><b><ion-icon name="call-outline"></ion-icon>&nbsp; <a href="tel: 8058060291">8058060291</a></b></h4>
+              <h4 style="font-size: 14px;color: #055073;"><b><ion-icon name="mail-outline"></ion-icon>&nbsp; <a href="mailto:info@varunpublicschool.com">info@varunpublicschool.com</a></b></h4>
+            </ion-card>
+   </ion-col>
+</ion-row>
+ </ion-grid>
+</ion-content>
+

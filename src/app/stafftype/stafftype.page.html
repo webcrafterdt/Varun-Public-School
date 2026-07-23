@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Staff Type</ion-title>
+  </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+  <ion-grid style="margin-top: 10px;">
+    <ion-row class="ion-text-center">
+      
+      <ion-col size="4">
+        <div class="container" (click)="BiomatricAttendance('T')" routerDirection="root" lines="none" detail="false" routerLinkActive="selected" style="border-radius: 50%;">
+          <img src="assets/teaching.png" style="height: 80px;box-shadow: rgb(132 156 171) 0px 0px 4px;padding: 15px!important;">
+        </div>
+        <p style="margin-top: 5px; font-size: 12px; color:#292d2f;"><b>Teaching Staff </b></p>
+      </ion-col>
+
+      <ion-col size="4">
+        <div class="container" (click)="BiomatricAttendance('O')" routerDirection="root" lines="none" detail="false" routerLinkActive="selected" style="border-radius: 50%;">
+          <img src="assets/officer.png" style="height: 80px;box-shadow: rgb(132 156 171) 0px 0px 4px;padding: 15px!important;">
+        </div>
+        <p style="margin-top: 5px; font-size: 12px; color:#292d2f;"><b>Officer Management</b></p>
+      </ion-col>
+
+      <ion-col size="4">
+        <div class="container" (click)="BiomatricAttendance('L')" routerDirection="root" lines="none" detail="false" routerLinkActive="selected" style="border-radius: 50%;">
+          <img src="assets/admin.png" style="height: 80px;box-shadow: rgb(132 156 171) 0px 0px 4px;padding: 15px!important;">
+        </div>
+        <p style="margin-top: 5px; font-size: 12px; color:#292d2f;"><b>Administration Management</b></p>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+

@@ -1,0 +1,563 @@
+<ion-content >
+  <!-- <section> -->
+    
+    <div style="text-align:center;margin-top: 60px;">
+      <!-- <img src="assets/om-removebg-preview.png" style="height:140px;width:140px"/> -->
+      <img src="assets/mahatma.jpeg" style="height:140px;width:140px;border-radius: 10px;"/>
+      
+  </div>
+  <!-- <div class="logo" style="margin-top:0px!important;text-align:center">
+  
+
+  <br/>
+  </div> -->
+    <!-- <div class="curve"></div> -->
+  <!-- </section> -->
+
+
+
+
+  
+  <form [formGroup]="ionicForm" >
+    <ion-grid>  
+      <ion-row style=" margin-top: 35px;padding: 10px;
+      margin-left: 10px;  margin-right: 10px;  border-radius: 14px;" color="primary" justify-content-center>
+        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12" style="-webkit-box-shadow: 0 0 10px gray;">
+          <div text-center>
+            <h4>पंजीकरण क्रमांक</h4>
+          </div>
+     <div padding style="margin-top: -10px;">
+            <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+              <ion-input class="ion-no-padding"  name="1" type="registration_id" placeholder="पंजीकरण क्रमांक" [(ngModel)]="registration_id" required></ion-input>
+            </ion-item>
+            </div>
+
+
+            <div text-center>
+              <h4>फोटो
+              </h4>
+            </div>
+       <div padding style="margin-top: -10px;">
+              <ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+                <!-- <ion-input class="ion-no-padding"  name="1" type="username" placeholder="पंजीकरण क्रमांक" [(ngModel)]="username" required></ion-input> -->
+                <ion-button expand="block" class="upload-button" style="--background: #377796!important; color: #fff;text-align: right;" (click)="captureImage()">
+                  <ion-icon slot="start" name="cloud-upload-outline"></ion-icon>
+                  Upload Picture
+                </ion-button>
+              </ion-item>
+              </div>
+              
+              <div class="image-container" *ngIf="this.mahatmapoto">
+                <img [src]="this.mahatmapoto" alt="Uploaded image">
+              </div>
+
+
+            <div  style="margin-top: 10px;">
+              <div text-center>
+                <h4>नाम</h4>
+              </div>
+            <ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+              <ion-input class="ion-no-padding"  name="2" type="name" placeholder="नाम" name="name" [(ngModel)]="name" required></ion-input>
+            </ion-item>
+          </div>
+          <div  style="margin-top: 10px;">
+            <div text-center>
+              <h4>पिता का नाम</h4>
+            </div>
+          <ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+            <ion-input class="ion-no-padding"  name="3" type="username" name="fathers_name" placeholder="पिता का नाम" [(ngModel)]="fathers_name" required></ion-input>
+          </ion-item>
+        </div>
+
+
+        <div  style="margin-top: 10px;">
+          <div text-center>
+            <h4>स्थाई पता</h4>
+          </div>
+        <ion-item style="margin-top: -10px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+          <ion-textarea
+          name="permanent_address"
+          [(ngModel)]="permanent_address"
+          placeholder="स्थाई पता"
+          class="ion-no-padding"
+          rows="8"
+          cols="25"
+          name="4"
+        ></ion-textarea>
+        </ion-item>
+      </div>
+  
+      <div  style="margin-top: 10px;">
+        <div text-center>
+          <h4>अस्थाई पता</h4>
+        </div>
+      <ion-item style="margin-top: -10px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+        <ion-textarea
+        name="temporary_address"
+        [(ngModel)]="temporary_address"
+        placeholder="अस्थाई पता"
+        class="ion-no-padding"
+        rows="8"
+        cols="25"
+        name="5"
+      ></ion-textarea>
+      </ion-item>
+    </div>
+
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>मोबाइल नंबर</h4>
+      </div>
+    <ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-input class="ion-no-padding"  name="contact" type="6" placeholder="मोबाइल नंबर" [(ngModel)]="contact" required></ion-input>
+    </ion-item>
+  </div>
+  
+  
+  
+  <div  style="margin-top: 10px;">
+    <div text-center>
+      <h4>वोटर आईडी</h4>
+    </div>
+  <ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+    <ion-input class="ion-no-padding"  name="number" type="7" placeholder="वोटर आईडी" name="voter_id" [(ngModel)]="voter_id" required></ion-input>
+  </ion-item>
+  </div>
+
+  
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>आधार आईडी</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="aadhaar_id" placeholder="आधार आईडी" [(ngModel)]="aadhaar_id" required></ion-input>
+</ion-item>
+</div>
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>जन्म दिनांक</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="9" type="username" placeholder="जन्म दिनांक" name="dob" [(ngModel)]="dob" required></ion-input>
+</ion-item>
+</div>
+
+<!-- <ion-modal   
+  [initialBreakpoint]="0.7" trigger="open-modal" >
+    <ng-template>
+      <ion-content>
+        <ion-datetime #fromdatetime   presentation="date" name="10" [(ngModel)]="fromdate"   showDefaultButtons="true" (ionChange)="from_date(fromdatetime.value)" ></ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal> -->
+
+
+
+
+  
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>जन्म का धर्म</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="जन्म का धर्म" name="birth_religion" [(ngModel)]="birth_religion" required></ion-input>
+</ion-item>
+</div>
+
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>जन्मस्थान</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <!-- <ion-input class="ion-no-padding"  name="8" type="username" placeholder="जन्मस्थान" [(ngModel)]="username" required></ion-input> -->
+  <ion-select placeholder="जन्मस्थान" name="birthplace" [(ngModel)]="birthplace">
+  <ion-select-option *ngFor="let citiesval of this.cities" value="{{citiesval.id}}">{{citiesval.name}}</ion-select-option>
+  </ion-select>
+</ion-item>
+</div>
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>जन्म का राज्य</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-select placeholder="जन्म का राज्य" name="birthstate" [(ngModel)]="birthstate">
+    <ion-select-option *ngFor="let statessval of this.states" value="{{statessval.id}}">{{statessval.name}}</ion-select-option>
+  </ion-select>
+</ion-item>
+</div>
+
+
+<!-- <div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>साधु बनने की तारीख</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="साधु बनने की तारीख" [(ngModel)]="username" required></ion-input>
+</ion-item>
+</div> -->
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>साधु बनने की तारीख</h4>
+  </div>
+<ion-item  style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="9" type="username" placeholder="साधु बनने की तारीख" name="monk_date" [(ngModel)]="monk_date" required></ion-input>
+</ion-item>
+</div>
+
+<!-- <ion-modal   
+  [initialBreakpoint]="0.7" trigger="open-modal1" >
+    <ng-template>
+      <ion-content>
+        <ion-datetime #fromdatetime   presentation="date" name="10" [(ngModel)]="sadhutareekh"   showDefaultButtons="true" (ionChange)="from_date(fromdatetime.value)" ></ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal> -->
+
+
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>वैवाहिक स्थिति</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-select placeholder="वैवाहिक स्थिति" name="marital_status" [(ngModel)]="marital_status">
+    <ion-select-option value="1">Single</ion-select-option>
+    <ion-select-option value="2">Married</ion-select-option>
+  </ion-select>
+</ion-item>
+</div>
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>वैवाहिक की तारीख</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="9" type="username" placeholder="वैवाहिक की तारीख" [(ngModel)]="username" required></ion-input>
+</ion-item>
+</div>
+
+<!-- <ion-modal   
+  [initialBreakpoint]="0.7" trigger="open-modal1" >
+    <ng-template>
+      <ion-content>
+        <ion-datetime #fromdatetime   presentation="date" name="10" [(ngModel)]="sadhutareekh"   showDefaultButtons="true" (ionChange)="from_date(fromdatetime.value)" ></ion-datetime>
+      </ion-content>
+    </ng-template>
+  </ion-modal> -->
+  
+  
+      
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>आश्रम</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="आश्रम" name="ashram" [(ngModel)]="ashram" required></ion-input>
+</ion-item>
+</div>
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>दीक्षा की जगह</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="दीक्षा की जगह" name="initiation_place" [(ngModel)]="initiation_place" required></ion-input>
+</ion-item>
+</div>
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>शिक्षा</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="शिक्षा" name="education" [(ngModel)]="education" required></ion-input>
+</ion-item>
+</div>
+
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>दीक्षा</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="दीक्षा" name="initiation" [(ngModel)]="initiation" required></ion-input>
+</ion-item>
+</div>
+
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>गुरु का नाम</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="गुरु का नाम" name="gurus_name" [(ngModel)]="gurus_name" required></ion-input>
+</ion-item>
+</div>
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>गुरु का पता</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="गुरु का पता" name="gurus_address" [(ngModel)]="gurus_address" required></ion-input>
+</ion-item>
+</div>
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>गुरु दक्ष स्थान</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="गुरु दक्ष स्थान" name="gurus_location" [(ngModel)]="gurus_location" required></ion-input>
+</ion-item>
+</div>
+
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>फेसबुक</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="फेसबुक" name="facebook" [(ngModel)]="facebook" required></ion-input>
+</ion-item>
+</div>
+
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>इंस्टाग्राम</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="इंस्टाग्राम" name="instagram" [(ngModel)]="instagram" required></ion-input>
+</ion-item>
+</div>
+
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>यूट्यूब</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="यूट्यूब" name="youtube" [(ngModel)]="youtube" required></ion-input>
+</ion-item>
+</div>
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>व्हाट्सएप</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="व्हाट्सएप" name="whatsapp" [(ngModel)]="whatsapp" required></ion-input>
+</ion-item>
+</div>
+
+
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>वेबसाइट</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="वेबसाइट" name="website" [(ngModel)]="website" required></ion-input>
+</ion-item>
+</div>
+        
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>महात्मा श्रेणि / padavi</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <!-- <ion-select placeholder="महात्मा श्रेणि" name="mahatma_category" [(ngModel)]="mahatma_category">
+    <ion-select-option value="option1">jagatguru</ion-select-option>
+    <ion-select-option value="option2">Gujrat</ion-select-option>
+  </ion-select> -->
+
+  <ion-select placeholder="महात्मा श्रेणि" name="mahatma_category" [(ngModel)]="mahatma_category">
+    <ion-select-option *ngFor="let padavi of this.padavis" value="{{padavi.id}}">{{padavi.name}}</ion-select-option>
+    </ion-select>
+</ion-item>
+</div>
+        
+
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>सम्प्रदाय</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding"  name="8" type="username" placeholder="सम्प्रदाय" name="sect" [(ngModel)]="sect" required></ion-input>
+</ion-item>
+</div>
+
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>अखाड़ा</h4>
+  </div>
+<ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <!-- <ion-select placeholder="अखाड़ा" name="arena" [(ngModel)]="arena">
+    <ion-select-option value="option1">श्री पंचायती अखाड़ा</ion-select-option>
+    <ion-select-option value="option2">Gujrat</ion-select-option>
+  </ion-select> -->
+<ion-select placeholder="अखाड़ा" name="arena" [(ngModel)]="arena">
+    <ion-select-option *ngFor="let akhada of this.akhadas" value="{{akhada.id}}">{{akhada.name}}</ion-select-option>
+    </ion-select>
+</ion-item>
+</div>
+
+
+
+
+
+<div  style="margin-top: 10px;">
+  <div text-center>
+    <h4>अपने बारे में विचरण</h4>
+  </div>
+<ion-item style="margin-top: -10px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-textarea
+          name="description"
+          [(ngModel)]="description"
+          placeholder="अपने बारे में विचरण"
+          class="ion-no-padding"
+          rows="8"
+          cols="25"
+          name="4"
+        ></ion-textarea>
+</ion-item>
+</div>
+
+
+
+<!--service starts  -->
+
+<ion-button expand="full" (click)="addRelative()">Add Service</ion-button>
+
+<div id="relatives_ID">
+  <div *ngFor="let service of services; let i = index">
+    <div>&nbsp;</div>
+    <div>&nbsp;</div>
+  
+  <div text-center>
+  <h4 style="font-weight: bold;">Service {{i}}</h4>
+</div>
+
+
+
+  
+
+
+<ion-row>
+  <ion-col size="6">
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Enter Service Name</h4>
+      </div>
+    <ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-input class="ion-no-padding"  name="8" type="username" placeholder="Enter Service Name" name="service_name[]" [(ngModel)]="username[i]" required></ion-input>
+    </ion-item>
+      </div>
+  </ion-col>
+
+  <ion-col size="6">
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Enter Service Price</h4>
+      </div>
+    <ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <!-- <ion-input class="ion-no-padding"  name="username" type="number" placeholder="Enter Service Price" [(ngModel)]="username" required></ion-input> -->
+      <ion-input class="ion-no-padding"  name="8" type="username" placeholder="Enter Service Price" name="service_price[]" [(ngModel)]="service_price[i]" required></ion-input>
+    </ion-item>
+      </div>
+   </ion-col>
+</ion-row>
+
+
+<ion-row>
+  <ion-col size="12">
+    <div  style="margin-top: 10px;">
+      <div text-center>
+        <h4>Add Notest For Service</h4>
+      </div>
+    <ion-item style="margin-top: -10px;height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+      <ion-textarea
+          name="service_note[]"
+          [(ngModel)]="service_note[i]"
+          placeholder="Add Notest For Service"
+          class="ion-no-padding"
+          rows="8"
+          cols="25"
+          name="4"
+        ></ion-textarea>
+    </ion-item>
+      </div>
+  </ion-col>
+
+
+</ion-row>
+
+
+
+
+
+</div>
+
+</div>
+<!--service ends-->
+
+            <ion-button  color="linear-gradient(#007ab3, #055073)" 
+            expand="block" size="large" 
+            style="border-radius: 15px;height:32px;margin-top:15px;
+            font-size:11px;font-weight:bold;background-color: #10a3f7;width:30%;margin-left:70%" type="submit" expand="block" (click)="savemahatma()">Register</ion-button>
+              
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+    
+</ion-content>

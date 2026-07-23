@@ -1,0 +1,214 @@
+header {
+    position: relative;
+    height: 207px;
+    background-image: linear-gradient(#007ab3, #055073);
+  // background-image: #483f98;
+   
+  } 
+        
+  .divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100px;
+    /* drop the height to have a constant angle for all screen widths */
+  }
+  .first{
+    width: 100%;
+    background-color: #eceff8;
+  }
+  ion-toolbar{
+    //--background: #055073;
+    //--background: #055073;
+    --background: linear-gradient(#d8a1c9, #4e79a3)!important;
+    --color: white; 
+    
+  }
+
+
+
+  .alert-head.sc-ion-alert-md
+  {
+      --background: red!important;
+  }
+  
+  
+  section {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          height: 10%;
+          //min-height: 291px;
+         // padding-top: 100px;
+          
+         
+         //background: #3c31dd;
+         background: #055073;
+          
+      }
+      .curve {
+          position: absolute;
+          height: 61px;
+          width: 100%;
+          bottom: 0;
+          text-align: center;
+          
+      }
+      .curve::before {
+          content: '';
+          display: block;
+          position: absolute;
+          border-radius: 100% 50%;
+          width: 58%;
+          height: 100%;
+          transform: translate(74%, 57%);
+          background-color: white;
+      }
+      .curve::after {
+          content: '';
+          display: block;
+          position: absolute;
+          border-radius: 100% 50%;
+          width: 55%;
+          height: 100%;
+          background-color: #055073;
+          transform: translate(-4%, 27%);
+          z-index: -1;
+      }
+      h4{
+          color: #055073;
+          font-size: 14px!important;
+          margin-bottom: 20px;
+      }
+      :host(.button-solid)
+      {
+          --background: linear-gradient(#007ab3, #055073)!important;
+      }
+      
+      
+      
+  
+
+
+
+
+  .rightdiv
+{
+  width: 70%;
+  background-color: white;
+  float: left;
+  height: 50px;
+  font-size: 10px;
+  font-weight: bold;
+  padding-top: 2px;
+  padding-left: 3px;
+  padding-right: 2px;
+}
+/*
+ion-icon{
+    background-color:#055073;                               
+    height:25px;
+    width:26px;
+    line-height:25px;
+    border-radius:50%;
+    font-size:2.9rem;
+    padding: 4px;
+    color: white;
+
+}*/
+
+.item-background-color{
+    --ion-item-background:#F0F5F8;
+    margin-top: 12px;
+    height: 42px;
+}
+    .ion-item
+{
+                    background-color:red;               
+                    
+                    
+}
+.appForm{
+    margin-top: -53px;
+    .item{
+        &.item-block{
+            border-radius:0px!important;
+            .icon{
+                
+                height:35px;
+                width:36px;
+                line-height:25px;
+                border-radius:50%;
+                font-size:2.9rem;
+                padding: 4px;
+                color: white;
+
+            }
+            &.item-textarea{
+                .text-input{
+                    padding:5px 0px;
+                }
+            }
+        }
+        [disabled]{
+            opacity:1!important;
+        }
+        &.item-input-disabled,&.item-select-disabled{
+            opacity:.7;
+            .select-disabled,.label{
+                opacity:1!important;
+            }
+        }
+    }
+}
+.footer{
+    
+    .button{
+        margin:0px;
+        width:100%;
+    }
+}
+.profile_info 
+{
+ //   background: #055073!important;
+      //background: #93cad3!important;
+      background: #055073!important;
+      
+}
+
+.appForm .item.item-block .icon
+{
+    background-color: #055073;
+}
+
+
+
+header {
+    position: relative;
+    height: 207px;
+    background-image: linear-gradient(#007ab3, #055073);
+  }
+  
+  h1 {
+    margin: 0;
+    padding: 100px 0;
+    font: 44px "Arial";
+    text-align: center;
+  }
+  
+  header h1 {
+    color: white;
+  }
+  
+  .divider {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100px;
+    /* drop the height to have a constant angle for all screen widths */
+  }

@@ -1,0 +1,33 @@
+.segment-ios-secondary .segment-button
+{
+  
+  border-bottom: solid #b9b9b9 1px!important;
+  border-top: solid #F0F5F8 1px!important;
+  border-left: solid #F0F5F8 1px!important;
+  border-right: solid #F0F5F8 1px!important;
+  color: #055073!important;
+}
+.list .item.item-block
+{
+  margin-top: 8px!important;
+}
+.segment-ios-secondary .segment-button.segment-activated
+{
+  background: #055073!important;
+}
+
+ion-toolbar{
+  // --background: #055073;
+  --background: linear-gradient(#d8a1c9, #4e79a3)!important;
+  --color: white; 
+ }
+ ion-segment-button::part(indicator-background) {
+  background: #055073;
+}
+.segment-button-checked.md::part(native) {
+  color: #055073;
+}
+
+ion-content {
+  --ion-background-color: #eceff8;
+}

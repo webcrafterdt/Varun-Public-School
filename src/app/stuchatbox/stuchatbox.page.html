@@ -1,0 +1,159 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title style="text-transform: capitalize!important;">{{this.HeaderName}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+
+
+
+
+<ion-content >
+  <ion-list *ngFor="let chatmessage of this.chat_box">
+    <div class="message-container">
+      <!-- User's messages -->
+      <ng-container *ngIf="chatmessage.message_from == 'you'">
+        <ion-item lines="none" class="message-bubble self">
+          <div class="message-content">
+            <p class="message-text">{{chatmessage.Message}}</p>
+          </div>
+        </ion-item>
+        <ion-item class="message-header self">
+          <div class="message-content" style="margin-top: -33px;">
+            <p class="message-text" style="font-size: 10px!important;">You &nbsp;&nbsp; {{chatmessage.currentdatetime}}
+            </p>
+          </div>
+        </ion-item>
+      </ng-container>
+
+      <!-- Other person's messages -->
+      <ng-container *ngIf="chatmessage.message_from != 'you'">
+
+        <!-- If File is not attacheced starts -->
+        <!-- <ion-item lines="none" class="message-bubble other" *ngIf="!chatmessage.attached_file">
+          <div class="message-content">
+            <p class="message-text">{{chatmessage.Message}} </p>
+          </div>
+        </ion-item> -->
+        <!-- If File is not attacheced ends -->
+
+        <!-- If File is attacheced starts -->
+
+        <!-- <ion-item lines="none" class="message-bubble other" *ngIf="chatmessage.attached_file">
+          <div class="message-content" *ngIf="chatmessage.attached_file" style="background: none">
+            <img  (click)="openfile(chatmessage.attached_file)" src="{{chatmessage.attached_file}}" style="width:87px;height:87px;margin-top: 5px;border:solid gray 1px;border-radius: 5px;" />
+          </div>
+        </ion-item> -->
+        <ion-item lines="none" class="message-bubble other" *ngIf="chatmessage.attached_file && chatmessage.is_pdf_file != 'Y'">
+          <div class="message-content" *ngIf="chatmessage.attached_file" style="background: none">
+            <img (click)="openfile(chatmessage.attached_file)" src="{{chatmessage.attached_file}}"
+              style="width:57px;height:57px;margin-top: 5px;border:solid gray 1px;border-radius: 5px;" />
+            
+
+          </div>
+        </ion-item>
+
+        <ion-item lines="none" class="message-bubble other" *ngIf="chatmessage.is_pdf_file == 'Y'">
+          <div class="message-content" *ngIf="chatmessage.attached_file" style="background: none">
+            <img (click)="downloadFile(chatmessage.attached_file)" src="/assets/pdf_icon.png"
+              style="width:57px;height:57px;margin-top: 5px;" />
+          </div>
+        </ion-item>
+
+
+
+        <ion-item lines="none" class="message-bubble other" *ngIf="chatmessage.Message">
+
+
+          <div class="message-content" >
+            <p class="message-text">{{chatmessage.Message}} </p>
+          </div>
+        </ion-item>
+        <!-- If File is attacheced ends -->
+
+
+
+        <!-- <ion-item class="message-header">John <span class="message-time">10:15 AM</span></ion-item> -->
+        <ion-item class="message-header">
+          <div class="message-header" style="margin-top: -33px;">
+            &nbsp; From: &nbsp;&nbsp;{{chatmessage.message_from}} &nbsp;&nbsp;<span
+              class="message-time">{{chatmessage.currentdatetime}}</span>
+          </div>
+        </ion-item>
+      </ng-container>
+
+      <!-- User's messages -->
+
+
+    </div>
+  </ion-list>
+
+  
+<ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="this.chat_box_length == 0">
+  <ion-card >
+  <ion-item>
+       <div style="width:100%;">
+      <h6 style="font-size: 12px;color: gray;">No Messages Found..!!</h6>
+        
+        
+    </div>
+  </ion-item>
+
+</ion-card>
+</ion-list>
+
+</ion-content>
+
+
+
+
+
+
+
+
+
+
+
+<!-- <ion-footer>
+  <br/>
+  <div  *ngIf="this.userImg"  [ngStyle]="{'display':hideimagediv}" style="padding-left: 10px;margin-top: 15px;font-family: Calibri, Helvetica, sans-serif;color: gray;position: relative;height: 119px;width: 119px;">
+    
+    <img class="user-profile-img" style="height: 119px;width: 119px;" *ngIf="this.userImg" src="{{this.userImg}}" alt="">
+    <img class="user-profile-img" *ngIf="this.userImg" style="position: absolute;
+    color: white;
+    top: -5px;
+    right: -5px;width: 15px;height: 15px;" src="assets/close-02.png" alt="" (click)="cancelimage()">
+   <br/>
+   <br/>
+
+  </div>
+  
+  <div style="width:100%">
+    <div style="width:10%;float:left;height: 35px;background-color: white;text-align:right">
+      <button class="button button-positive" style="background-color: white!important;" large>
+        <img src="assets/plus.png" style="margin-top: 6px;" (click)="SelectPic()" />
+      </button>
+    </div>
+    <div style="width:80%;float:left;height: 35px;">
+      <ion-item style="height: 35px;">
+        <ion-input [(ngModel)]="message_text" type="text"></ion-input>
+
+      </ion-item>
+    </div>
+
+    <div style="width:10%;float:right;height: 35px;background-color: white;text-align:right">
+      <button class="button button-positive" style="background-color: white!important;" large>
+        <ion-icon name="send-outline" style="margin-top: 6px;width: 25px;height: 20px;"
+          (click)="sendmessage()"></ion-icon>
+      </button>
+    </div>
+  </div>
+  <br/>
+
+
+</ion-footer> -->

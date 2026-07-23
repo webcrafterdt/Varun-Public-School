@@ -1,0 +1,146 @@
+.segment-ios-secondary .segment-button
+{
+  
+  border-bottom: solid #b9b9b9 1px!important;
+  border-top: solid #F0F5F8 1px!important;
+  border-left: solid #F0F5F8 1px!important;
+  border-right: solid #F0F5F8 1px!important;
+  color: #055073!important;
+}
+.list .item.item-block
+{
+  margin-top: 8px!important;
+}
+.segment-ios-secondary .segment-button.segment-activated
+{
+  background: #055073!important;
+}
+
+ion-toolbar{
+  // --background: #055073;
+  --background:#055073;
+   --color: white; 
+ }
+ ion-segment-button::part(indicator-background) {
+  background: #055073;
+}
+.segment-button-checked.md::part(native) {
+  color: #055073;
+}
+.grid2{
+    margin-top: 25px;
+    background-color: #eceff8;
+    //height: 40%;
+    width: 95%;
+    border-radius: 5px;
+    box-shadow: 1px 4px 9px 8px gray;
+  
+    }
+
+    header {
+      position: relative;
+      height: 207px;
+      background-image: linear-gradient(#007ab3, #055073);
+    }
+    
+
+    section {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      height: 10%;
+      //min-height: 291px;
+     // padding-top: 100px;
+      
+     
+     //background: #3c31dd;
+     background: #055073;
+      
+  }
+  .curve {
+      position: absolute;
+      height: 61px;
+      width: 100%;
+      bottom: 0;
+      text-align: center;
+      
+  }
+  .curve::before {
+      content: '';
+      display: block;
+      position: absolute;
+      border-radius: 100% 50%;
+      width: 58%;
+      height: 100%;
+      transform: translate(74%, 57%);
+      background-color: white;
+  }
+  .curve::after {
+      content: '';
+      display: block;
+      position: absolute;
+      border-radius: 100% 50%;
+      width: 55%;
+      height: 100%;
+      background-color: #055073;
+      transform: translate(-4%, 27%);
+      z-index: -1;
+  }
+  h4{
+      color: #055073;
+      font-size: 14px!important;
+      margin-bottom: 20px;
+  }
+  :host(.button-solid)
+  {
+      --background: linear-gradient(#007ab3, #055073)!important;
+  }
+  
+
+  
+
+header {
+  position: relative;
+  height: 207px;
+  background-image: linear-gradient(#007ab3, #055073);
+}
+
+h1 {
+  margin: 0;
+  padding: 100px 0;
+  font: 44px "Arial";
+  text-align: center;
+}
+
+header h1 {
+  color: white;
+}
+
+.divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100px;
+  /* drop the height to have a constant angle for all screen widths */
+}
+
+
+
+
+ ion-modal
+{
+top: 10%;
+}
+
+.grid_modal
+{
+  background-color: #eceff8;
+  height: 79%;
+  width: 95%;
+  border-radius: 5px;
+  box-shadow: 1px 4px 9px 8px gray;
+  margin-top:15px;
+}

@@ -1,0 +1,192 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Assign Students</ion-title>
+  </ion-toolbar>
+
+  <ion-segment [(ngModel)]="category" style="background-color:#e4f3f7!important">
+    <ion-segment-button value="applicationlist" style="border:none;color:black;font-size:12px"
+      (click)="applied_leaves()">
+      ASSIGN STUDENT
+    </ion-segment-button>
+    <ion-segment-button value="writeapplication" style="border:none;color:black;font-size:12px">
+      ASSIGNED STUDENT
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+
+
+
+  <div [ngSwitch]="category">
+    <ion-list *ngSwitchCase="'applicationlist'">
+
+      <ng-container >
+
+        <ng-container>
+          <!-- <ion-row class="custom-row" (click)="secwiseDue(DueAmount)"> -->
+          <ion-row class="custom-row">
+
+            <ion-col size="8" class="text-column">
+
+              <ion-select placeholder="Student" style="padding:2px 5px 2px 7px !important;color: black;font-size: 10px;
+          border-radius:4px !important;" [(ngModel)]="circulartype" (ionChange)="SelectCircular($event)">
+                <ion-select-option value="all">All Student/Parents</ion-select-option>
+                <ion-select-option value="selected">Selected Student/Parents</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+
+
+        <ng-container *ngIf="this.CircularType == 'selected'">
+          <ion-row class="custom-row">
+
+            <ion-col size="8" class="text-column">
+
+              <ion-select placeholder="Select Class" style="padding:2px 5px 2px 7px !important;color: black;font-size: 10px;
+            border-radius:4px !important;" [(ngModel)]="circulsartype" (ionChange)="gettransid($event)">
+                <ion-select-option *ngFor="let classdata of this.ClassArray"
+                  value="{{classdata.transid}}">{{classdata.classname}}</ion-select-option>
+              </ion-select>
+            </ion-col>
+          </ion-row>
+        </ng-container>
+
+
+
+
+        <ng-container *ngIf="this.CircularType == 'selected'">
+
+          <div *ngIf="this.CircularType == 'selected'"
+            style="    margin-left: 5%;
+      margin-bottom: 2%;margin-top: 7%;font-weight: bold;width: 100%; text-align: left;font-size: 12px;color:black;text-transform: uppercase;">Student Listing
+          </div>
+          <ng-container *ngFor="let StuData of studentlist">
+
+            <ion-row class="custom-row">
+              <ion-col size="1">
+                <div style="border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;width: 6%;float: left;background: linear-gradient(#d8a1c9, #4e79a3)!important;
+        height:100%;display: flex;justify-content: center;align-items: right;">
+                  <!-- <input  type="checkbox"  (change)="checkboxChanged($event,due_fee,this.Due_Bills,this.Due_Bills_Object)"  alt="{{q}}" [(ngModel)]="this.Due_Bills[due_fee].bill_checked"  > -->
+
+                  <input type="checkbox" (change)="checkboxChanged($event,this.studentlist,StuData.stuid)">
+
+                </div>
+              </ion-col>
+              <ion-col size="11">
+                <div style="width: 100%;">
+                  <div style="float: left; width: 20%;" (click)="stufeedetail(StuData.stuid)">
+                    <img src="./assets/010.png"
+                      style="margin-top: -9px; height: 40px; width: 40px; border-radius: 50%;">
+                  </div>
+                  <div style="float: left; width: 80%;">
+                    <div style="width: 100%;display: flex;  align-items: center; justify-content: space-between;">
+                      <div style="width: 100%; text-align: left;font-size: 12px;color:black;text-transform: uppercase;"
+                        (click)="stufeedetail(StuData.stuid)">{{ StuData.Stu_Name }}</div>
+                      <div style="width: 70%; text-align: right;font-size: 11px;color:gray"
+                        (click)="stufeedetail(StuData.stuid)"></div>
+                      <!-- <ion-icon name="chevron-forward-outline" style="color: gray;margin-top: 2px;"></ion-icon> -->
+                      <!-- <ion-icon name="chatbox-outline" style="color: gray;margin-top: 2px;width: 70px;height: 23px;;"
+                            (click)="chatbox(StuData.stuid,StuData.Stu_Name)"></ion-icon> -->
+                    </div>
+                    <div style="width: 100%;  align-items: center; justify-content: space-between;"
+                      (click)="stufeedetail(StuData.stuid)">
+                      <div style="width: 100%; text-align: left;font-size: 11px;color:gray">Father - {{
+                        StuData.Father_Name }}</div>
+                    </div>
+
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ng-container>
+        </ng-container>
+
+
+
+
+
+
+
+      </ng-container>
+
+      <!-- </ion-item> -->
+
+
+
+      <!-- <ion-list style="background-color: #F0F5F8;" *ngIf="this.applied_leaves.length == 0">
+        <ion-card>
+          <ion-item>
+            <div style="width:100%;">
+              <h5 style="font-size: 11px;"><b>Currenty No Leave Applied..!!</b></h5>
+            </div>
+          </ion-item>
+        </ion-card>
+      </ion-list> -->
+
+
+    </ion-list>
+
+
+
+    <ion-card *ngSwitchCase="'writeapplication'" style="background-color: #F0F5F8;">
+      <ion-col size="4" class="text-column" style="float: right;" *ngIf="this.AssignedCircular">
+        <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="background: linear-gradient(#d8a1c9, #4e79a3)!important;border-radius: 5px;
+        height:34px;color: white;
+        font-size:12px;font-weight:bold;margin-right: 3px;" type="submit" expand="block" (click)="deletestudent('all','','')">Delete All -</ion-button>
+      </ion-col>
+
+      <ng-container *ngFor="let SssignedStudent of AssignedCircular">
+
+        <ion-row class="custom-row">
+          <ion-col size="12">
+            <div style="width: 100%;">
+              <div style="float: left; width: 20%;">
+                <img src="./assets/010.png" style="margin-top: -9px; height: 40px; width: 40px; border-radius: 50%;">
+              </div>
+              <div style="float: left; width: 70%;">
+                <div style="width: 100%;display: flex;  align-items: center; justify-content: space-between;">
+                  <div style="width: 100%; text-align: left;font-size: 12px;color:black;text-transform: uppercase;">{{
+                    SssignedStudent.Stu_Name }}</div>
+                  <div style="width: 70%; text-align: right;font-size: 11px;color:gray"></div>
+                  <!-- <ion-icon name="chevron-forward-outline" style="color: gray;margin-top: 2px;"></ion-icon> -->
+                  <!-- <ion-icon name="chatbox-outline" style="color: gray;margin-top: 2px;width: 70px;height: 23px;;"
+                        (click)="chatbox(StuData.stuid,StuData.Stu_Name)"></ion-icon> -->
+                </div>
+                <div style="width: 100%;  align-items: center; justify-content: space-between;">
+                  <div style="width: 100%; text-align: left;font-size: 11px;color:gray">Father - {{
+                    SssignedStudent.Father_Name }}</div>
+                </div>
+
+              </div>
+              <div style="float: left; width: 10%;">
+                <img src="./assets/trash.png" style="height: 24px;" (click)="deletestudent('single',SssignedStudent.stuid,SssignedStudent.Circular_Trans_Id)">
+              </div>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+    </ion-card>
+
+  </div>
+
+
+</ion-content>
+<ion-footer *ngIf="this.category == 'applicationlist'">
+  <ion-col size="4">
+    <ng-container>
+      <button ion-button block color="color1" (click)="AssignCircular()" style="box-shadow: rgb(132 156 171) 0px 0px 4px;width: 35%;margin-left: 60%;
+color: white;font-size:13px;font-weight:bold;border-radius: 5px;padding:13px;margin-bottom: 10px;margin-top: 10px;
+padding: 13px;border: solid #D8A1C9 1px;  color: white;background: linear-gradient(to right, #D8A1C9, #4e79a3);">
+        <img src="assets/paymentproceed.png" style="    height: 20px;
+width: 23px;margin-right: 12px;margin-bottom: -5px;
+margin-left: -5px;border-radius: 10%!important; ">
+        Proceed</button>
+    </ng-container>
+  </ion-col>
+</ion-footer>

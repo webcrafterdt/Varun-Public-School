@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Submit Assignment</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: #F0F5F8;">
+  
+  <ion-list style="background-color: #F0F5F8;">
+    <ion-card>
+    <ion-item >
+       <div style="width:100%;" >
+          <h5 style="font-size: 14px;color: #055073;"><b>{{this.title}}</b></h5>
+
+      </div>
+    </ion-item>
+  </ion-card>
+</ion-list>
+
+<ion-card>
+<ion-item style="height:43px;background-color: #F0F5F8;box-shadow: rgb(122 131 137) 0px 0px 4px">
+  <ion-input class="ion-no-padding" name="htitle" type="text" placeholder="Title" [(ngModel)]="htitle"  ></ion-input>
+</ion-item>
+</ion-card>
+  <ion-card >
+
+    
+     <quill-editor    [(ngModel)]="quillData"     (onContentChanged)="onContentChanged($event)" ></quill-editor>
+ 
+ </ion-card>
+
+
+  <ion-item >
+    <button ion-button block color="color1" (click)="submit_homework('SignInPage')" style="width: 100%;color: white;font-size:13px;font-weight:bold;border-radius: 5px;    background: #055073;padding:13px;">Submit Assignment</button>
+    </ion-item>
+
+</ion-content>

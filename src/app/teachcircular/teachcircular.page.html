@@ -1,0 +1,139 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  style="background-color: #eceff8;">
+  <div style=" height: 60px;
+  /*background: linear-gradient(#007ab3, #055073);*/
+  background-color: #e4f3f7;
+  border-bottom-left-radius: 193px 21px;
+  border-bottom-right-radius: 250px 140px;
+  margin-bottom: 20px;    box-shadow: -1px 4px  5px #bfbfbf;">
+<p style="margin: 0px!important;padding-left: 20px;
+font-size: 18px!important;color: white;padding-top: 5px;color:#575757">Circular</p>
+<div style="margin: 0px!important; width: 100%;padding-top: 7px;">
+
+
+</div>
+</div>
+
+
+
+
+
+
+<div style="margin-top:20px;"></div>
+
+
+
+<ion-list style="background-color: #eceff8;" >
+  <ion-card *ngFor="let curc of circulars;let i =index" style="background-color: white!important;">
+  
+    <div style="width:100%;background-color: white!important;padding: 5px;">
+      <h5 style="font-size: 13px;color:#055073;font-weight:bold">{{curc.Title}}</h5>
+       <h5 style="font-size: 13px;;"  [innerHTML]="curc.Description"></h5>
+      <!--<h6 style="font-size: 13px;"><b style="color: #055073;">From </b>: 20/11/2022</h6>
+          <h6 style="font-size: 13px;"><b style="color: #055073;">To </b>: 22/12/2022</h6>-->
+      <!--<h5 style="font-size: 12px;color:gray" *ngFor="let files of this.circulars[curc].CircularFileTran;let q =index">-->
+
+<ion-icon name="document-outline"  *ngIf="curc.display_download == 'Y'"
+ style="color: #055073;" (click)="opefile(curc.circular_file_path)" ></ion-icon>
+
+<!--</h5> -->
+    </div>
+  
+</ion-card>
+
+
+
+</ion-list>
+
+
+
+<ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="this.circulars.length == 0">
+  <ion-card >
+  <ion-item>
+       <div style="width:100%;">
+      <h6 style="font-size: 12px;color: black;">Circular Not Found..!!</h6>
+        
+        
+    </div>
+  </ion-item>
+
+</ion-card>
+</ion-list>
+<!--
+<ion-grid  style="flex-wrap: nowrap;
+overflow-x: scroll!important;
+overflow-y: hidden;" class="grid2" >
+
+
+  <ion-row color="primary" justify-content-center style="background-color: rgb(236, 239, 248);flex-wrap: nowrap;">
+    
+    <ion-col align-self-center size-md="6"  size="8" style="background-color: #055073;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;border-right: solid gray 1px;color: white;">
+      Title
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="4" style="background-color: #055073;font-size: 15px;text-align: center;font-weight: bold;color: black;height: 40px;padding-top: 11px;border-right: solid gray 1px;color: white">
+      From 
+    </ion-col>
+    <ion-col align-self-center size-md="6"  size="4" style="background-color: #055073;font-size: 15px;text-align: center;font-weight: bold;color: black;height: 40px;padding-top: 11px;color: white">
+      To
+    </ion-col>
+
+
+
+  </ion-row>
+
+
+  
+  <ion-row color="primary" justify-content-center  style="flex-wrap: nowrap;
+  background-color: rgb(236, 239, 248);margin-top: 2%;"  >
+     <ion-col   align-self-center size-md="6"  size="8" style="background-color: rgb(236, 239, 248);font-size: 10px;color: #055073;min-height: 40px;padding-top: 11px;border-right: solid gray 1px;">
+     asdasdsd
+    </ion-col>
+    <ion-col  align-self-center size-md="6"  size="4" style="text-align:center; background-color: rgb(236, 239, 248);font-size: 10px;color: #055073;min-height: 40px;padding-top: 11px;border-right: solid gray 1px;">
+      
+      aaaa
+    </ion-col>
+    <ion-col  align-self-center size-md="6"  size="4" style="text-align:center; background-color: rgb(236, 239, 248);font-size: 10px;color: #055073;min-height: 40px;padding-top: 11px;">
+      
+      aaaa
+    </ion-col>
+
+  </ion-row>
+
+
+
+
+
+</ion-grid>-->
+
+
+
+<!--<ion-grid  style="flex-wrap: nowrap;
+overflow-x: scroll!important;
+overflow-y: hidden;" class="grid2" *ngIf="this.error != false">
+    <ion-row color="primary" justify-content-center  style="flex-wrap: nowrap;
+    background-color: #fed4d5;margin-top: 2%;"  >
+    <ion-col   align-self-center size-md="6"  size="12" style="font-weight:bold; text-align:center; background-color: #fed4d5;font-size: 12px;color: #483f98;min-height: 40px;padding-top: 11px;">
+      {{this.dowloads.errorMessage}}
+     </ion-col>
+    </ion-row>
+
+</ion-grid>-->
+
+<!-- <ion-list style="background-color: #F0F5F8;" *ngIf="this.circulars.length == 0" >
+  <ion-card >
+  <ion-item>
+     <div style="width:100%;">
+       <h5 style="font-size: 11px;"><b>{{this.message}}</b></h5>
+     </div>
+  </ion-item>
+</ion-card>
+</ion-list> -->
+</ion-content>

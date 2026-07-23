@@ -1,0 +1,7 @@
+{
+  "name": "rsmi school",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

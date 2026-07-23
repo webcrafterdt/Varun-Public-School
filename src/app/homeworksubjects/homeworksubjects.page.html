@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Assign HomeWork</ion-title>
+  </ion-toolbar>
+
+  <ion-segment [(ngModel)]="category" style="background-color:#e4f3f7!important">
+    <ion-segment-button value="applicationlist" style="border:none;color:black;font-size:12px"
+      (click)="applied_leaves()">
+      HOMEWORKS
+    </ion-segment-button>
+
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+  <div>
+
+
+
+    <ng-container *ngIf="this.status == true">
+      <ion-row class="custom-rowheader">
+        <ion-col size="9" class="text-column">
+          <p class="text">Subjects</p>
+        </ion-col>
+        <ion-col size="3" class="amount-column">
+          <p class="amount">&nbsp;</p>
+        </ion-col>
+      </ion-row>
+
+      <ng-container *ngFor="let subjectdata of this.TeacherSubjectList">
+        <ion-row class="custom-row" (click)="ProceedToHomeWork(subjectdata.subid)">
+          <ion-col size="8" class="text-column">
+            <p class="text">{{subjectdata.subname}}</p>
+          </ion-col>
+          <ion-col size="3" class="amount-column" style="justify-content: right!important;">
+            <p class="amount">&nbsp;</p>
+          </ion-col>
+          <ion-col size="1" class="amount-column">
+            <ion-icon name="chevron-forward-outline" style="color: gray;"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </ng-container>
+    </ng-container>
+
+
+ </div>
+
+
+
+
+  <ion-list style="background-color: #F0F5F8;" *ngIf="this.status == false">
+    <ion-card>
+      <ion-item>
+        <div style="width:100%;">
+          <h5 style="font-size: 11px;"><b>{{this.message}}</b></h5>
+        </div>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+</ion-content>

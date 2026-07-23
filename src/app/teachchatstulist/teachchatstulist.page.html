@@ -1,0 +1,114 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Student List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+
+
+
+  <!-- <ion-row class="custom-rowheader" >
+    <ion-col size="9" class="text-column">
+      <p class="text">Classes</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column">
+      <p class="amount">&nbsp;</p>
+    </ion-col>
+  </ion-row> -->
+  <div style="background-color: #eceff8;height: 7px;">&nbsp;</div>
+  <ng-container *ngFor="let StuData of StuInGroup">
+
+    <!-- <ion-row>
+      <ion-col size="4"><img [src]="student.photo" *ngIf="student.photo" style="margin-top: -10px;height: 40px;width: 40px;border-radius: 50%;">
+          <img src="./assets/010.png" *ngIf="!student.photo" style="margin-top: -11px;height: 40px;width: 40px;border-radius: 50%;">
+      </ion-col>
+      <ion-col size="7" style="font-size: 11px;font-weight:bold;margin-top: -10px;background-color: white!important;color: black;height: 33px;">{{student.stuname}}
+         <br/>
+         <p style="color:gray;margin-top: 4px;">
+          {{student.enrollno}}
+         </p>
+         
+      </ion-col>
+  </ion-row> -->
+
+
+    <ion-row class="custom-row">
+      <ion-col size="12">
+        <div style="width: 100%;">
+          <div style="float: left; width: 20%;" (click)="stufeedetail(StuData.stuid)">
+            <img src="./assets/010.png" style="margin-top: -9px; height: 40px; width: 40px; border-radius: 50%;">
+          </div>
+          <div style="float: left; width: 80%;">
+            <div style="width: 100%;display: flex;  align-items: center; justify-content: space-between;">
+              <div style="width: 100%; text-align: left;font-size: 12px;color:black;text-transform: uppercase;"
+                (click)="stufeedetail(StuData.stuid)">{{ StuData.Stu_Name }}</div>
+              <div style="width: 70%; text-align: right;font-size: 11px;color:gray"
+                (click)="stufeedetail(StuData.stuid)"></div>
+              <!--Chat Box-->
+               <!-- <ion-icon name="chatbox-outline" style="color: gray;margin-top: 2px;width: 70px;"
+                (click)="chatbox(this.group_id,StuData.stuid)"></ion-icon> -->
+                <ion-icon name="chatbox-outline" style="color: gray;margin-top: 2px;width: 70px;height:24px;"
+                (click)="chatbox(StuData.stuid,StuData.Stu_Name)"></ion-icon>
+
+
+            </div>
+            <!-- <div style="width: 100%;  align-items: center; justify-content: space-between;" (click)="stufeedetail(StuData.stuid)">
+            <div style="width: 100%; text-align: left;font-size: 11px;color:gray">Father - {{ StuData.Father_Name }}</div>
+            
+            <div style="width: 70%; text-align: right;font-size: 11px;color:gray" (click)="stufeedetail(StuData.stuid)">
+              <ion-icon name="chevron-forward-outline" style="color: gray;margin-top: 2px;"></ion-icon>
+            </div>
+          </div> -->
+
+
+            <div style="width: 100%;display: flex;  align-items: center; justify-content: space-between;">
+              <div style="width: 100%; text-align: left;font-size: 11px;color:gray"
+                (click)="stufeedetail(StuData.stuid)">Father - {{ StuData.Father_Name }}</div>
+              <div style="width: 10%; text-align: left;font-size: 11px;color:gray"
+                (click)="stufeedetail(StuData.stuid)">
+
+                <!--Chat Box--> 
+                <!-- <ion-icon name="chevron-forward-outline"
+                  style="color: gray;margin-top: 2px;"></ion-icon> -->
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+
+
+
+    <!-- <ion-row class="custom-row" >
+    <ion-col size="3">
+       <img [src]="student.photo" *ngIf="student.photo" style="margin-top: -10px;height: 40px;width: 40px;border-radius: 50%;"> 
+      <img src="./assets/010.png" style="margin-top: -11px;height: 40px;width: 40px;border-radius: 50%;">
+  </ion-col>
+  
+  <ion-col (click)="secwiseDue(DueAmount)" size="6" class="text-column">
+    <p class="text">{{ this.Final_Due_Amount_Array[DueAmount].Stu_Name }}</p>
+     <p class="text valsss">Valsss</p>
+
+  </ion-col>
+  
+    <ion-col size="2" class="amount-column">
+      <p class="amount">&#8377; {{this.Final_Due_Amount_Array[DueAmount].Due_Amount}}</p>
+    </ion-col>
+    <ion-col size="1" class="amount-column">
+      <ion-icon name="chevron-forward-outline" style="color: gray;"></ion-icon>
+    </ion-col>
+  </ion-row> -->
+  </ng-container>
+
+
+
+</ion-content>

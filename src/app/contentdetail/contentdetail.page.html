@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Content Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: #F0F5F8;">
+  <ion-grid class="grid2">
+  <ion-list style="background-color: #F0F5F8;height: 100%;">
+    <ion-card >
+    <ion-item>  
+      
+      <div style="width:100%;">
+      <h4 style="font-size: 15px;color: #055073;font-weight: bold;">{{this.content_title}}</h4>
+      </div>
+      </ion-item>
+      </ion-card>
+      </ion-list>
+    </ion-grid>
+
+  <ion-grid class="grid2">
+
+<ion-list style="background-color: #F0F5F8;height: 100%;">
+  <ion-card *ngFor="content of studycontent_detail;let i =index">
+  <ion-item>  
+     <div style="width:100%;">
+ <h5 id="open-modal" expand="block"  (click)="msgprint(studycontent_detail[i].details)" style="font-size: 14px;color: #055073;" [innerHTML]="trimString(studycontent_detail[i].details,60)" ><b></b>
+</h5>
+<!--<h5  style="font-size: 14px;color: #055073;" [innerHTML]="studycontent_detail[i].details"><b></b>
+</h5>-->
+
+<h6 >
+        <ion-icon name="videocam-outline" style="color: #055073" (click)="open_videos(studycontent_detail[i].video_url)" *ngIf="studycontent_detail[i].video_url"></ion-icon> 
+          &nbsp;&nbsp;&nbsp;<ion-icon name="albums-outline" style="color: #055073" (click)="open_file(studycontent_detail[i].file_name)" *ngIf="studycontent_detail[i].file_name"></ion-icon></h6>
+
+    </div>
+  </ion-item>
+</ion-card>
+
+</ion-list>
+
+</ion-grid>
+
+
+
+
+
+<!--<h5 style="font-size: 14px;color: #055073;" [innerHTML]="this.contentdetail"><b></b>
+</h5>-->
+
+<!--<ion-modal #modal trigger="open-modal" [canDismiss]="canDismiss" [presentingElement]="presentingElement">
+  <ng-template>
+  <ion-header>
+     <ion-toolbar>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="confirm()" [strong]="true">CLOSE</ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list style="background-color: #F0F5F8;height: 100%;">
+      <ion-card>
+        <ion-item>
+         <div style="width:100%;">
+          
+          <h5 style="font-size: 14px;color: #055073;" [innerHTML]="this.contentdetail"><b></b>
+          </h5>
+          
+            
+        </div>
+      </ion-item>
+    </ion-card>
+
+</ion-list>
+</ion-content>
+</ng-template>
+</ion-modal>-->
+<ion-modal trigger="open-modal" (willDismiss)="onWillDismiss($event)">
+  <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        
+        <ion-buttons slot="end">
+          <ion-button (click)="closeModel()" [strong]="true">Close</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <ion-list style="background-color: #F0F5F8;height: 100%;">
+        <ion-card >
+        <ion-item>  
+           <div style="width:100%;">
+      <h5  expand="block"  style="font-size: 14px;color: #055073;" [innerHTML]="this.contentdetail" ><b></b>
+      </h5>
+      </div>
+      </ion-item>
+      </ion-card>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-modal>
+</ion-content>

@@ -1,0 +1,179 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Health Card</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list style="background-color: #F0F5F8;">
+    <ion-card>
+      <!--<ion-item>
+        <div style="width:100%;">
+        <div style="width: 15%;background-color: green;float: left;height: 100%;">zz</div>
+        <div style="width: 85%;float: right;">
+          <h5 style="font-size: 14px;color: #055073;height: 7px;"><b>Monthly Health Report</b></h5>
+            <h6 style="height: 11px;font-size: 11px;color: gray;">Monthly Helath Checkup Report</h6>
+        </div>
+        </div>
+      </ion-item>-->
+
+
+      <!--<ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" id="open-modal"  expand="block">-->
+        <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" (click)="momthhealth()"  expand="block">
+      
+        <ion-col align-self-center size-md="6"  size="3" >
+          <div style="    background-color: #4ED299;    height: 50px;
+          border-radius: 5px;padding-bottom: 17px;padding-left: 9px;padding-right: 9px;padding-top: 5px;margin-top: 5px;width: 60px;;">
+          <img src="assets/healthcard_monthly.png"/>
+          </div>
+        </ion-col>
+        <ion-col align-self-center size-md="6"  size="9" >
+          <div style="width: 100%;float: right;">
+            <h5 style="font-size: 14px;color: #055073;height: 7px;"><b>Monthly Health Report</b></h5>
+              <h6 style="height: 11px;font-size: 11px;color: gray;">Monthly Helath Checkup Report</h6>
+          </div>
+        </ion-col>
+   
+  
+    
+      </ion-row>
+    
+  </ion-card>
+
+
+
+  <ion-card>
+
+
+    <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" (click)="healthdetail()">
+      
+      <ion-col align-self-center size-md="6"  size="3" >
+        <div style="    background-color: #5CCBD3;    height: 50px;
+        border-radius: 5px;padding-bottom: 17px;padding-left: 9px;padding-right: 9px;padding-top: 5px;margin-top: 5px;width: 60px;;">
+        <img src="assets/healthcard_monthly.png"/>
+        </div>
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="9" >
+        <div style="width: 100%;float: right;">
+          <h5 style="font-size: 14px;color: #055073;height: 7px;"><b>Health Report</b></h5>
+            <h6 style="height: 11px;font-size: 11px;color: gray;">Yearly Helath Checkup Report</h6>
+        </div>
+      </ion-col>
+ 
+
+  
+    </ion-row>
+  </ion-card>
+
+
+
+
+
+  <ion-modal #modal trigger="open-modal" [canDismiss]="canDismiss" [presentingElement]="presentingElement">
+    <ng-template>
+    <ion-header>
+      <ion-toolbar>
+        <!--<ion-buttons slot="start">
+          <ion-button (click)="cancel()">Cancel</ion-button>
+        </ion-buttons>-->
+        <ion-title>Select Month</ion-title>
+        <ion-buttons slot="end">
+          <ion-button (click)="confirm()" [strong]="true">CLOSE</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+  <ion-card style="background-color: #F0F5F8;"  >
+  <ion-grid >
+
+
+
+    <ion-row justify-content-center style="border-radius: 23px;min-height: 130px;">
+  
+      <ion-col  align-self-center size-md="6"  size="3.5" style="    border-bottom-right-radius: 23px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: #d4f4ff;min-height: 90px;background-color: #B0D5C7;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+        <h3 style="color: #483f98;font-size: 12px;margin: 0px;"><img src="assets/date.png" style="height:43px;" (click)="noticefile()" /></h3>
+        <h4 style="color: #055073;font-size: 13px;text-align: center;margin: 0px;">January</h4>
+        </ion-col>
+
+        
+        <ion-col  align-self-center size-md="6"  size="3.5" style="    border-bottom-right-radius: 23px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: #d4f4ff;min-height: 90px;background-color: #B0D5C7;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+          <h3 style="color: #483f98;font-size: 12px;margin: 0px;"><img src="assets/date.png" style="height:43px;" (click)="noticefile()" /></h3>
+          <h4 style="color: #055073;font-size: 13px;text-align: center;margin: 0px;">January</h4>
+          </ion-col>
+
+
+          <ion-col  align-self-center size-md="6"  size="3.5" style="    border-bottom-right-radius: 23px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: #d4f4ff;min-height: 90px;background-color: #B0D5C7;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+            <h3 style="color: #483f98;font-size: 12px;margin: 0px;"><img src="assets/date.png" style="height:43px;" (click)="noticefile()" /></h3>
+            <h4 style="color: #055073;font-size: 13px;text-align: center;margin: 0px;">January</h4>
+            </ion-col>
+      
+    </ion-row>
+
+
+    <ion-row justify-content-center style="border-radius: 23px;min-height: 130px;">
+  
+ 
+
+  
+        <ion-col  align-self-center size-md="6"  size="3.5" style="    border-bottom-right-radius: 23px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: #d4f4ff;min-height: 90px;background-color: #B0D5C7;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+          <h3 style="color: #483f98;font-size: 12px;margin: 0px;"><img src="assets/date.png" style="height:43px;" (click)="noticefile()" /></h3>
+          <h4 style="color: #055073;font-size: 13px;text-align: center;margin: 0px;">January</h4>
+          </ion-col>
+  
+          
+          <ion-col  align-self-center size-md="6"  size="3.5" style="    border-bottom-right-radius: 23px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: #d4f4ff;min-height: 90px;background-color: #B0D5C7;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+            <h3 style="color: #483f98;font-size: 12px;margin: 0px;"><img src="assets/date.png" style="height:43px;" (click)="noticefile()" /></h3>
+            <h4 style="color: #055073;font-size: 13px;text-align: center;margin: 0px;">January</h4>
+            </ion-col>
+  
+  
+            <ion-col  align-self-center size-md="6"  size="3.5" style="    border-bottom-right-radius: 23px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: #d4f4ff;min-height: 90px;background-color: #B0D5C7;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+              <h3 style="color: #483f98;font-size: 12px;margin: 0px;"><img src="assets/date.png" style="height:43px;" (click)="noticefile()" /></h3>
+              <h4 style="color: #055073;font-size: 13px;text-align: center;margin: 0px;">January</h4>
+              </ion-col>
+        
+
+       
+      
+    </ion-row>
+
+    <ion-row justify-content-center style="border-radius: 23px;min-height: 130px;">
+  
+
+
+  
+        <ion-col  align-self-center size-md="6"  size="3.5" style="    border-bottom-right-radius: 23px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: #d4f4ff;min-height: 90px;background-color: #B0D5C7;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+          <h3 style="color: #483f98;font-size: 12px;margin: 0px;"><img src="assets/date.png" style="height:43px;" (click)="noticefile()" /></h3>
+          <h4 style="color: #055073;font-size: 13px;text-align: center;margin: 0px;">January</h4>
+          </ion-col>
+  
+          
+          <ion-col  align-self-center size-md="6"  size="3.5" style="    border-bottom-right-radius: 23px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: #d4f4ff;min-height: 90px;background-color: #B0D5C7;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+            <h3 style="color: #483f98;font-size: 12px;margin: 0px;"><img src="assets/date.png" style="height:43px;" (click)="noticefile()" /></h3>
+            <h4 style="color: #055073;font-size: 13px;text-align: center;margin: 0px;">January</h4>
+            </ion-col>
+  
+  
+            <ion-col  align-self-center size-md="6"  size="3.5" style="    border-bottom-right-radius: 23px;margin-right: 2%;margin-left: 1.3%;margin-bottom: 2%;background-color: #d4f4ff;min-height: 90px;background-color: #B0D5C7;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+              <h3 style="color: #483f98;font-size: 12px;margin: 0px;"><img src="assets/date.png" style="height:43px;" (click)="noticefile()" /></h3>
+              <h4 style="color: #055073;font-size: 13px;text-align: center;margin: 0px;">January</h4>
+              </ion-col>
+        
+      
+      
+    </ion-row>
+
+
+
+    </ion-grid>
+  </ion-card>
+  </ion-content>
+  </ng-template>
+  </ion-modal>
+
+
+  </ion-list>
+</ion-content>

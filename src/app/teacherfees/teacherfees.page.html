@@ -1,0 +1,208 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Analytics</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="date-range-card">
+    <form [formGroup]="ionicForm" novalidate>
+      <!-- <ion-card-header>
+      <ion-card-title>Date Range</ion-card-title>
+    </ion-card-header> -->
+
+
+
+      <!--     
+    <ion-datetime   presentation="date" name="todate" [(ngModel)]="todate"  formControlName="todate" 
+       showDefaultButtons="true" (ionChange)="to_date(todatetime.value)" 
+      min="{{this.SessStart}}" max="{{this.SessEnd}}"></ion-datetime> -->
+
+      <!-- <ion-card style="
+      border-radius: 8px;
+      padding: 0;
+
+      box-shadow: none;
+      border: 3px solid rgba(0, 0, 0, .1);
+      transition: .5s;
+      margin: 0;
+      position: relative;
+      background: white;
+      text-align: center;
+    ">
+      <ion-datetime presentation="date" name="todate" formControlName="todate"
+                    [(ngModel)]="currentDate" readonly
+                    displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY"
+                    [value]="currentDate">
+      </ion-datetime>
+    </ion-card> -->
+      <!-- <ion-card>
+    <ion-datetime presentation="date" name="todate" formControlName="todate"
+                  [(ngModel)]="currentDate" readonly
+                  displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY"
+                  [value]="currentDate">
+    </ion-datetime>
+  </ion-card> -->
+
+<ion-card style=" border-radius: 8px;
+padding: 0;
+height: auto;
+box-shadow: none;
+border: 3px solid rgba(0, 0, 0, .1);
+transition: .5s;
+margin: 0;
+position: relative;
+background: white;
+text-align: center;">
+          <ion-datetime #todatetime presentation="date" name="todate" [(ngModel)]="todate" formControlName="todate"
+        (ionChange)="to_date(todatetime.value)" min="{{this.SessStart}}" max="{{this.SessEnd}}"></ion-datetime>
+</ion-card>
+
+
+<!-- 
+      <ion-card-content>
+        <ion-item id="open-modal" style="width: 100%;">
+          <ion-icon name="calendar-outline"></ion-icon>
+          &nbsp;&nbsp; <ion-label style="font-size: 12px!important;color:#555555">From Date</ion-label>
+          <ion-text slot="end" required style="font-size: 12px!important;color:#555555">{{ this.dateParts }}</ion-text>
+        </ion-item>
+
+        <ion-modal [initialBreakpoint]="0.7" trigger="open-modal">
+          <ng-template>
+            <ion-content>
+              <ion-datetime #fromdatetime presentation="date" name="fromdate" [(ngModel)]="fromdate"
+                formControlName="fromdate" showDefaultButtons="true" (ionChange)="from_date(fromdatetime.value)"
+                min="{{this.SessStart}}" max="{{this.SessEnd}}"></ion-datetime>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+
+
+        <ion-item id="open-modal1" style="width: 100%">
+          <ion-icon name="calendar-outline"></ion-icon>
+          &nbsp;&nbsp;<ion-label style="font-size: 12px!important;color:#555555">To Date</ion-label>
+          <ion-text slot="end" name="todate" required style="font-size: 12px!important;color:#555555">{{
+            this.dateParts_to }}</ion-text>
+        </ion-item>
+
+        <ion-modal [initialBreakpoint]="0.7" trigger="open-modal1">
+          <ng-template style="margin-top: 5px;">
+            <ion-content>
+              <ion-datetime #todatetime presentation="date" name="todate" [(ngModel)]="todate" formControlName="todate"
+                showDefaultButtons="true" (ionChange)="to_date(todatetime.value)" min="{{this.SessStart}}"
+                max="{{this.SessEnd}}"></ion-datetime>
+            </ion-content>
+          </ng-template>
+        </ion-modal>
+        <ion-button color="linear-gradient(#007ab3, #055073)" expand="block" size="large" style="border-radius: 5px;height:34px;
+        font-size:12px;font-weight:bold;background: linear-gradient(#7e78bb, #473f97)!important;margin-left: 70%;"
+          type="submit" expand="block" (click)="genreport()" [disabled]="!this.ionicForm.valid">Go ></ion-button>
+      </ion-card-content> -->
+    </form>
+  </ion-card>
+
+  <p class="amount" style="width: 95%;margin-left: 2.5%;padding: 10px;color:gray">Total Present Students</p>
+
+  <ion-row class="custom-row">
+    <ion-col size="2" class="icon-column">
+      <ion-icon class="icon" name="person-circle-outline"></ion-icon>
+    </ion-col>
+    <ion-col size="7" class="text-column">
+      <p class="text">Student</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column" style="justify-content: right!important;padding-right:22px;">
+      <p class="amount">{{this.presentstudents}}/{{this.totalstudents}}</p>
+    </ion-col>
+  </ion-row>
+ 
+
+
+  <p class="amount" style="width: 95%;margin-left: 2.5%;padding: 10px;color:gray">Fee {{this.sessioncaption}}</p>
+
+  <ion-row class="custom-row" (click)="classwiseReceivedUntill(this.display_till_date)">
+    <ion-col size="2" class="icon-column">
+      <ion-icon name="cash-outline" class="icon" style="color:green!important"></ion-icon>
+    </ion-col>
+    <ion-col size="6" class="text-column">
+      <p class="text">Received till ({{this.display_till_date}})</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column" style="justify-content: right!important;">
+      <p class="amount">&#x20b9; {{this.TotalPaidRangeWise}}</p>
+    </ion-col>
+    <ion-col size="1" class="amount-column">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+
+  <ion-row class="custom-row" (click)="classwiseReceived(this.display_till_date)">
+    <ion-col size="2" class="icon-column">
+      <ion-icon name="cash-outline" class="icon" style="color:green!important"></ion-icon>
+    </ion-col>
+    <ion-col size="6" class="text-column">
+      <p class="text">Received On ({{this.display_till_date}})</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column" style="justify-content: right!important;">
+      <p class="amount">&#x20b9; {{this.TotalPaid_Amount_OD}}</p>
+    </ion-col>
+    <ion-col size="1" class="amount-column">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+
+
+
+  <ion-row class="custom-row" (click)="classwiseDue(this.display_till_date)">
+    <ion-col size="2" class="icon-column">
+      <ion-icon name="cash-outline" class="icon" style="color:red!important"></ion-icon>
+    </ion-col>
+    <ion-col size="6" class="text-column">
+      <p class="text">Due on ({{this.display_till_date}})</p>
+    </ion-col>
+    <ion-col size="3" class="amount-column" style="justify-content: right!important;">
+      <p class="amount">&#x20b9; {{this.TotalDue_Amount}}</p>
+    </ion-col>
+    <ion-col size="1" class="amount-column">
+      <ion-icon name="chevron-forward-outline"></ion-icon>
+    </ion-col>
+  </ion-row>
+
+
+
+  <p class="amount" style="width: 95%;margin-left: 2.5%;padding: 10px;color:gray">Fee All Sessions</p>
+
+  <ion-row class="custom-row" >
+     <ion-col size="2" class="icon-column">
+      <ion-icon name="cash-outline" class="icon" style="color:green!important"></ion-icon>
+    </ion-col>
+    <ion-col size="6" class="text-column">
+      <p class="text">Received till ({{this.display_till_date}})</p>
+    </ion-col>
+    <ion-col size="4" class="amount-column" style="justify-content: right!important;">
+      <p class="amount">&#x20b9; {{this.AllSessionFeesReceivedAmount}}</p>
+    </ion-col>
+    
+  </ion-row>
+
+  <ion-row class="custom-row" >
+    <ion-col size="2" class="icon-column">
+      <ion-icon name="cash-outline" class="icon" style="color:green!important"></ion-icon>
+    </ion-col>
+    <ion-col size="6" class="text-column" style="margin-top:5px!important">
+      <p class="text">Received on ({{this.display_till_date}})</p>
+    </ion-col>
+    <ion-col size="4" class="amount-column" style="justify-content: right!important;">
+      <p class="amount">&#x20b9; {{this.AllSessionFeesReceivedAmountOn}}</p>
+    </ion-col>
+    
+  </ion-row>
+
+
+
+
+</ion-content>

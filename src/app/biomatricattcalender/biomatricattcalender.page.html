@@ -1,0 +1,118 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Analytics</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card class="date-range-card">
+    <form [formGroup]="ionicForm" novalidate>
+      <!-- <ion-card-header>
+      <ion-card-title>Date Range</ion-card-title>
+    </ion-card-header> -->
+
+
+
+      <!--     
+    <ion-datetime   presentation="date" name="todate" [(ngModel)]="todate"  formControlName="todate" 
+       showDefaultButtons="true" (ionChange)="to_date(todatetime.value)" 
+      min="{{this.SessStart}}" max="{{this.SessEnd}}"></ion-datetime> -->
+
+      <!-- <ion-card style="
+      border-radius: 8px;
+      padding: 0;
+
+      box-shadow: none;
+      border: 3px solid rgba(0, 0, 0, .1);
+      transition: .5s;
+      margin: 0;
+      position: relative;
+      background: white;
+      text-align: center;
+    ">
+      <ion-datetime presentation="date" name="todate" formControlName="todate"
+                    [(ngModel)]="currentDate" readonly
+                    displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY"
+                    [value]="currentDate">
+      </ion-datetime>
+    </ion-card> -->
+      <!-- <ion-card>
+    <ion-datetime presentation="date" name="todate" formControlName="todate"
+                  [(ngModel)]="currentDate" readonly
+                  displayFormat="DD MMM YYYY" pickerFormat="DD MMM YYYY"
+                  [value]="currentDate">
+    </ion-datetime>
+  </ion-card> -->
+
+<ion-card style=" border-radius: 8px;
+padding: 0;
+height: auto;
+box-shadow: none;
+border: 3px solid rgba(0, 0, 0, .1);
+transition: .5s;
+margin: 0;
+position: relative;
+background: white;
+text-align: center;">
+          <ion-datetime #todatetime presentation="date" name="todate" [(ngModel)]="todate" formControlName="todate"
+        (ionChange)="to_date(todatetime.value)" min="{{this.SessStart}}" max="{{this.SessEnd}}"></ion-datetime>
+</ion-card>
+
+
+
+    </form>
+  </ion-card>
+
+  <p class="amount" style="width: 95%;margin-left: 2.5%;padding: 10px;color:gray">Check-In / Check-Out</p>
+
+
+
+  
+<ion-row class="custom-row" *ngIf="this.CheckIn">
+  <ion-col size="2" class="icon-column">
+    <ion-icon class="icon" name="log-in-outline"></ion-icon>
+  </ion-col>
+  <ion-col size="4" class="text-column">
+    <p class="text">Check In</p>
+  </ion-col>
+  <ion-col size="6" class="amount-column" style="justify-content: right!important; padding-right:22px;">
+    <p class="amount">{{this.CheckIn}}</p>
+  </ion-col>
+</ion-row>
+
+<ion-row class="custom-row" *ngIf="this.CheckOut">
+  <ion-col size="2" class="icon-column">
+    <ion-icon class="icon" name="log-out-outline"></ion-icon>
+  </ion-col>
+  <ion-col size="4" class="text-column">
+    <p class="text">Check Out</p>
+  </ion-col>
+  <ion-col size="6" class="amount-column" style="justify-content: right!important; padding-right:22px;">
+    <p class="amount">{{this.CheckOut}}</p>
+  </ion-col>
+</ion-row>
+
+ 
+
+
+
+
+<ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="!this.CheckIn">
+  <ion-card >
+  <ion-item>
+     <div style="width:100%;">
+      <h6 style="font-size: 12px;color: gray;">No Record Found</h6>
+        
+        
+    </div>
+  </ion-item>
+
+</ion-card>
+</ion-list>
+
+
+</ion-content>

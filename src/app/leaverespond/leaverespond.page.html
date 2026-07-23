@@ -1,0 +1,152 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Leave Application</ion-title>
+  </ion-toolbar>
+
+  <!-- <ion-segment [(ngModel)]="category" style="background-color:#055073!important" >
+    <ion-segment-button value="applicationlist" style="border:none;color:white;" (click)="applied_leaves()">
+      MY LEAVES
+    </ion-segment-button>
+     <ion-segment-button value="writeapplication" style="border:none;color:white">
+      APPLY LEAVE
+    </ion-segment-button>
+  </ion-segment> -->
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm">
+
+
+    <div [ngSwitch]="category">
+      <ion-list *ngSwitchCase="'applicationlist'">
+
+
+
+        <div style="width: 100%;">
+          <div style="float: left;width: 30%;font-weight: bold;color:#47515b;text-align: center;font-size:13px">Approved
+          </div>
+          <div style="float: left;font-size:12px;height: 20px;width: 20px;background-color:#BBEDBE">&nbsp;</div>
+          <!--second starts-->
+          <div
+            style="float: left;width: 25%;font-weight: bold;color:#47515b;text-align: center;font-size:13px;text-align:center;padding-left: 25px;">
+            Pending</div>
+          <div style="float: left;font-size:12px;height: 20px;width: 20px;background-color:#F4D291;margin-left: 50px;">
+            &nbsp;</div>
+
+          <!--second ends-->
+        </div>
+
+
+        <div style="width: 100%;">
+          <div
+            style="float: left;width: 30%;font-weight: bold;color:#47515b;text-align: center;font-size:13px;margin-top: 15px;    margin-bottom: 15px;">
+            Reject</div>
+          <div style="float: left;font-size:12px;height: 20px;width: 20px;background-color:#F1B9AC;margin-top: 15px;">
+            &nbsp;</div>
+          <!--second starts-->
+          <!--<div style="float: left;width: 25%;font-weight: bold;color:#47515b;text-align: center;font-size:15px;text-align:center;padding-left: 25px;margin-top: 15px;">Applied</div>
+<div style="float: left;font-size:12px;height: 20px;width: 20px;background-color:#C0C6ED;margin-left: 50px;margin-top: 15px;">&nbsp;</div>-->
+
+          <!--second ends-->
+        </div>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <!-- <br/> -->
+
+
+        <!-- <ion-item *ngFor="let leaveapp of this.applied_leaves ; let i =index" style="margin-top: 10px;"> -->
+        <ng-container *ngFor="let leaveapp of this.applied_leaves ; let i =index">
+          <ion-row class="custom-row">
+            <ion-col size="12">
+              <div style="width: 100%;height: 100%;">
+
+                <!--Applied-->
+                <!--<div *ngIf="leaveapp['StudentLeaveApplication'].leave_status == 'AP'" style="border-top-left-radius: 12px;
+ border-bottom-left-radius: 12px;width: 6%;float: left;background-color: #C0C6ED;height:100%;display: flex;justify-content: center;align-items: center;">
+</div>-->
+
+                <div *ngIf="leaveapp['StudentLeaveApplication'].leave_status == 'APPROVED'"
+                  style="border-top-left-radius: 12px;
+ border-bottom-left-radius: 12px;width: 6%;float: left;background-color: #BBEDBE;height:100%;display: flex;justify-content: center;align-items: center;">
+                  <!--<ion-icon name="book" style="color:white;font-size:40px !important;"></ion-icon>-->
+                </div>
+
+                <div *ngIf="leaveapp['StudentLeaveApplication'].leave_status == 'PENDING'"
+                  style="border-top-left-radius: 12px;
+  border-bottom-left-radius: 12px;width: 6%;float: left;background-color: #F4D291;height:100%;display: flex;justify-content: center;align-items: center;">
+                  <!--<ion-icon name="book" style="color:white;font-size:40px !important;"></ion-icon>-->
+                </div>
+
+                <div *ngIf="leaveapp['StudentLeaveApplication'].leave_status == 'REJECT'"
+                  style="border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;width: 6%;float: left;background-color: #F1B9AC;height:100%;display: flex;justify-content: center;align-items: center;">
+                  <!--<ion-icon name="book" style="color:white;font-size:40px !important;"></ion-icon>-->
+                </div>
+
+                <div style="width: 92%;float: left;background-color: white;padding: 5px;">
+                  
+                  <p style="font-size:13px;white-space: pre-line;color: black">
+                    <b>{{leaveapp['StudentLeaveApplication'].title}} </b></p>
+                    <p style="margin-top: 5px;font-size:11px !important;color:gray;">Leave Request From :
+                      <b>{{leaveapp['StudentLeaveApplication'].Leave_From}}</b></p>
+                  <p style="margin-top: 5px;font-size:11px !important;color:gray;">From :
+                    {{leaveapp['StudentLeaveApplication'].from_date}}</p>
+                  <p style="margin-top: 5px;font-size:11px !important;color:gray;">To :
+                    {{leaveapp['StudentLeaveApplication'].to_date}}</p>
+                  <p style="margin-top: 5px;font-size:11px !important;color:gray;">Reason :
+                    {{leaveapp['StudentLeaveApplication'].reason}}</p>
+                    <p *ngIf="leaveapp['StudentLeaveApplication'].leave_status == 'APPROVED'" style="margin-top: 5px;font-size:11px !important;color:gray;">Approved By :
+                      {{leaveapp['StudentLeaveApplication'].LeaveApprovelName}}</p>
+                    
+                      
+                  <ion-col cols="6" style="margin-top: 15px!important;">
+                    <ion-select [disabled]="leaveapp['StudentLeaveApplication'].DisabledAttendance" placeholder="Change Status" style="width: 40%;
+                    float: right;font-size: 12px;border-radius:4px !important;background-color: #eceff8;height: 120%!important;margin-top: -3px !important;"
+                        (ionChange)="updaterecord($event,leaveapp['StudentLeaveApplication'].id)"
+                        name="leaveStatus_{{ leaveapp.StudentLeaveApplication.id }}" [(ngModel)]="leaveapp['StudentLeaveApplication'].leave_status">
+                        <ion-select-option class="ion-text-wrap" style="font-size: 12px!important;"  *ngFor="let legends of this.LegndArray"
+                            value="{{legends}}">
+                            {{legends}}
+                        </ion-select-option>
+                        
+                  </ion-select>
+
+                  </ion-col>
+
+                </div>
+             
+
+
+              </div>
+            </ion-col>
+          </ion-row>
+          </ng-container>
+
+        <!-- </ion-item> -->
+
+
+
+
+
+      </ion-list>
+    </div>
+
+  </form>
+
+
+  <ion-list style="background-color: #F0F5F8;" *ngIf="this.applied_leaves.length == 0">
+    <ion-card >
+    <ion-item>
+       <div style="width:100%;">
+         <h5 style="font-size: 11px;color:black"><b>Leave Record Not Found..!!</b></h5>
+       </div>
+    </ion-item>
+  </ion-card>
+  </ion-list>
+</ion-content>

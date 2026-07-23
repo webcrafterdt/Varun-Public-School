@@ -1,0 +1,210 @@
+<ion-header>
+  <ion-toolbar style="background-color: #377796!important;">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!--<ion-grid>
+    <ion-row color="primary" justify-content-center>
+      <div class="container">
+          <div class="header">
+            <div style="width: 100%;">
+            <div style="width:60%;float: left">
+              <h2 style="color: red;padding-top: 113px;padding-left: 20px;
+              font-weight: bold;color: white;">DOWNLOAD</h2>    
+              </div>
+              
+              <div style="width:40%;float: right;">
+                <h2 style="color: red;padding-top: 100px;
+              font-weight: bold;color: white;">
+                <img src="assets/cloud-computing.png" style="width:50px;height:50px;" />
+                </h2>
+              </div>
+            </div>
+            </div>  
+          </div>  
+    </ion-row>
+  </ion-grid>-->
+
+
+
+  <div style=" height: 110px;
+  background-color: #483f98!important;
+  border-bottom-left-radius: 193px 21px;
+  border-bottom-right-radius: 250px 140px;
+  margin-bottom: 20px;    box-shadow: -1px 7px #bbbec9;">
+
+<div style="margin: 0px!important; width: 100%;padding-top: 7px;">
+  <div style="float: left;width: 30%;">
+<img src="assets/cloud-computing.png" style="height: 62px;margin-left: 15px;"/>
+</div>
+<div style="float: right;width: 70%;
+font-size: 55px;
+color: white;">
+&#x20b9;
+</div>
+</div>
+
+
+  </div>
+
+
+  <div style="margin-top:150px;"></div>
+
+
+
+
+  <ion-grid  style="flex-wrap: nowrap;
+  overflow-x: scroll!important;
+  overflow-y: hidden;" class="grid2" *ngIf="this.error == false">
+  
+
+    <ion-row color="primary" justify-content-center style="background-color: #d4f4ff;flex-wrap: nowrap;">
+      
+      <ion-col align-self-center size-md="6"  size="8" style="background-color: #d4f4ff;font-size: 15px;text-align: center; font-weight: bold;color: black;height: 40px;padding-top: 11px;border-right: solid gray 1px;">
+        Name
+      </ion-col>
+      <ion-col align-self-center size-md="6"  size="4" style="background-color: #d4f4ff;font-size: 15px;text-align: center;font-weight: bold;color: black;height: 40px;padding-top: 11px;">
+        File
+      </ion-col>
+ 
+
+  
+    </ion-row>
+  
+  
+    
+    <ion-row color="primary" justify-content-center  style="flex-wrap: nowrap;
+    background-color: #fed4d5;margin-top: 2%;" *ngFor="let dummyjso_val_1 of dowloads;let i =index" >
+       <ion-col   align-self-center size-md="6"  size="8" style="background-color: #fed4d5;font-size: 10px;color: #483f98;min-height: 40px;padding-top: 11px;border-right: solid gray 1px;">
+       {{dummyjso_val_1.title}}
+      </ion-col>
+      <ion-col  align-self-center size-md="6"  size="4" style="text-align:center; background-color: #fed4d5;font-size: 10px;color: #483f98;min-height: 40px;padding-top: 11px;">
+        
+        <img src="assets/file.png" style="width:22px;height:22px;" (click)="opendownloadfile(dummyjso_val_1.file)" />
+      </ion-col>
+  
+    </ion-row>
+
+
+
+
+  
+  </ion-grid>
+
+
+
+  <ion-grid  style="flex-wrap: nowrap;
+  overflow-x: scroll!important;
+  overflow-y: hidden;" class="grid2" *ngIf="this.error != false">
+      <ion-row color="primary" justify-content-center  style="flex-wrap: nowrap;
+      background-color: #fed4d5;margin-top: 2%;"  >
+      <ion-col   align-self-center size-md="6"  size="12" style="font-weight:bold; text-align:center; background-color: #fed4d5;font-size: 12px;color: #483f98;min-height: 40px;padding-top: 11px;">
+        {{this.dowloads.errorMessage}}
+       </ion-col>
+      </ion-row>
+
+  </ion-grid>
+
+
+
+
+
+
+
+
+
+
+
+
+   <!--<ion-grid class="grid2" *ngFor="let dummyjso_val_1 of dowloads;let i =index">
+   <ion-row color="primary" justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center class="first">
+          <div class="middle">
+            Title
+          </div>
+          <div class="rightdiv">
+            2021-22 - BSC (CBZ) - III YEAR
+          </div>
+        </div>
+        </ion-col>
+    </ion-row>-->
+  
+  
+ <!--   <ion-row color="primary" justify-content-center>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div text-center class="first">
+          <div class="middle">
+            File
+          </div>
+          <div class="rightdiv" >
+            <ion-icon (click)="downloadFile(pdfUrl)" ios="download" md="download" style="padding: 4px;color: #055073;height:27px;width: 80px;
+            text-align: left;
+            margin-left: 30%;"></ion-icon>
+  
+          </div>
+
+
+          <div class="rightdiv" >
+            <ion-icon (click)="displayurl(pdfUrl)" ios="file" md="download" style="padding: 4px;color: #055073;height:27px;width: 80px;
+            text-align: left;
+            margin-left: 30%;"></ion-icon>
+  
+          </div>
+          
+          <div class="rightdiv" >
+            <ion-icon (click)="downloadFile1()" ios="file" md="download" style="padding: 4px;color: #055073;height:27px;width: 80px;
+            text-align: left;
+            margin-left: 30%;"></ion-icon>
+  
+          </div>
+
+          <div class="rightdiv" >
+            <ion-icon (click)="downloadFile2(pdfUrl)" ios="file" md="download" style="padding: 4px;color: #055073;height:27px;width: 80px;
+            text-align: left;
+            margin-left: 30%;"></ion-icon>
+  
+          </div>
+
+        </div>
+        </ion-col>
+    </ion-row>-->
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <!--
+      <ion-grid class="grid2" *ngFor="let dummyjso_val_1 of dowloads;let i =index">
+      <ion-row color="primary" justify-content-center *ngFor="let dummyjso_suv_val_1 of dummyjso_val_1;let k =index">
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12" *ngFor="let dummyjso_suv_val_1_2 of dummyjso_suv_val_1;let k =index">
+        <div text-center class="first" >
+          <div class="middle" *ngIf="dummyjso_suv_val_1_2[0] != 'd_id'">
+            {{dummyjso_suv_val_1_2[0]}}
+          </div>
+          <div class="rightdiv" *ngIf="dummyjso_suv_val_1_2[0] != 'd_id'">
+            <span *ngIf="dummyjso_suv_val_1_2[0] != 'file'">{{dummyjso_suv_val_1_2[1]}}</span>
+            
+            <ion-icon *ngIf="dummyjso_suv_val_1_2[0] == 'file'" (click)="downloadFile(dummyjso_suv_val_1_2[1][0])" ios="download" md="download" style="padding: 4px;color: #055073;height:27px;width: 80px;
+            text-align: left;
+            margin-left: 30%;"></ion-icon>
+          </div>
+        </div>
+        </ion-col>
+    </ion-row>
+
+    </ion-grid>-->
+</ion-content>

@@ -1,0 +1,111 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Uploading</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="background-color: #F0F5F8;">
+   <!--<quill-editor></quill-editor>-->
+
+  <ion-grid  style="flex-wrap: nowrap;
+overflow-x: scroll!important;
+overflow-y: hidden;" class="grid21" >
+
+
+                          <!-- Pending HomeWork Starts -->
+
+  
+    <ion-list style="background-color: #F0F5F8;" >
+      <ion-card  >
+        <ion-item class="item-background-color">
+            <div style="width:100%;">
+              
+          <!-- <ion-row style="margin-top: -10px;">
+            <ion-col size="6"><h6 style="font-size: 12px;color: gray;text-align: left;margin-left: -4px;line-height:0;"><b>Apply Date</b> </h6> 
+              <h6 style="font-size: 12px;color: gray;text-align: left;margin-left: -4px;line-height: 1;"> {{homewo.applydate}}</h6>
+            </ion-col>
+            <ion-col size="6"><h6 style="font-size: 12px;color: gray;text-align: right;line-height:0;"><b>Due Date</b></h6> 
+              <h6 style="font-size: 12px;color: gray;text-align: right;line-height: 1;"> {{homewo.completiondate}}</h6>
+            </ion-col>
+          </ion-row> -->
+
+    
+
+        
+                
+
+          <ng-container *ngFor="let docs of Docuploadings;let i = index">
+            
+       
+            
+                <!-- First File Upload -->
+         
+      
+                <!-- Second File Upload -->
+                <ion-item  style="height: 55px;margin-top: 5px; padding: 10px; border-radius: 8px; background-color: #f9f9f9; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: box-shadow 0.3s; border: none;">
+                    <img src="assets/upload-file.png" style="height: 32px; width: 32px; cursor: pointer;" (click)="triggerPdfInput(i,docs.attachment_upload_location)" />
+                    <p style="font-size: 12px; margin-left: 10px; cursor: pointer;" (click)="triggerPdfInput(i,docs.attachment_upload_location)">
+                       {{ selectedFileNames[i] ? selectedFileNames[i] : docs.attachment_name }}
+                       
+                      
+                    </p>
+                    <input type="file" id="pdfInput_{{i}}" (change)="onFileSelect($event, i, i)" style="display: none;" />
+                </ion-item>
+           </ng-container>
+
+               
+ 
+
+           
+                <button *ngIf="selectedFileNames.length > 0"   ion-button block color="color1" (click)="submit()" style="float:right;
+                margin-top:15px;width: 35%;color: white;font-size:13px;
+                font-weight:bold;border-radius: 5px;    background: #055073;padding:13px;margin-bottom: 15px;">SUBMIT</button>
+                <div>&nbsp;</div>
+            </div>
+        </ion-item>
+      </ion-card>
+
+
+
+ 
+
+ 
+  </ion-list>
+
+  
+
+</ion-grid>
+
+<ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="this.status == false">
+  <ion-card >
+  <ion-item>
+     <div style="width:100%;">
+      <h6 style="font-size: 12px;color: gray;">{{this.messagge}}</h6>
+        
+        
+    </div>
+  </ion-item>
+
+</ion-card>
+</ion-list>
+
+
+<ng-container *ngIf="!loading && (datalength === null || datalength === 0)">
+  <ion-list style="background-color: #F0F5F8;"  >
+    <ion-card >
+    <ion-item>
+       <div style="width:100%;">
+         <h5 style="font-size: 14px;color: #055073;"><b>No Record Found</b></h5>
+       </div>
+    </ion-item>
+  </ion-card>
+  </ion-list>
+  </ng-container>
+
+
+</ion-content>
+
+

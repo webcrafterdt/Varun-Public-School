@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="healthcard"></ion-back-button>
+    </ion-buttons>
+    <ion-title>MonthWise Health</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row *ngIf="this.status == true">
+    <ion-col size="12">
+     
+  <div style="background-color: white;height: 200px;border-top-left-radius: 43px;border-top-right-radius: 43px;">
+
+
+<ion-card style="background-color: #F0F5F8;margin-top: 23px;" *ngFor="let bottom of monthwise_boject;let k = index">
+  <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;background-color: #055073!important;color: white;"  id="open-modal"  expand="block" >
+      
+     <ion-col align-self-center size-md="6"  size="3" >
+       <h5 style="font-size: 14px;"><b>{{bottom}}</b></h5>
+      </ion-col>
+      </ion-row>
+   <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" *ngFor="let fields of monthwisehealth[bottom];let j = index" id="open-modal"  expand="block" >
+      
+     <ion-col align-self-center size-md="6"  size="3" >
+     <div style="    background-color: #4ED299;    height: 50px;
+      border-radius: 5px;padding-bottom: 19px;padding-left: 14px;padding-right: 11px;padding-top: 7px;margin-top: 5px;width: 60px;;">
+      <img src="assets/health.png"/>
+       </div>
+    </ion-col>
+     <ion-col align-self-center size-md="6"  size="9" >
+       <div style="width: 100%;float: right;">
+        <h5 style="font-size: 14px;"><b style="color: #055073;height: 7px;">{{fields.field_name}} </b> : {{fields.field_value}}</h5>
+      </div>
+    </ion-col>
+</ion-row>
+
+</ion-card>
+
+
+  </div>
+</ion-col>
+</ion-row>
+
+
+
+
+     <ion-list style="background-color: #F0F5F8;" *ngIf="this.status == false">
+        <ion-card>
+ 
+          <ion-row color="primary" justify-content-center style="flex-wrap: nowrap;" >
+          <ion-col align-self-center size-md="12"  size="12" >
+            <div style="width: 100%;float: right;">
+              <h5 style="font-size: 14px;color: #055073;height: 7px;"><b>{{this.messagge}}</b></h5>
+            </div>
+          </ion-col>
+     
+    
+      
+        </ion-row>
+      
+    </ion-card>
+    </ion-list>
+</ion-content>

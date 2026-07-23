@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>&nbsp;</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div style=" height: 110px;
+  background: linear-gradient(#007ab3, #055073);
+  border-bottom-left-radius: 193px 21px;
+  border-bottom-right-radius: 250px 140px;
+  margin-bottom: 20px;    box-shadow: -1px 7px #bbbec9;">
+<p style="margin: 0px!important;padding-left: 20px;
+font-size: 18px!important;color: white;padding-top: 5px;">Assigned Subject</p>
+<div style="margin: 0px!important; width: 100%;padding-top: 7px;">
+
+    <!--<ion-item style="width: 40%;margin-left: 5%;border-radius: 25px;">
+      <ion-select #fromdatetime placeholder="Select Level" (ionChange)="subjectrecords(fromdatetime.value)">
+        <ion-select-option value="1">Year-1</ion-select-option>
+        <ion-select-option value="2">Year-2</ion-select-option>
+        <ion-select-option value="3">Year-3</ion-select-option>
+      </ion-select>
+    </ion-item>-->
+
+
+</div> 
+</div>
+
+
+<ion-list style="background-color: #F0F5F8;" *ngFor="let subject of this.Subjects; " >
+  <ion-card >
+  <ion-item>
+     <div style="width:100%;">
+       <h5 style="font-size: 14px;color: #055073;"><b>{{subject.SM.name}}</b></h5>
+     </div>
+  </ion-item>
+</ion-card>
+</ion-list>
+
+
+<ion-list style="background-color: #F0F5F8;" *ngIf="this.status == false" >
+  <ion-card >
+  <ion-item>
+     <div style="width:100%;">
+       <h5 style="font-size: 14px;color: #055073;"><b>{{this.message}}</b></h5>
+     </div>
+  </ion-item>
+</ion-card>
+</ion-list>
+
+</ion-content>

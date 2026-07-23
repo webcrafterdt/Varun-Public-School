@@ -1,0 +1,179 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Check-In/Check-Out for {{this.StaffName}} </ion-title>
+  </ion-toolbar>
+
+  <!-- Calendar Icon + Select Date -->
+   
+<ion-toolbar color="light">
+  <ion-item lines="none" detail="false" button (click)="openCalendar()" style="--background: transparent;">
+    <ion-icon name="calendar-outline" slot="start"></ion-icon>
+    <ion-label>
+      {{ DisplayAttendanceDate ? DisplayAttendanceDate : (this.today | date:'dd/MM/yyyy') }}
+    </ion-label>
+  </ion-item>
+</ion-toolbar>
+
+
+  <!-- Search Bar -->
+  <ion-toolbar color="light">
+    <ion-searchbar
+      placeholder="Search staff..."
+      show-clear-button="focus"
+      debounce="200"
+      (ionInput)="filterStudents($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+
+
+
+<div style="background-color: #eceff8;height: 7px;">&nbsp;</div>
+<ng-container *ngIf="this.employeelist "> 
+  <ng-container *ngFor="let StuData of employeelist">
+
+    
+
+  
+  <!-- <ion-row class="custom-row" >
+    <ion-col size="12">
+      <div style="width: 100%;" (click)="stufeedetail(StuData.tid)">
+        <div style="float: left; width: 20%;" >
+          <img src="./assets/010.png" style="margin-top: -9px; height: 40px; width: 40px; border-radius: 50%;">
+        </div>
+          <div style="float: left; width: 80%;">
+          <div style="width: 100%;display: flex;  align-items: center; justify-content: space-between;">
+            <div style="width: 100%; text-align: left;font-size: 12px;color:black;text-transform: uppercase;" (click)="stufeedetail(StuData.stuid)">{{ StuData.staff_name }}</div>
+            <div style="width: 70%; text-align: right;font-size: 11px;color:gray" (click)="stufeedetail(StuData.tid)"></div>
+         
+                    <ion-col size="1" class="amount-column">
+      <ion-icon name="chevron-forward-outline" style="color: gray;"></ion-icon>
+    </ion-col>
+          </div>
+       
+          
+        </div>
+      </div>
+    </ion-col>
+  </ion-row> -->
+
+  <ion-row class="custom-row">
+  <ion-col size="12">
+    <!-- <div style="width: 100%;" (click)="stufeedetail(StuData.tid)"> -->
+      <div style="width: 100%;" >
+      <div style="float: left; width: 80%;">
+        <!-- Staff Name -->
+        <div style="width: 100%; text-align: left; font-size: 12px; color: black; text-transform: uppercase;">
+          {{ StuData.staff_name }}
+        </div>
+
+        <!-- CheckIn / CheckOut -->
+         
+        <!-- <div *ngIf="AttendanceData?.[StuData.tid] && !AttendanceData[StuData.tid].event"
+          style="width: 100%; text-align: right; font-size: 12px; margin-left:20%; color: gray;">
+        [ Check In: {{ AttendanceData?.[StuData.tid]?.CheckIn }}  
+        |  
+        Check Out: {{ AttendanceData?.[StuData.tid]?.CheckOut }} ]
+      </div>
+      
+      <div *ngIf="AttendanceData?.[StuData.tid] && AttendanceData[StuData.tid].event"
+          style="width: 100%; text-align: right; font-size: 12px; margin-left:20%; color: gray;">
+        {{AttendanceData[StuData.tid].event}}
+      </div>
+    
+
+      <div *ngIf="!AttendanceData?.[StuData.tid]" 
+          style="width: 100%; text-align: left; font-size: 11px; color: red;">
+        No attendance data
+      </div> -->
+
+        
+        <div *ngIf="AttendanceData?.[StuData.tid]?.event"
+            style="width: 100%; text-align: right; font-size: 12px; margin-left:20%; color: gray;">
+          {{ AttendanceData[StuData.tid].event }}
+        </div>
+
+        
+        <div *ngIf="AttendanceData?.[StuData.tid] && !AttendanceData[StuData.tid].event"
+            style="width: 100%; text-align: right; font-size: 12px; margin-left:20%; color: gray;">
+          [ Check In: {{ AttendanceData[StuData.tid].CheckIn }}  
+          |  
+          Check Out: {{ AttendanceData[StuData.tid].CheckOut }} ]
+        </div>
+
+
+            <div *ngIf="!AttendanceData?.[StuData.tid]"
+            style="width: 100%; text-align: right; font-size: 12px; margin-left:20%; color: gray;">
+          {{ is_event === 'Y' ? event_name : '' }}
+        </div>
+        
+        <!-- <div *ngIf="!AttendanceData?.[StuData.tid] "
+            style="width: 100%; text-align: left; font-size: 11px; color: red;">
+        {{this.is_event == Y ? this.event_name :   No attendance data}}
+        </div> -->
+        <div *ngIf="!AttendanceData?.[StuData.tid]"
+          style="width: 100%; text-align: left; font-size: 11px; color: red;">
+        {{ is_event === 'Y' ? '' : 'No attendance data' }}
+      </div>
+
+        
+
+
+
+      </div>
+    </div>
+  </ion-col>
+</ion-row>
+
+  
+  
+
+  
+  
+
+  </ng-container>
+  </ng-container>
+  
+
+
+  <!-- <ion-list style="background-color: #F0F5F8;height: 100%;" *ngIf="!this.employeelist">
+    <ion-card>
+    <ion-item>
+         <div style="width:100%;">
+        <h6 style="font-size: 12px;color: gray;">No Record Found..!!</h6>
+          
+          
+      </div>
+    </ion-item>
+  
+  </ion-card>
+  </ion-list> -->
+  <!-- ✅ No Record Found Message -->
+<ion-list style="background-color: #F0F5F8; height: 100%;" *ngIf="noRecordFound">
+  <ion-card>
+    <ion-item>
+      <div style="width:100%;">
+        <h6 style="font-size: 12px; color: gray;">No staff found for the given criteria..!!</h6>
+      </div>
+    </ion-item>
+  </ion-card>
+</ion-list>
+
+
+
+
+
+
+  
+
+</ion-content>
+
+
+

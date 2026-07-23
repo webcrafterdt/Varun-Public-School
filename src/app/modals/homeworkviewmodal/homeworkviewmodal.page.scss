@@ -1,0 +1,25 @@
+ion-toolbar{
+   //--background: #055073;
+   --background: linear-gradient(#d8a1c9, #4e79a3)!important;
+   --color: white; 
+   
+ }
+    ion-content {
+  --ion-background-color: #eceff8;
+} 
+.homework-item {
+  margin-bottom: 12px; /* Space between cards */
+}
+
+
+.custom-title {
+  width: 100% !important;
+  white-space: normal !important;
+  text-align: left !important;
+  padding-right: 10px; /* thoda gap right side se */
+}
+
+
+.white-btn {
+  --color: white !important;
+}

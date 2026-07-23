@@ -1,0 +1,251 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="teacherhome"></ion-back-button>
+    </ion-buttons>
+<!--    <ion-title>HomeWork</ion-title>-->
+<div class="custom-title" >
+    HomeWork
+</div>
+  </ion-toolbar>
+
+
+<ion-toolbar color="light">
+  <ion-item lines="none" detail="false" button (click)="openCalendar()" style="--background: transparent;">
+    <ion-icon name="calendar-outline" slot="start"></ion-icon>
+    <ion-label>
+      {{ AttendanceDate ? AttendanceDate : (this.today | date:'dd/MM/yyyy') }}
+    </ion-label>
+  </ion-item>
+</ion-toolbar>
+
+<!--search to sahi ho raha hai but jab backspace dete hain wapis to list mein remaing data blank ho jaata hai-->
+
+
+
+    <ion-toolbar color="light">
+    <ion-searchbar
+      placeholder="Search staff..."
+      show-clear-button="focus"
+      debounce="200"
+      (ionInput)="filterStudents($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+
+
+
+<div style="background-color: #eceff8;height: 7px;">&nbsp;</div>
+<ng-container *ngIf="this.employeelist "> 
+  <ng-container *ngFor="let StuData of employeelist">
+
+    
+
+  
+  <!-- <ion-row class="custom-row" >
+    <ion-col size="12">
+      <div style="width: 100%;" (click)="homeworkdetailscalender(StuData.tid)">
+       <div style="float: left; width: 80%;">
+          <div style="width: 100%;display: flex;  align-items: center; justify-content: space-between;">
+            <div style="width: 100%; text-align: left;font-size: 12px;color:black;text-transform: uppercase;" (click)="stufeedetail(StuData.stuid)">{{ StuData.staff_name }}</div>
+            <div style="width: 70%; text-align: right;font-size: 11px;color:gray" (click)="stufeedetail(StuData.tid)"></div>
+          </div>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row> -->
+
+
+
+<!-- 
+   <ion-row class="custom-row">
+  <ion-col size="12">
+    <div style="width: 100%;" (click)="homeworkdetailscalender(StuData.tid)">
+      <div style="float: left; width: 80%;">
+        <div style="width: 100%;display: flex;align-items: center;justify-content: space-between;">
+          <div style="width: 100%; text-align: left;font-size: 12px;color:black;text-transform: uppercase;">
+            {{ StuData.staff_name }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-col>
+</ion-row> -->
+
+<ion-row class="custom-row">
+  <ion-col size="12">
+    <div style="
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 12px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    ">
+      <!-- Staff Name -->
+      <div style="font-size: 13px; color: #333; font-weight: 500; text-transform: uppercase;">
+        {{ StuData.staff_name }}
+      </div>
+
+      <!-- View / No Homework -->
+      <div 
+        [ngStyle]="{
+          'color': hasHomework(StuData.tid) ? '#007BFF' : '#999',
+          'font-weight': hasHomework(StuData.tid) ? '600' : '400',
+          'cursor': hasHomework(StuData.tid) ? 'pointer' : 'default'
+        }"
+        (click)="hasHomework(StuData.tid) && homeworkdetailscalender(StuData.tid)"
+      >
+        {{ hasHomework(StuData.tid) ? 'View' : 'No Homework' }}
+      </div>
+    </div>
+    
+  </ion-col>
+</ion-row>
+
+
+<!-- Modal -->
+<!-- Modal -->
+ 
+<!-- <ion-modal [isOpen]="isModalOpen" (didDismiss)="isModalOpen = false" class="half-screen-modal">
+  <ng-template>
+    <ion-content class="ion-padding" scroll-y="true">
+
+      
+      <div *ngIf="isLoading" style="display:flex;justify-content:center;align-items:center;height:100%;">
+        <ion-spinner name="crescent"></ion-spinner>
+      </div>
+
+      
+      <ion-list *ngIf="!isLoading">
+        <ion-item *ngFor="let homework of filteredHomework" lines="none" class="homework-item">
+          <div style="display: flex; width: 100%; background-color: white; border-radius: 8px; overflow: hidden;">
+            <div style="width: 6%; background-color: #F1B9AC;"></div>
+            <div style="flex: 1; padding: 10px;">
+              <p style="font-size: 13px; color: black; margin: 0;">
+                <b [innerHTML]="decodeHtml(homework.Title)"></b>
+              </p>
+              <p style="margin-top: 5px; font-size: 11px; color: gray;">
+                Apply Date: {{ homework.applydate }}
+              </p>
+              <p style="margin-top: 5px; font-size: 11px; color: gray;">
+                Completion Date: {{ homework.completiondate }}
+              </p>
+              <p style="margin-top: 5px; font-size: 11px; color: gray;">
+                Classes: {{ homework.Classes }}
+              </p>
+              <p style="margin-top: 5px; font-size: 11px; color: gray;">
+                Content: <b [innerHTML]="decodeHtml(homework.details)"></b>
+              </p>
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+    </ion-content>
+  </ng-template>
+</ion-modal> -->
+
+
+<ion-modal 
+  [isOpen]="isModalOpen" 
+  (didDismiss)="isModalOpen = false" 
+  class="half-screen-modal"
+  [canDismiss]="true"
+  [backdropDismiss]="true"
+>
+  <ng-template>
+
+    <!-- 🔹 Fixed Close Button -->
+    <ion-button 
+      slot="fixed"
+      fill="clear" 
+      size="small" 
+      (click)="isModalOpen = false"
+      style="
+        position: absolute;
+        top: 0px;
+        right: -8px;
+        z-index: 1000;
+        --background: transparent;
+      ">
+      <ion-icon name="close-outline" size="large"></ion-icon>
+    </ion-button>
+
+    <ion-content class="ion-padding" scroll-y="true">
+
+      <!-- 🔹 Loader -->
+      <div *ngIf="isLoading" style="display:flex;justify-content:center;align-items:center;height:100%;">
+        <ion-spinner name="crescent"></ion-spinner>
+      </div>
+
+      <!-- 🔹 Data -->
+       <ion-list *ngIf="!isLoading">
+        <ion-item *ngFor="let homework of filteredHomework" lines="none" class="homework-item">
+          <div style="display: flex; width: 100%; background-color: white; border-radius: 8px; overflow: hidden;">
+            <div style="width: 6%; background-color: #F1B9AC;"></div>
+            <div style="flex: 1; padding: 10px;">
+              <p style="font-size: 13px; color: black; margin: 0;">
+                <b [innerHTML]="decodeHtml(homework.Title)"></b>
+              </p>
+              <p style="margin-top: 5px; font-size: 11px; color: gray;">
+                Subject: {{ homework.SubjectName }}
+              </p>
+              <p style="margin-top: 5px; font-size: 11px; color: gray;">
+                Apply Date: {{ homework.applydate }}
+              </p>
+              <p style="margin-top: 5px; font-size: 11px; color: gray;">
+                Completion Date: {{ homework.completiondate }}
+              </p>
+              <p style="margin-top: 5px; font-size: 11px; color: gray;">
+                Classes: {{ homework.Classes }}
+              </p>
+              <h6 style="height: 15px;" *ngIf="homework.IsHomeWork == 'Y'">
+                <ion-icon name="document-outline" style="color: #055073" (click)="opefile(homework.homework_file)"></ion-icon>
+              </h6>
+              <p style="margin-top: 5px; font-size: 11px; color: gray;">
+                Content: <span style="font-weight: bold;" [innerHTML]="decodeHtml(homework.details)"></span>
+              </p>
+            </div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+    </ion-content>
+  </ng-template>
+</ion-modal>
+
+
+
+
+
+
+
+
+  
+  
+
+  </ng-container>
+  </ng-container>
+  
+
+
+  <ion-list style="background-color: #F0F5F8; height: 100%;" *ngIf="noRecordFound">
+  <ion-card>
+    <ion-item>
+      <div style="width:100%;">
+        <h6 style="font-size: 12px; color: gray;">No staff found for the given criteria..!!</h6>
+      </div>
+    </ion-item>
+  </ion-card>
+</ion-list>
+
+</ion-content>
+

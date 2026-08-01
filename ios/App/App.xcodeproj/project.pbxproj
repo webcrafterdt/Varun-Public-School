@@ -377,7 +377,7 @@
 				CODE_SIGN_ENTITLEMENTS = App/App.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 19;
-				DEVELOPMENT_TEAM = 99BS2PD6Q3;
+				DEVELOPMENT_TEAM = 4MF8GPNKTH;
 				INFOPLIST_FILE = App/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "varun public school";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;

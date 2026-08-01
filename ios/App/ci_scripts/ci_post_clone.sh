@@ -3,8 +3,9 @@ set -e
 
 echo "===== XCODE CLOUD POST CLONE START ====="
 
-# Load Node environment
-export PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+echo "Installing Node..."
+
+brew install node
 
 echo "Node version:"
 node -v
@@ -12,9 +13,14 @@ node -v
 echo "NPM version:"
 npm -v
 
-echo "Installing dependencies..."
-cd ../..
+echo "Moving to project root..."
 
+cd ../../..
+
+echo "Current directory:"
+pwd
+
+echo "Installing npm dependencies..."
 npm ci
 
 echo "Building Angular..."
@@ -25,6 +31,7 @@ npx cap sync ios
 
 echo "Installing CocoaPods..."
 cd ios/App
+
 pod install
 
 echo "===== XCODE CLOUD POST CLONE FINISHED ====="
